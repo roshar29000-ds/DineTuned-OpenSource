@@ -1,0 +1,115 @@
+/* The user's three Picks references: food first, short by default, detail on request. */
+.real-picks-shell { max-width: 1440px; }
+.real-picks-page { color: #17382b; }
+.real-picks-page .real-picks-topline { border-bottom: 1px solid #cbc8bd; margin-bottom: 10px; padding-bottom: 10px; font-size: 12px; }
+.real-picks-page .real-picks-intro { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 28px; min-height: 0; padding: 10px 8px 18px; border-radius: 0; border-bottom: 1px solid #cbc8bd; background: transparent; color: #143728; }
+.real-picks-page .real-picks-intro:after { display: none; }
+.real-picks-page .real-picks-intro .eyebrow { color: #965d46; letter-spacing: .12em; }
+.real-picks-page .real-picks-intro h2 { max-width: none; margin: 8px 0 6px; font-size: clamp(47px,5.2vw,72px); line-height: 1.02; }
+.real-picks-page .real-picks-intro h2 em { color: #244c38; font-weight: 400; }
+.real-picks-page .real-picks-intro p { max-width: 66ch; color: #4c584b; font: italic clamp(17px,1.5vw,21px)/1.36 Georgia,serif; }
+.real-picks-page .picks-preview-notice { margin: 12px 0; padding: 10px 14px; font-size: 13px; line-height: 1.4; }
+.real-picks-page .picks-preview-notice strong { display: inline; margin: 0; }
+.real-picks-page .real-picks-venue { min-width: 190px; border-left: 1px solid #c9c4b7; }
+.real-picks-page .real-picks-venue :is(span,strong,small) { color: #254735; }
+.real-picks-page .real-picks-target { margin: 11px 8px 7px; color: #56665c; font-size: 14px; line-height: 1.4; }
+.real-picks-page .real-picks-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 30px 0 8px; padding-top: 15px; border-top: 1px solid #cbc8bd; }
+.real-picks-page .real-picks-controls .real-menu-verification { flex: 1 1 250px; margin: 0; }
+.real-picks-page .real-picks-controls .real-picks-budget { margin: 0; font-size: 14px; }
+.real-picks-page > .real-picks-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: start; gap: clamp(13px,1.6vw,24px); margin-top: 16px; }
+.real-picks-page > .real-picks-list > .real-pick,
+.real-picks-page > .real-picks-list > .real-pick-featured { grid-column: auto; display: flex; flex-direction: column; min-height: 0; padding: 0; border: 1px solid #cfc9b7; border-radius: 12px; background: #fffcf5; box-shadow: 0 13px 30px #1d3a2610; }
+.real-picks-page > .real-picks-list > .real-pick-featured { border-color: #ae946c; background: #fffcf5; }
+.real-picks-page .real-pick-media,
+.real-picks-page .real-pick-featured .real-pick-media { flex: none; width: 100%; height: clamp(205px,18vw,270px); min-height: 0; margin: 0; border-radius: 11px 11px 0 0; grid-row: auto; }
+.real-picks-page .real-pick-media-placeholder { background: #e6e2d5; }
+.real-picks-page .real-pick-media-placeholder:after { content: ''; position: absolute; inset: 16px; border: 1px solid #c6bdab; pointer-events: none; }
+.real-picks-page .real-pick-media-placeholder b { left: 10%; right: 10%; top: 48%; bottom: auto; transform: translateY(-50%); color: #244336; font: 400 clamp(27px,2.5vw,39px)/1.08 Georgia,serif; text-align: left; text-shadow: none; }
+.real-picks-page .real-pick-media:not(.has-image) figcaption { background: none; color: #4c5e51; padding: 0 24px 20px; font-size: 12px; }
+.real-picks-page .real-pick-content,
+.real-picks-page .real-pick-featured .real-pick-content { display: flex; align-items: stretch; justify-content: flex-start; flex: 1; gap: 6px; padding: clamp(17px,1.8vw,25px); }
+.real-picks-page .real-pick-ordinal { display: none; }
+.real-picks-page .real-pick .section-kicker { color: #975f49; font-size: 11px; letter-spacing: .11em; }
+.real-picks-page .real-pick .real-menu-item-top,
+.real-picks-page .real-pick-featured .real-menu-item-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.real-picks-page .real-pick h3,
+.real-picks-page .real-pick-featured h3 { max-width: none; margin: 0; font: 400 clamp(27px,2.45vw,37px)/1.04 Georgia,serif; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.real-picks-page .real-pick .real-menu-item-top strong,
+.real-picks-page .real-pick-featured .real-menu-item-top strong { display: block; flex: none; margin: 0; color: #264632; font: 24px/1.1 Georgia,serif; }
+.real-picks-page .real-pick-content > p { margin: 0; color: #626e63; font-size: 14px; line-height: 1.45; }
+.real-picks-page .real-pick-reason { width: 100%; margin: 10px 0 0; padding: 14px 0 0; border-top: 1px solid #d7c7ab; }
+.real-picks-page .real-pick-reason p,
+.real-picks-page .real-pick:not(.real-pick-featured) .real-pick-reason p { max-width: none; margin: 0; color: #243e30; font: italic clamp(17px,1.5vw,21px)/1.36 Georgia,serif; letter-spacing: -.01em; }
+.real-picks-page .real-pick-bridge { margin: 12px 0; padding: 12px 0 2px; border-top: 1px solid #d7c7ab; }
+.real-picks-page .real-bridge-line { gap: 7px; }
+.real-picks-page .real-bridge-line span,
+.real-picks-page .real-bridge-line strong { padding: 4px 0; color: #254735; font: italic 15px/1.25 Georgia,serif; }
+.real-picks-page .real-bridge-line strong { font-style: normal; }
+.real-picks-page .real-bridge-line small { margin-bottom: 4px; font-size: 11px; letter-spacing: .08em; }
+.real-picks-page .real-bridge-line i { font-size: 18px; }
+.real-picks-page .real-dish-experience { margin-top: auto; width: 100%; }
+.real-picks-page .dining-actions-primary { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 9px; margin: 8px 0 0; }
+.real-picks-page .dining-actions-primary button { min-height: 44px; border: 1px solid #a48150; border-radius: 100px; padding: 8px 15px; background: transparent; color: #183d2d; font: 600 14px system-ui,sans-serif; cursor: pointer; }
+.real-picks-page .dining-actions-primary .real-pick-choose { border-color: #173d2d; background: #173d2d; color: #fffaf0; font: 21px/1.1 Georgia,serif; }
+.real-picks-page .real-dish-feedback-status { margin: 8px 0 0; color: #24543b; font-size: 13px; line-height: 1.4; }
+.real-picks-page .dining-actions-primary button[aria-pressed="true"] { background: #dfe9dc; color: #173d2d; }
+.real-picks-page .real-pick-expand,
+.real-picks-page .real-pick-readonly > summary { width: 100%; min-height: 47px; margin-top: 15px; display: flex; align-items: center; justify-content: space-between; border: 0; border-top: 1px solid #bda478; padding: 10px 1px; background: transparent; color: #173d2d; cursor: pointer; font: italic 18px Georgia,serif; text-align: left; }
+.real-picks-page .real-pick-expand span { font: 26px/1 Georgia,serif; }
+.real-picks-page .real-pick-readonly > summary { list-style: none; }
+.real-picks-page .real-pick-expanded,
+.real-picks-page .real-pick-readonly[open] > .real-pick-detail-content { padding: 18px; background: #f2f0e6; border: 1px solid #ded7c5; border-radius: 8px; }
+.real-picks-page .real-pick-detail-content { font-size: 15px; line-height: 1.56; color: #415247; }
+.real-picks-page .real-pick-detail-bridge { border-bottom: 1px solid #c4b697; margin-bottom: 12px; padding-bottom: 12px; }
+.real-picks-page .real-pick-detail-bridge h4 { margin: 0 0 8px; color: #1a422e; font: 23px Georgia,serif; }
+.real-picks-page .real-pick-detail-bridge p { margin: 5px 0; }
+.real-picks-page .real-pick-detail-content .real-item-notes { margin-bottom: 0; }
+.real-picks-page .dining-actions-secondary { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 10px; }
+.real-picks-page .dining-actions-secondary button { min-height: 40px; border: 1px solid #8b7657; border-radius: 6px; padding: 8px 13px; background: #fffdf7; color: #1c4130; cursor: pointer; }
+.real-picks-page .real-dish-rating { margin-top: 14px; }
+.real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]) { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); }
+.real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]) > .real-pick-media { height: 100%; min-height: 440px; border-radius: 11px 0 0 11px; }
+.real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]) > .real-pick-content { padding: clamp(24px,3vw,40px); }
+.real-picks-page .real-table-list { display: grid; grid-template-columns: 1fr; }
+.real-picks-page .real-table-combination { display: grid; grid-template-columns: minmax(190px,.36fr) minmax(0,.64fr); gap: 0; overflow: hidden; padding: 0; border: 1px solid #d7ceb7; border-radius: 12px; background: #f3f1e8; }
+.real-picks-page .real-table-photo .real-pick-media { height: 100%; min-height: 300px; border-radius: 0; }
+.real-picks-page .real-table-copy { padding: clamp(20px,2.5vw,34px); }
+.real-picks-page .real-table-copy h4 { margin: 7px 0 15px; font: 32px/1.12 Georgia,serif; color: #143b2a; }
+.real-picks-page .real-table-copy ol { margin-bottom: 14px; }
+.real-picks-page .real-table-copy li { font-size: 15px; }
+.real-picks-page .real-table-total { border-top: 1px solid #a9926e; margin-top: 18px; padding-top: 15px; }
+.real-picks-page .real-stretch { background: transparent; padding: 30px 0 0; border-top: 1px solid #cbc8bd; border-radius: 0; }
+.real-picks-page .real-stretch .real-picks-list { display: grid; grid-template-columns: 1fr; }
+.real-picks-page .real-stretch .real-pick-stretch { display: grid; grid-template-columns: minmax(180px,.35fr) minmax(0,.65fr); padding: 0; border-radius: 12px; background: #f4f1e7; }
+.real-picks-page .real-stretch .real-pick-stretch .real-pick-media { height: 100%; min-height: 270px; border-radius: 11px 0 0 11px; }
+.real-picks-page .real-refinements { background: transparent; border-top: 1px solid #cbc8bd; }
+.real-picks-page .real-refinement-choices button { border: 1px solid #947440; border-radius: 100px; padding: 12px 20px; background: #fffdf7; color: #173c2c; font: 17px Georgia,serif; }
+.real-picks-page .real-refinement-choices button[aria-pressed="true"] { background: #183e2d; border-color: #183e2d; color: #fff9eb; }
+.real-picks-page .real-refinement-phrase { display: grid; gap: 7px; margin: 24px 0 15px; color: #173c2c; font: 19px Georgia,serif; }
+.real-picks-page .real-refinement-phrase span { color: #667364; font: 13px/1.4 system-ui,sans-serif; }
+.real-picks-page .real-refinement-phrase input { width: 100%; min-height: 52px; border: 1px solid #a48657; border-radius: 8px; padding: 12px 16px; background: #fffcf5; color: #183d2d; font: italic 18px Georgia,serif; }
+.real-picks-page .real-refinement-actions .text-button { min-height: 42px; }
+.real-picks-page .real-refinement-submit { display: flex; align-items: center; justify-content: center; gap: 12px; min-width: min(100%,310px); margin: 23px auto 9px; }
+.real-picks-page .real-refinement-assurance { text-align: center; color: #5f6d5f; font: italic 15px Georgia,serif; }
+.real-picks-page :is(button,summary,input,textarea):focus-visible { outline: 3px solid #a97833; outline-offset: 3px; }
+@media (max-width: 1050px) { .real-picks-page > .real-picks-list { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 720px) {
+  .real-picks-page .real-picks-topline { margin-bottom: 6px; }
+  .real-picks-page .real-picks-intro { display: block; padding: 4px 0 9px; }
+  .real-picks-page .real-picks-intro h2 { font-size: clamp(34px,9.2vw,47px); margin: 5px 0; }
+  .real-picks-page .real-picks-intro p { font-size: 14px; }
+  .real-picks-page[aria-label="Offline Personalized Picks preview"] .real-picks-intro p { display: none; }
+  .real-picks-page .real-picks-venue { margin-top: 7px; padding: 6px 0 0; border-left: 0; border-top: 1px solid #c9c4b7; }
+  .real-picks-page .real-picks-venue strong { font-size: 22px; }
+  .real-picks-page .picks-preview-notice { margin: 7px 0; padding: 7px 9px; font-size: 12px; }
+  .real-picks-page > .real-picks-list { grid-template-columns: 1fr; }
+  .real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]),
+  .real-picks-page .real-stretch .real-pick-stretch,
+  .real-picks-page .real-table-combination { display: flex; flex-direction: column; }
+  .real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]) > .real-pick-media,
+  .real-picks-page .real-stretch .real-pick-stretch .real-pick-media,
+  .real-picks-page .real-table-photo .real-pick-media { height: 255px; min-height: 0; border-radius: 11px 11px 0 0; }
+  .real-picks-page .real-pick-media,.real-picks-page .real-pick-featured .real-pick-media { height: 240px; }
+  .real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]) > .real-pick-content { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .real-picks-page .real-pick:has(.real-pick-expand[aria-expanded="true"]) { transition: none; } }

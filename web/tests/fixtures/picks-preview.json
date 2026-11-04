@@ -1,0 +1,1066 @@
+{
+  "extraction": {
+    "schema_version": 1,
+    "request_id": "6c263a76-808d-4467-81d5-b17b4d1dd8fa",
+    "restaurant_id": "verified_branch",
+    "status": "needs_review",
+    "provider": "local_html_pdf",
+    "vision_status": "not_needed",
+    "recommendation_token": null,
+    "menu": {
+      "schema_version": 1,
+      "mode": "extracted",
+      "version": "menu_42b880b5d9bc926d90b61242",
+      "restaurant_id": "verified_branch",
+      "restaurant": {
+        "provider": "google_places",
+        "place_id": "verified_branch",
+        "display_name": "Orchard Kitchen",
+        "formatted_address": "9 Oak St, Boston, MA 02108",
+        "location": null,
+        "business_status": "OPERATIONAL",
+        "types": [
+          "restaurant"
+        ],
+        "source": {
+          "provider": "google_places",
+          "api": "places_new",
+          "retrieved_at": "2026-10-30T00:00:00Z",
+          "place_id": "verified_branch"
+        },
+        "attributions": []
+      },
+      "categories": [
+        {
+          "id": "cat_938181e2670fb9bb86c75919",
+          "name": "To begin",
+          "evidence_ids": [
+            "ev_623eb2e9ebea31faf1fa5aac"
+          ],
+          "items": [
+            {
+              "id": "dish_f5ff8e6a1881ad91decd99b5",
+              "category_id": "cat_938181e2670fb9bb86c75919",
+              "name": "Roasted tomato soup",
+              "description": "Tomato broth, basil and grilled bread.",
+              "price": {
+                "kind": "fixed",
+                "basis": "as_printed",
+                "raw": "12.00",
+                "options": [
+                  {
+                    "label": null,
+                    "raw": "12.00",
+                    "amount_minor": 1200,
+                    "currency": "USD",
+                    "evidence_id": "ev_952048c3b787fe6e42bdec23"
+                  }
+                ],
+                "budget_usable": true,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_952048c3b787fe6e42bdec23",
+                "ev_623eb2e9ebea31faf1fa5aac",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "structured",
+              "limitations": []
+            },
+            {
+              "id": "dish_c96f3660f73c535ec41b9de2",
+              "category_id": "cat_938181e2670fb9bb86c75919",
+              "name": "Garden leaves",
+              "description": "Lettuce, pear and walnut vinaigrette.",
+              "price": {
+                "kind": "fixed",
+                "basis": "as_printed",
+                "raw": "14.50",
+                "options": [
+                  {
+                    "label": null,
+                    "raw": "14.50",
+                    "amount_minor": 1450,
+                    "currency": "USD",
+                    "evidence_id": "ev_75c276db36ea6935167fcae9"
+                  }
+                ],
+                "budget_usable": true,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_75c276db36ea6935167fcae9",
+                "ev_623eb2e9ebea31faf1fa5aac",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "structured",
+              "limitations": []
+            }
+          ]
+        },
+        {
+          "id": "cat_16ceca1fafe4ba6bdc951902",
+          "name": "Main plates",
+          "evidence_ids": [
+            "ev_cc5c125243da8317cac72e6a"
+          ],
+          "items": [
+            {
+              "id": "dish_11368f77c54bc8d483808efb",
+              "category_id": "cat_16ceca1fafe4ba6bdc951902",
+              "name": "Charred chicken",
+              "description": "Grilled chicken, lemon and potatoes.",
+              "price": {
+                "kind": "fixed",
+                "basis": "as_printed",
+                "raw": "24",
+                "options": [
+                  {
+                    "label": null,
+                    "raw": "24",
+                    "amount_minor": 2400,
+                    "currency": "USD",
+                    "evidence_id": "ev_83877c32695f7fb764321c30"
+                  }
+                ],
+                "budget_usable": true,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_83877c32695f7fb764321c30",
+                "ev_cc5c125243da8317cac72e6a",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "structured",
+              "limitations": []
+            },
+            {
+              "id": "dish_3adb2035324d5262cdbe46ed",
+              "category_id": "cat_16ceca1fafe4ba6bdc951902",
+              "name": "Mushroom rice",
+              "description": "Rice, mushrooms and parsley.",
+              "price": {
+                "kind": "fixed",
+                "basis": "as_printed",
+                "raw": "22",
+                "options": [
+                  {
+                    "label": null,
+                    "raw": "22",
+                    "amount_minor": 2200,
+                    "currency": "USD",
+                    "evidence_id": "ev_fcaea374bc8e6e1fed938610"
+                  }
+                ],
+                "budget_usable": true,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_fcaea374bc8e6e1fed938610",
+                "ev_cc5c125243da8317cac72e6a",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "structured",
+              "limitations": []
+            },
+            {
+              "id": "dish_a989915e559c1a1b4a539da0",
+              "category_id": "cat_16ceca1fafe4ba6bdc951902",
+              "name": "Market fish",
+              "description": "Ask about today's preparation.",
+              "price": {
+                "kind": "unknown",
+                "basis": "as_printed",
+                "raw": null,
+                "options": [],
+                "budget_usable": false,
+                "limitations": [
+                  "No fixed menu price is established."
+                ]
+              },
+              "evidence_ids": [
+                "ev_af79ea60e7cecc21e5c88d34",
+                "ev_cc5c125243da8317cac72e6a",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "needs_review",
+              "limitations": [
+                "No fixed menu price is established."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cat_cb0d8a01e632d495101c88e8",
+          "name": "Something sweet",
+          "evidence_ids": [
+            "ev_93641de876a82f2be432a0c5"
+          ],
+          "items": [
+            {
+              "id": "dish_3c4d890bf6017bbb7b3f3d09",
+              "category_id": "cat_cb0d8a01e632d495101c88e8",
+              "name": "Lemon tart",
+              "description": "Lemon custard in pastry.",
+              "price": {
+                "kind": "fixed",
+                "basis": "as_printed",
+                "raw": "9",
+                "options": [
+                  {
+                    "label": null,
+                    "raw": "9",
+                    "amount_minor": 900,
+                    "currency": "USD",
+                    "evidence_id": "ev_50cc113a64367472dfc2b0f5"
+                  }
+                ],
+                "budget_usable": true,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_50cc113a64367472dfc2b0f5",
+                "ev_93641de876a82f2be432a0c5",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "structured",
+              "limitations": []
+            },
+            {
+              "id": "dish_6d740291171e666894e61f63",
+              "category_id": "cat_cb0d8a01e632d495101c88e8",
+              "name": "Vanilla ice cream",
+              "description": "House vanilla ice cream.",
+              "price": {
+                "kind": "variants",
+                "basis": "as_printed",
+                "raw": "5 | 8",
+                "options": [
+                  {
+                    "label": "Small",
+                    "raw": "5",
+                    "amount_minor": 500,
+                    "currency": "USD",
+                    "evidence_id": "ev_377770270e914fd300f7d9d8"
+                  },
+                  {
+                    "label": "Large",
+                    "raw": "8",
+                    "amount_minor": 800,
+                    "currency": "USD",
+                    "evidence_id": "ev_377770270e914fd300f7d9d8"
+                  }
+                ],
+                "budget_usable": false,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_377770270e914fd300f7d9d8",
+                "ev_93641de876a82f2be432a0c5",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "needs_review",
+              "limitations": [
+                "Multiple prices or a range require an explicit variant choice before budget use."
+              ]
+            }
+          ]
+        }
+      ],
+      "total_items": 7,
+      "sources": [
+        {
+          "id": "src_d5db6aac14d31ead8a651984",
+          "candidate": {
+            "id": "candidate_d5db6aac14d3",
+            "source_url": "https://menus.example.org/dinner",
+            "discovered_from": "https://menus.example.org/dinner",
+            "title": "Dinner menu",
+            "format": "html",
+            "menu_type": "dine_in",
+            "branch_relevance": "exact",
+            "provenance": "corroborated_website",
+            "confidence": "high",
+            "freshness": "undated",
+            "date_label": null,
+            "access": "checked",
+            "verified_at": "2026-10-30T00:00:00Z",
+            "discovered_at": "2026-10-30T00:00:00Z",
+            "evidence": [
+              {
+                "kind": "branch",
+                "source_url": "https://menus.example.org/dinner",
+                "detail": "Name and address corroborated during source discovery."
+              }
+            ],
+            "limitations": [],
+            "suitable_for_extraction": true,
+            "extraction_status": "not_extracted"
+          },
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "retrieved_at": "2026-10-30T00:00:00Z",
+          "status": "parsed",
+          "page_count": 1,
+          "parsed_pages": [],
+          "recognized_items": 7,
+          "extracted_items": 7,
+          "unresolved_sections": [],
+          "coverage": "accounted_source_records"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev_952048c3b787fe6e42bdec23",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/0/hasMenuItem/0",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Roasted tomato soup\",\"description\":\"Tomato broth, basil and grilled bread.\",\"offers\":{\"@type\":\"Offer\",\"price\":\"12.00\",\"priceCurrency\":\"USD\"}}",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_623eb2e9ebea31faf1fa5aac",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/0/name",
+          "page": null,
+          "quote": "To begin",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_e01fa45d47318d716a82954e",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/priceCurrency",
+          "page": null,
+          "quote": "USD",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_75c276db36ea6935167fcae9",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/0/hasMenuItem/1",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Garden leaves\",\"description\":\"Lettuce, pear and walnut vinaigrette.\",\"offers\":{\"price\":\"14.50\"}}",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_83877c32695f7fb764321c30",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/0",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Charred chicken\",\"description\":\"Grilled chicken, lemon and potatoes.\",\"offers\":{\"price\":\"24\"}}",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_cc5c125243da8317cac72e6a",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/1/name",
+          "page": null,
+          "quote": "Main plates",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_fcaea374bc8e6e1fed938610",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/1",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Mushroom rice\",\"description\":\"Rice, mushrooms and parsley.\",\"offers\":{\"price\":\"22\"}}",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_af79ea60e7cecc21e5c88d34",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/2",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Market fish\",\"description\":\"Ask about today's preparation.\"}",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_50cc113a64367472dfc2b0f5",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/2/hasMenuItem/0",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Lemon tart\",\"description\":\"Lemon custard in pastry.\",\"offers\":{\"price\":\"9\"}}",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_93641de876a82f2be432a0c5",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/2/name",
+          "page": null,
+          "quote": "Something sweet",
+          "method": "json_ld"
+        },
+        {
+          "id": "ev_377770270e914fd300f7d9d8",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/2/hasMenuItem/1",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Vanilla ice cream\",\"description\":\"House vanilla ice cream.\",\"offers\":[{\"name\":\"Small\",\"price\":\"5\"},{\"name\":\"Large\",\"price\":\"8\"}]}",
+          "method": "json_ld"
+        }
+      ],
+      "completeness": {
+        "scope": "supplied_source_set",
+        "status": "accounted_source_records",
+        "restaurant_menu_complete": false,
+        "requested_sources": 1,
+        "parsed_sources": 1,
+        "recognized_items": 7,
+        "extracted_items": 7,
+        "reasons": [
+          "Coverage refers only to recognized records in the supplied source set. The restaurant’s entire menu and current availability are not established.",
+          "Identical duplicate records are counted once in the menu, with every source reference retained."
+        ]
+      },
+      "issues": [
+        {
+          "code": "item_review",
+          "severity": "review",
+          "message": "No fixed menu price is established.",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "item_ids": [
+            "dish_a989915e559c1a1b4a539da0"
+          ]
+        },
+        {
+          "code": "item_review",
+          "severity": "review",
+          "message": "Multiple prices or a range require an explicit variant choice before budget use.",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "item_ids": [
+            "dish_6d740291171e666894e61f63"
+          ]
+        }
+      ],
+      "extracted_at": "2026-10-30T00:00:00Z",
+      "parser_version": "html-pdf-1.0",
+      "recommendations_ready": false
+    },
+    "requests_made": 2
+  },
+  "profile": {
+    "schema_version": 2,
+    "complete": false,
+    "favorites": "tomato soup; pear salad; grilled chicken with lemon",
+    "axes": {
+      "spice": null,
+      "richness": null,
+      "freshness": 0.74,
+      "crunch": 0.82,
+      "aromatic": 0.72,
+      "sweetness": null,
+      "umami": null
+    },
+    "exploration": 0.5,
+    "dietary_restrictions": [],
+    "allergies": {
+      "allergens": [],
+      "other": ""
+    },
+    "updated_at": null,
+    "source": "guided_demo"
+  },
+  "result": {
+    "request_id": "a0a3807e-2bd9-4339-a244-3432055ba68b",
+    "restaurant_id": "verified_branch",
+    "menu_version": "menu_42b880b5d9bc926d90b61242",
+    "context_digest": "c0f9a1feb6c46e9a59aa8389b4ad5d20ec8f03c92a019e79fac4b06a3c49becd",
+    "status": "ready",
+    "mode": "mock",
+    "model": "muse-spark-1.3",
+    "recommendations": [
+      {
+        "dish": {
+          "id": "dish_3adb2035324d5262cdbe46ed",
+          "category_id": "cat_16ceca1fafe4ba6bdc951902",
+          "name": "Mushroom rice",
+          "description": "Rice, mushrooms and parsley.",
+          "price": {
+            "kind": "fixed",
+            "basis": "as_printed",
+            "raw": "22",
+            "options": [
+              {
+                "label": null,
+                "raw": "22",
+                "amount_minor": 2200,
+                "currency": "USD",
+                "evidence_id": "ev_fcaea374bc8e6e1fed938610"
+              }
+            ],
+            "budget_usable": true,
+            "limitations": []
+          },
+          "evidence_ids": [
+            "ev_fcaea374bc8e6e1fed938610",
+            "ev_cc5c125243da8317cac72e6a",
+            "ev_e01fa45d47318d716a82954e"
+          ],
+          "availability": "unverified",
+          "ingredients": [],
+          "dietary": [],
+          "allergens": {
+            "contains": [],
+            "may_contain": [],
+            "information_status": "unknown",
+            "cross_contact": "unknown",
+            "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+          },
+          "confidence": "structured",
+          "limitations": []
+        },
+        "category_name": "Main plates",
+        "fit": "exceptional",
+        "explanation": "Rice, mushrooms and parsley make this a gentle way to explore the aromatic side of your palate.",
+        "connections": [
+          {
+            "preference": {
+              "id": "favorites",
+              "label": "aromatic flavors",
+              "source": "taste_dna",
+              "basis": "inferred",
+              "polarity": "like"
+            },
+            "menu_quote": "Rice, mushrooms and parsley.",
+            "field": "description",
+            "evidence": {
+              "id": "ev_fcaea374bc8e6e1fed938610",
+              "source_id": "src_d5db6aac14d31ead8a651984",
+              "source_url": "https://menus.example.org/dinner",
+              "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+              "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/1",
+              "page": null,
+              "quote": "{\"@type\":\"MenuItem\",\"name\":\"Mushroom rice\",\"description\":\"Rice, mushrooms and parsley.\",\"offers\":{\"price\":\"22\"}}",
+              "method": "json_ld"
+            }
+          }
+        ],
+        "price_minor": 2200,
+        "currency": "USD",
+        "budget": {
+          "target_minor": 2200,
+          "overage_minor": 0,
+          "status": "within_target"
+        },
+        "limitations": [
+          "Listed in the source menu; current availability is unverified.",
+          "Ingredients and cross-contact are not fully verified. Confirm with restaurant staff.",
+          "The preference connection is a model judgment, not a calibrated prediction."
+        ]
+      },
+      {
+        "dish": {
+          "id": "dish_f5ff8e6a1881ad91decd99b5",
+          "category_id": "cat_938181e2670fb9bb86c75919",
+          "name": "Roasted tomato soup",
+          "description": "Tomato broth, basil and grilled bread.",
+          "price": {
+            "kind": "fixed",
+            "basis": "as_printed",
+            "raw": "12.00",
+            "options": [
+              {
+                "label": null,
+                "raw": "12.00",
+                "amount_minor": 1200,
+                "currency": "USD",
+                "evidence_id": "ev_952048c3b787fe6e42bdec23"
+              }
+            ],
+            "budget_usable": true,
+            "limitations": []
+          },
+          "evidence_ids": [
+            "ev_952048c3b787fe6e42bdec23",
+            "ev_623eb2e9ebea31faf1fa5aac",
+            "ev_e01fa45d47318d716a82954e"
+          ],
+          "availability": "unverified",
+          "ingredients": [],
+          "dietary": [],
+          "allergens": {
+            "contains": [],
+            "may_contain": [],
+            "information_status": "unknown",
+            "cross_contact": "unknown",
+            "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+          },
+          "confidence": "structured",
+          "limitations": []
+        },
+        "category_name": "To begin",
+        "fit": "exceptional",
+        "explanation": "Tomato broth and basil bring a familiar comfort, with grilled bread for contrast.",
+        "connections": [
+          {
+            "preference": {
+              "id": "favorites",
+              "label": "tomato soup",
+              "source": "taste_dna",
+              "basis": "stated",
+              "polarity": "like"
+            },
+            "menu_quote": "Tomato broth, basil and grilled bread.",
+            "field": "description",
+            "evidence": {
+              "id": "ev_952048c3b787fe6e42bdec23",
+              "source_id": "src_d5db6aac14d31ead8a651984",
+              "source_url": "https://menus.example.org/dinner",
+              "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+              "locator": "jsonld[0]/hasMenu/hasMenuSection/0/hasMenuItem/0",
+              "page": null,
+              "quote": "{\"@type\":\"MenuItem\",\"name\":\"Roasted tomato soup\",\"description\":\"Tomato broth, basil and grilled bread.\",\"offers\":{\"@type\":\"Offer\",\"price\":\"12.00\",\"priceCurrency\":\"USD\"}}",
+              "method": "json_ld"
+            }
+          }
+        ],
+        "price_minor": 1200,
+        "currency": "USD",
+        "budget": {
+          "target_minor": 2200,
+          "overage_minor": 0,
+          "status": "within_target"
+        },
+        "limitations": [
+          "Listed in the source menu; current availability is unverified.",
+          "Ingredients and cross-contact are not fully verified. Confirm with restaurant staff.",
+          "The preference connection is a model judgment, not a calibrated prediction."
+        ]
+      },
+      {
+        "dish": {
+          "id": "dish_c96f3660f73c535ec41b9de2",
+          "category_id": "cat_938181e2670fb9bb86c75919",
+          "name": "Garden leaves",
+          "description": "Lettuce, pear and walnut vinaigrette.",
+          "price": {
+            "kind": "fixed",
+            "basis": "as_printed",
+            "raw": "14.50",
+            "options": [
+              {
+                "label": null,
+                "raw": "14.50",
+                "amount_minor": 1450,
+                "currency": "USD",
+                "evidence_id": "ev_75c276db36ea6935167fcae9"
+              }
+            ],
+            "budget_usable": true,
+            "limitations": []
+          },
+          "evidence_ids": [
+            "ev_75c276db36ea6935167fcae9",
+            "ev_623eb2e9ebea31faf1fa5aac",
+            "ev_e01fa45d47318d716a82954e"
+          ],
+          "availability": "unverified",
+          "ingredients": [],
+          "dietary": [],
+          "allergens": {
+            "contains": [],
+            "may_contain": [],
+            "information_status": "unknown",
+            "cross_contact": "unknown",
+            "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+          },
+          "confidence": "structured",
+          "limitations": []
+        },
+        "category_name": "To begin",
+        "fit": "exceptional",
+        "explanation": "Pear appears here with lettuce and walnut vinaigrette—a fresh direction for someone who enjoys pear salad.",
+        "connections": [
+          {
+            "preference": {
+              "id": "favorites",
+              "label": "pear salad",
+              "source": "taste_dna",
+              "basis": "stated",
+              "polarity": "like"
+            },
+            "menu_quote": "Lettuce, pear and walnut vinaigrette.",
+            "field": "description",
+            "evidence": {
+              "id": "ev_75c276db36ea6935167fcae9",
+              "source_id": "src_d5db6aac14d31ead8a651984",
+              "source_url": "https://menus.example.org/dinner",
+              "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+              "locator": "jsonld[0]/hasMenu/hasMenuSection/0/hasMenuItem/1",
+              "page": null,
+              "quote": "{\"@type\":\"MenuItem\",\"name\":\"Garden leaves\",\"description\":\"Lettuce, pear and walnut vinaigrette.\",\"offers\":{\"price\":\"14.50\"}}",
+              "method": "json_ld"
+            }
+          }
+        ],
+        "price_minor": 1450,
+        "currency": "USD",
+        "budget": {
+          "target_minor": 2200,
+          "overage_minor": 0,
+          "status": "within_target"
+        },
+        "limitations": [
+          "Listed in the source menu; current availability is unverified.",
+          "Ingredients and cross-contact are not fully verified. Confirm with restaurant staff.",
+          "The preference connection is a model judgment, not a calibrated prediction."
+        ]
+      }
+    ],
+    "taste_bridges": [
+      {
+        "item_id": "dish_3adb2035324d5262cdbe46ed",
+        "anchor": {
+          "id": "favorites",
+          "label": "aromatic flavors",
+          "source": "taste_dna",
+          "basis": "inferred",
+          "polarity": "like"
+        },
+        "menu_quote": "Rice, mushrooms and parsley.",
+        "evidence": {
+          "id": "ev_fcaea374bc8e6e1fed938610",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/1",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Mushroom rice\",\"description\":\"Rice, mushrooms and parsley.\",\"offers\":{\"price\":\"22\"}}",
+          "method": "json_ld"
+        },
+        "connection": "Your profile leans toward aromatic flavors. The menu names parsley in this rice, but its prominence is unknown.",
+        "uncertainty": "This is a source-linked taste connection, not proof that the dishes share ingredients or preparation."
+      },
+      {
+        "item_id": "dish_f5ff8e6a1881ad91decd99b5",
+        "anchor": {
+          "id": "favorites",
+          "label": "tomato soup",
+          "source": "taste_dna",
+          "basis": "stated",
+          "polarity": "like"
+        },
+        "menu_quote": "Tomato broth, basil and grilled bread.",
+        "evidence": {
+          "id": "ev_952048c3b787fe6e42bdec23",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/0/hasMenuItem/0",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Roasted tomato soup\",\"description\":\"Tomato broth, basil and grilled bread.\",\"offers\":{\"@type\":\"Offer\",\"price\":\"12.00\",\"priceCurrency\":\"USD\"}}",
+          "method": "json_ld"
+        },
+        "connection": "Tomato soup is a familiar favorite. This menu describes tomato broth with basil and grilled bread.",
+        "uncertainty": "This is a source-linked taste connection, not proof that the dishes share ingredients or preparation."
+      },
+      {
+        "item_id": "dish_c96f3660f73c535ec41b9de2",
+        "anchor": {
+          "id": "favorites",
+          "label": "pear salad",
+          "source": "taste_dna",
+          "basis": "stated",
+          "polarity": "like"
+        },
+        "menu_quote": "Lettuce, pear and walnut vinaigrette.",
+        "evidence": {
+          "id": "ev_75c276db36ea6935167fcae9",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/0/hasMenuItem/1",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Garden leaves\",\"description\":\"Lettuce, pear and walnut vinaigrette.\",\"offers\":{\"price\":\"14.50\"}}",
+          "method": "json_ld"
+        },
+        "connection": "You named pear salad as a favorite. This menu lists pear with lettuce and walnut vinaigrette; its balance is unknown.",
+        "uncertainty": "This is a source-linked taste connection, not proof that the dishes share ingredients or preparation."
+      },
+      {
+        "item_id": "dish_11368f77c54bc8d483808efb",
+        "anchor": {
+          "id": "favorites",
+          "label": "grilled chicken with lemon",
+          "source": "taste_dna",
+          "basis": "stated",
+          "polarity": "like"
+        },
+        "menu_quote": "Grilled chicken, lemon and potatoes.",
+        "evidence": {
+          "id": "ev_83877c32695f7fb764321c30",
+          "source_id": "src_d5db6aac14d31ead8a651984",
+          "source_url": "https://menus.example.org/dinner",
+          "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+          "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/0",
+          "page": null,
+          "quote": "{\"@type\":\"MenuItem\",\"name\":\"Charred chicken\",\"description\":\"Grilled chicken, lemon and potatoes.\",\"offers\":{\"price\":\"24\"}}",
+          "method": "json_ld"
+        },
+        "connection": "You named grilled chicken with lemon as a favorite. This menu lists grilled chicken, lemon and potatoes; preparation details are limited.",
+        "uncertainty": "This is a source-linked taste connection, not proof that the dishes share ingredients or preparation."
+      }
+    ],
+    "meal_combinations": [
+      {
+        "main_item_id": "dish_3adb2035324d5262cdbe46ed",
+        "additions": [
+          {
+            "dish": {
+              "id": "dish_3c4d890bf6017bbb7b3f3d09",
+              "category_id": "cat_cb0d8a01e632d495101c88e8",
+              "name": "Lemon tart",
+              "description": "Lemon custard in pastry.",
+              "price": {
+                "kind": "fixed",
+                "basis": "as_printed",
+                "raw": "9",
+                "options": [
+                  {
+                    "label": null,
+                    "raw": "9",
+                    "amount_minor": 900,
+                    "currency": "USD",
+                    "evidence_id": "ev_50cc113a64367472dfc2b0f5"
+                  }
+                ],
+                "budget_usable": true,
+                "limitations": []
+              },
+              "evidence_ids": [
+                "ev_50cc113a64367472dfc2b0f5",
+                "ev_93641de876a82f2be432a0c5",
+                "ev_e01fa45d47318d716a82954e"
+              ],
+              "availability": "unverified",
+              "ingredients": [],
+              "dietary": [],
+              "allergens": {
+                "contains": [],
+                "may_contain": [],
+                "information_status": "unknown",
+                "cross_contact": "unknown",
+                "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+              },
+              "confidence": "structured",
+              "limitations": []
+            },
+            "category_name": "Something sweet",
+            "price_minor": 900,
+            "evidence": {
+              "id": "ev_50cc113a64367472dfc2b0f5",
+              "source_id": "src_d5db6aac14d31ead8a651984",
+              "source_url": "https://menus.example.org/dinner",
+              "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+              "locator": "jsonld[0]/hasMenu/hasMenuSection/2/hasMenuItem/0",
+              "page": null,
+              "quote": "{\"@type\":\"MenuItem\",\"name\":\"Lemon tart\",\"description\":\"Lemon custard in pastry.\",\"offers\":{\"price\":\"9\"}}",
+              "method": "json_ld"
+            }
+          }
+        ],
+        "subtotal_minor": 3100,
+        "rationale": "Consider Lemon tart alongside Mushroom rice. The supplied menu lists Lemon tart as “Lemon custard in pastry.”.",
+        "limitations": [
+          "Pairing harmony is a model judgment based on menu text, not a verified portion or ingredient claim.",
+          "Subtotal excludes tax, tip and fees; the budget target applies per dish.",
+          "Current availability and cross-contact controls are unverified."
+        ]
+      }
+    ],
+    "worth_the_stretch": [
+      {
+        "dish": {
+          "id": "dish_11368f77c54bc8d483808efb",
+          "category_id": "cat_16ceca1fafe4ba6bdc951902",
+          "name": "Charred chicken",
+          "description": "Grilled chicken, lemon and potatoes.",
+          "price": {
+            "kind": "fixed",
+            "basis": "as_printed",
+            "raw": "24",
+            "options": [
+              {
+                "label": null,
+                "raw": "24",
+                "amount_minor": 2400,
+                "currency": "USD",
+                "evidence_id": "ev_83877c32695f7fb764321c30"
+              }
+            ],
+            "budget_usable": true,
+            "limitations": []
+          },
+          "evidence_ids": [
+            "ev_83877c32695f7fb764321c30",
+            "ev_cc5c125243da8317cac72e6a",
+            "ev_e01fa45d47318d716a82954e"
+          ],
+          "availability": "unverified",
+          "ingredients": [],
+          "dietary": [],
+          "allergens": {
+            "contains": [],
+            "may_contain": [],
+            "information_status": "unknown",
+            "cross_contact": "unknown",
+            "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+          },
+          "confidence": "structured",
+          "limitations": []
+        },
+        "category_name": "Main plates",
+        "fit": "exceptional",
+        "explanation": "The menu lists grilled chicken, lemon and potatoes, echoing a combination you already enjoy.",
+        "connections": [
+          {
+            "preference": {
+              "id": "favorites",
+              "label": "grilled chicken with lemon",
+              "source": "taste_dna",
+              "basis": "stated",
+              "polarity": "like"
+            },
+            "menu_quote": "Grilled chicken, lemon and potatoes.",
+            "field": "description",
+            "evidence": {
+              "id": "ev_83877c32695f7fb764321c30",
+              "source_id": "src_d5db6aac14d31ead8a651984",
+              "source_url": "https://menus.example.org/dinner",
+              "source_hash": "b4d3df31cb533a0993ba5dd9f88d53381f4be32ac486467e8b1e624382d9bd08",
+              "locator": "jsonld[0]/hasMenu/hasMenuSection/1/hasMenuItem/0",
+              "page": null,
+              "quote": "{\"@type\":\"MenuItem\",\"name\":\"Charred chicken\",\"description\":\"Grilled chicken, lemon and potatoes.\",\"offers\":{\"price\":\"24\"}}",
+              "method": "json_ld"
+            }
+          }
+        ],
+        "price_minor": 2400,
+        "currency": "USD",
+        "budget": {
+          "target_minor": 2200,
+          "overage_minor": 200,
+          "status": "above_target"
+        },
+        "limitations": [
+          "Listed in the source menu; current availability is unverified.",
+          "Ingredients and cross-contact are not fully verified. Confirm with restaurant staff.",
+          "The preference connection is a model judgment, not a calibrated prediction."
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "item_id": "dish_a989915e559c1a1b4a539da0",
+        "reasons": [
+          "price_unverified"
+        ]
+      },
+      {
+        "item_id": "dish_6d740291171e666894e61f63",
+        "reasons": [
+          "price_unverified"
+        ]
+      }
+    ],
+    "message": "OFFLINE DEMONSTRATION · Fictional menu and mocked culinary selection. No Meta request was made.",
+    "limitations": [
+      "Based only on the selected extracted sources, not a verified complete or current restaurant menu.",
+      "Prices are as printed, per dish, excluding tax, tip and fees. No currency conversion is performed.",
+      "Reported Taste Memory is context, not trained model learning."
+    ],
+    "error_code": null
+  }
+}

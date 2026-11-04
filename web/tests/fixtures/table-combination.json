@@ -1,0 +1,140 @@
+{
+  "id": "table-f2b11521eb32e73c",
+  "restaurant_id": "sora-kitchen",
+  "menu_version": "demo-c04a25f17d3f",
+  "main": {
+    "item_id": "miso-ramen",
+    "name": "Spicy Miso Ramen",
+    "category_id": "noodles",
+    "category_name": "Noodles",
+    "price_minor": 2200,
+    "currency": "USD",
+    "budget": {
+      "target_minor": 2000,
+      "overage_minor": 200,
+      "status": "above_target"
+    }
+  },
+  "additions": [
+    {
+      "item_id": "gyoza",
+      "name": "Vegetable Gyoza",
+      "category_id": "small-plates",
+      "category_name": "Small plates",
+      "price_minor": 1300,
+      "currency": "USD",
+      "budget": {
+        "target_minor": 2000,
+        "overage_minor": 0,
+        "status": "within_target"
+      }
+    }
+  ],
+  "subtotal_minor": 3500,
+  "currency": "USD",
+  "price_basis": "menu_subtotal_before_tax_tip_fees",
+  "budget_scope": "per_dish_not_meal_cap",
+  "rationale": "Alongside Spicy Miso Ramen: Vegetable Gyoza from Small plates. Vegetable Gyoza's demo profile has more crunch than Spicy Miso Ramen. Your saved aromatic intensity preference and Vegetable Gyoza's demo profile both indicate pronounced aromatics.",
+  "claims": [
+    {
+      "left_fact_id": "pair-fact-5",
+      "right_fact_id": "pair-fact-43",
+      "relation": "higher",
+      "text": "Vegetable Gyoza's demo profile has more crunch than Spicy Miso Ramen."
+    },
+    {
+      "left_fact_id": "pair-fact-51",
+      "right_fact_id": "pair-fact-44",
+      "relation": "shared",
+      "text": "Your saved aromatic intensity preference and Vegetable Gyoza's demo profile both indicate pronounced aromatics."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "pair-fact-0",
+      "item_id": "miso-ramen",
+      "attribute": "category",
+      "value": "noodles",
+      "label": "Noodles",
+      "source": "menu_fixture",
+      "reference": "menu.categories.noodles.name",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-1",
+      "item_id": "miso-ramen",
+      "attribute": "portion",
+      "value": "hearty",
+      "label": "hearty",
+      "source": "menu_fixture",
+      "reference": "menu.items.miso-ramen.portion",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-5",
+      "item_id": "miso-ramen",
+      "attribute": "crunch",
+      "value": 0.18,
+      "label": "crunch",
+      "source": "menu_fixture",
+      "reference": "menu.items.miso-ramen.sensory.crunch",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-38",
+      "item_id": "gyoza",
+      "attribute": "category",
+      "value": "small-plates",
+      "label": "Small plates",
+      "source": "menu_fixture",
+      "reference": "menu.categories.small-plates.name",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-39",
+      "item_id": "gyoza",
+      "attribute": "portion",
+      "value": "light",
+      "label": "light",
+      "source": "menu_fixture",
+      "reference": "menu.items.gyoza.portion",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-43",
+      "item_id": "gyoza",
+      "attribute": "crunch",
+      "value": 0.85,
+      "label": "crunch",
+      "source": "menu_fixture",
+      "reference": "menu.items.gyoza.sensory.crunch",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-44",
+      "item_id": "gyoza",
+      "attribute": "aromatic",
+      "value": 0.71,
+      "label": "aromatic",
+      "source": "menu_fixture",
+      "reference": "menu.items.gyoza.sensory.aromatic",
+      "basis": "curated_demo"
+    },
+    {
+      "id": "pair-fact-51",
+      "item_id": null,
+      "attribute": "aromatic",
+      "value": 0.85,
+      "label": "aromatic",
+      "source": "taste_dna",
+      "reference": "profile.axes.aromatic",
+      "basis": "stated"
+    }
+  ],
+  "uncertainties": [
+    "These documented relationships support a provisional pairing, not a guarantee of culinary harmony or personal enjoyment.",
+    "Menu attributes and prices are curated fictional examples. Missing qualities were not inferred.",
+    "Pairing evidence is not an allergy-safety claim; restaurant confirmation is still needed.",
+    "The budget target applies per dish. The subtotal excludes tax, tip and other fees."
+  ]
+}

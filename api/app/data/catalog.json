@@ -1,0 +1,949 @@
+[
+  {
+    "id": "saigon-table",
+    "name": "Saigon Table",
+    "cuisine": "Vietnamese",
+    "area": "Downtown",
+    "subtitle": "Comforting broths, crisp herbs and bright flavor.",
+    "price_label": "$$",
+    "accent": "#d9e8d6",
+    "latitude": 41.881,
+    "longitude": -87.629,
+    "menu": [
+      {
+        "id": "pho",
+        "name": "Pho Gà",
+        "description": "Slow-simmered chicken noodle soup, herbs, lime and fragrant broth.",
+        "price_minor": 1800,
+        "category": "Noodles & soups",
+        "labels": [
+          "Comforting",
+          "Aromatic"
+        ],
+        "ingredients": [
+          "Chicken",
+          "Rice noodles",
+          "Herbs",
+          "Lime"
+        ],
+        "vegetarian": false,
+        "protein": "chicken",
+        "vegan": false,
+        "allergens": [
+          "fish"
+        ],
+        "motif": "noodles",
+        "sensory": {
+          "spice": 0.2,
+          "richness": 0.63,
+          "freshness": 0.54,
+          "crunch": 0.16,
+          "aromatic": 0.88,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.52,
+        "features": {
+          "family": "ramen",
+          "textures": [],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "bun-bo",
+        "name": "Bún Bò Huế",
+        "description": "Bold lemongrass broth with chili, beef and thick rice noodles.",
+        "price_minor": 2200,
+        "category": "Noodles & soups",
+        "labels": [
+          "Spicy",
+          "Deep flavor"
+        ],
+        "ingredients": [
+          "Beef",
+          "Rice noodles",
+          "Lemongrass",
+          "Chili"
+        ],
+        "vegetarian": false,
+        "protein": "beef",
+        "vegan": false,
+        "allergens": [
+          "fish",
+          "shellfish"
+        ],
+        "motif": "noodles",
+        "sensory": {
+          "spice": 0.85,
+          "richness": 0.78,
+          "freshness": 0.42,
+          "crunch": 0.16,
+          "aromatic": 0.91,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.84,
+        "features": {
+          "family": "ramen",
+          "textures": [],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "tofu-bun",
+        "name": "Crispy Tofu Bún",
+        "description": "Rice vermicelli, golden tofu, fresh herbs and tangy dressing.",
+        "price_minor": 1900,
+        "category": "Rice & bowls",
+        "labels": [
+          "Crispy",
+          "Fresh"
+        ],
+        "ingredients": [
+          "Tofu",
+          "Rice noodles",
+          "Herbs",
+          "Pickled carrot"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": true,
+        "allergens": [
+          "soy",
+          "wheat"
+        ],
+        "motif": "bowl",
+        "sensory": {
+          "spice": 0.28,
+          "richness": 0.32,
+          "freshness": 0.91,
+          "crunch": 0.86,
+          "aromatic": 0.66,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.72,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "spring-rolls",
+        "name": "Fresh Summer Rolls",
+        "description": "Rice-paper rolls with crisp vegetables, herbs and dipping sauce.",
+        "price_minor": 1300,
+        "category": "Small plates",
+        "labels": [
+          "Light",
+          "Herby"
+        ],
+        "ingredients": [
+          "Rice paper",
+          "Vegetables",
+          "Herbs"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "peanut",
+          "soy"
+        ],
+        "motif": "rolls",
+        "sensory": {
+          "spice": 0.08,
+          "richness": 0.18,
+          "freshness": 0.96,
+          "crunch": 0.54,
+          "aromatic": 0.61,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.48,
+        "features": {
+          "family": null,
+          "textures": [
+            "crisp"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "lemongrass",
+        "name": "Lemongrass Chicken",
+        "description": "Char-grilled chicken over rice with herbs, cucumber and lime.",
+        "price_minor": 2100,
+        "category": "Rice & bowls",
+        "labels": [
+          "Smoky",
+          "Savory"
+        ],
+        "ingredients": [
+          "Chicken",
+          "Rice",
+          "Lemongrass",
+          "Lime"
+        ],
+        "vegetarian": false,
+        "protein": "chicken",
+        "vegan": false,
+        "allergens": [
+          "fish",
+          "soy"
+        ],
+        "motif": "rice",
+        "sensory": {
+          "spice": 0.47,
+          "richness": 0.65,
+          "freshness": 0.63,
+          "crunch": 0.37,
+          "aromatic": 0.94,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.62,
+        "features": {
+          "family": "grill",
+          "textures": [],
+          "cooking_methods": [
+            "grilled"
+          ]
+        }
+      },
+      {
+        "id": "banh-mi",
+        "name": "Crispy Mushroom Bánh Mì",
+        "description": "Toasted baguette, savory mushrooms, pickled vegetables and herbs.",
+        "price_minor": 1600,
+        "category": "Small plates",
+        "labels": [
+          "Crunchy",
+          "Tangy"
+        ],
+        "ingredients": [
+          "Mushrooms",
+          "Bread",
+          "Pickled vegetables"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "wheat",
+          "egg"
+        ],
+        "motif": "toast",
+        "sensory": {
+          "spice": 0.3,
+          "richness": 0.38,
+          "freshness": 0.73,
+          "crunch": 0.95,
+          "aromatic": 0.72,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.76,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "casa-sol",
+    "name": "Casa Sol",
+    "cuisine": "Mexican",
+    "area": "Arts District",
+    "subtitle": "Bright citrus, fire-roasted salsas and comfort food.",
+    "price_label": "$$",
+    "accent": "#f3e4c6",
+    "latitude": 41.884,
+    "longitude": -87.65,
+    "menu": [
+      {
+        "id": "birria",
+        "name": "Birria Tacos",
+        "description": "Slow-braised beef, warm tortillas, savory consommé and lime.",
+        "price_minor": 2100,
+        "category": "Tacos",
+        "labels": [
+          "Rich",
+          "Savory"
+        ],
+        "ingredients": [
+          "Beef",
+          "Tortilla",
+          "Chili"
+        ],
+        "vegetarian": false,
+        "protein": "beef",
+        "vegan": false,
+        "allergens": [
+          "milk"
+        ],
+        "motif": "tacos",
+        "sensory": {
+          "spice": 0.65,
+          "richness": 0.89,
+          "freshness": 0.27,
+          "crunch": 0.58,
+          "aromatic": 0.85,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.65,
+        "features": {
+          "family": "tacos",
+          "textures": [
+            "tender"
+          ],
+          "cooking_methods": [
+            "braised"
+          ]
+        }
+      },
+      {
+        "id": "mushroom-taco",
+        "name": "Crispy Mushroom Tacos",
+        "description": "Golden mushrooms, salsa verde, herbs and warm tortillas.",
+        "price_minor": 1800,
+        "category": "Tacos",
+        "labels": [
+          "Crispy",
+          "Earthy"
+        ],
+        "ingredients": [
+          "Mushrooms",
+          "Tortilla",
+          "Salsa verde"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": true,
+        "allergens": [],
+        "motif": "tacos",
+        "sensory": {
+          "spice": 0.5,
+          "richness": 0.49,
+          "freshness": 0.73,
+          "crunch": 0.91,
+          "aromatic": 0.8,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.77,
+        "features": {
+          "family": "tacos",
+          "textures": [],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "elote",
+        "name": "Street Corn",
+        "description": "Charred corn, lime, cheese and chili seasoning.",
+        "price_minor": 1100,
+        "category": "Small plates",
+        "labels": [
+          "Smoky",
+          "Creamy"
+        ],
+        "ingredients": [
+          "Corn",
+          "Cheese",
+          "Lime",
+          "Chili"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "milk",
+          "egg"
+        ],
+        "motif": "corn",
+        "sensory": {
+          "spice": 0.55,
+          "richness": 0.73,
+          "freshness": 0.57,
+          "crunch": 0.64,
+          "aromatic": 0.79,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.58,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": [
+            "grilled"
+          ]
+        }
+      },
+      {
+        "id": "chicken-tinga",
+        "name": "Chicken Tinga Bowl",
+        "description": "Smoky tomato-chipotle chicken, rice and bright salsa.",
+        "price_minor": 1900,
+        "category": "Bowls",
+        "labels": [
+          "Smoky",
+          "Comforting"
+        ],
+        "ingredients": [
+          "Chicken",
+          "Rice",
+          "Chipotle",
+          "Tomato"
+        ],
+        "vegetarian": false,
+        "protein": "chicken",
+        "vegan": false,
+        "allergens": [],
+        "motif": "rice",
+        "sensory": {
+          "spice": 0.72,
+          "richness": 0.76,
+          "freshness": 0.41,
+          "crunch": 0.35,
+          "aromatic": 0.85,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.59,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "luna-trattoria",
+    "name": "Luna Trattoria",
+    "cuisine": "Italian",
+    "area": "West Loop",
+    "subtitle": "A little romance, a lot of handmade pasta.",
+    "price_label": "$$$",
+    "accent": "#ecd7cf",
+    "latitude": 41.884,
+    "longitude": -87.648,
+    "menu": [
+      {
+        "id": "spicy-rigatoni",
+        "name": "Spicy Rigatoni",
+        "description": "Tender pasta with slow-cooked tomato cream and Calabrian chili.",
+        "price_minor": 2500,
+        "category": "Pasta",
+        "labels": [
+          "Creamy",
+          "Spicy"
+        ],
+        "ingredients": [
+          "Pasta",
+          "Tomato",
+          "Cream",
+          "Chili"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "motif": "pasta",
+        "sensory": {
+          "spice": 0.71,
+          "richness": 0.91,
+          "freshness": 0.26,
+          "crunch": 0.15,
+          "aromatic": 0.72,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.55,
+        "features": {
+          "family": "pasta",
+          "textures": [
+            "tender"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "pesto-gnocchi",
+        "name": "Basil Pesto Gnocchi",
+        "description": "Soft potato gnocchi, basil pesto and parmesan.",
+        "price_minor": 2300,
+        "category": "Pasta",
+        "labels": [
+          "Herby",
+          "Comforting"
+        ],
+        "ingredients": [
+          "Potato",
+          "Basil",
+          "Parmesan"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "milk",
+          "wheat",
+          "tree_nut"
+        ],
+        "motif": "pasta",
+        "sensory": {
+          "spice": 0.15,
+          "richness": 0.83,
+          "freshness": 0.45,
+          "crunch": 0.12,
+          "aromatic": 0.89,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.48,
+        "features": {
+          "family": "pasta",
+          "textures": [
+            "tender"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "burrata",
+        "name": "Burrata & Tomatoes",
+        "description": "Creamy burrata, heirloom tomatoes and basil.",
+        "price_minor": 1700,
+        "category": "Small plates",
+        "labels": [
+          "Fresh",
+          "Creamy"
+        ],
+        "ingredients": [
+          "Burrata",
+          "Tomato",
+          "Basil"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "milk"
+        ],
+        "motif": "salad",
+        "sensory": {
+          "spice": 0.05,
+          "richness": 0.62,
+          "freshness": 0.86,
+          "crunch": 0.18,
+          "aromatic": 0.65,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.54,
+        "features": {
+          "family": null,
+          "textures": [
+            "silky"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "chicken-piccata",
+        "name": "Lemon Chicken Piccata",
+        "description": "Pan-seared chicken with lemon caper sauce.",
+        "price_minor": 2700,
+        "category": "Mains",
+        "labels": [
+          "Bright",
+          "Savory"
+        ],
+        "ingredients": [
+          "Chicken",
+          "Lemon",
+          "Capers"
+        ],
+        "vegetarian": false,
+        "protein": "chicken",
+        "vegan": false,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "motif": "plate",
+        "sensory": {
+          "spice": 0.1,
+          "richness": 0.66,
+          "freshness": 0.81,
+          "crunch": 0.34,
+          "aromatic": 0.71,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.59,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "sora-kitchen",
+    "name": "Sora Kitchen",
+    "cuisine": "Japanese",
+    "area": "River North",
+    "subtitle": "Thoughtful bowls, umami and delicate textures.",
+    "price_label": "$$",
+    "accent": "#dbe3d9",
+    "latitude": 41.892,
+    "longitude": -87.634,
+    "menu": [
+      {
+        "id": "miso-ramen",
+        "name": "Spicy Miso Ramen",
+        "description": "Deep pork and miso broth, springy noodles, corn and chili oil.",
+        "price_minor": 2200,
+        "category": "Noodles",
+        "labels": [
+          "Rich",
+          "Umami"
+        ],
+        "ingredients": [
+          "Pork broth",
+          "Miso",
+          "Noodles",
+          "Corn",
+          "Chili oil"
+        ],
+        "vegetarian": false,
+        "protein": "pork",
+        "vegan": false,
+        "allergens": [
+          "soy",
+          "wheat",
+          "sesame"
+        ],
+        "motif": "noodles",
+        "sensory": {
+          "spice": 0.73,
+          "richness": 0.92,
+          "freshness": 0.19,
+          "crunch": 0.18,
+          "aromatic": 0.83,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.62,
+        "features": {
+          "family": "ramen",
+          "textures": [
+            "chewy"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "tofu-don",
+        "name": "Sesame Tofu Don",
+        "description": "Crisp tofu over rice, sesame glaze and scallions.",
+        "price_minor": 1900,
+        "category": "Rice bowls",
+        "labels": [
+          "Crisp",
+          "Nutty"
+        ],
+        "ingredients": [
+          "Tofu",
+          "Rice",
+          "Sesame"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": true,
+        "allergens": [
+          "soy",
+          "sesame",
+          "wheat"
+        ],
+        "motif": "bowl",
+        "sensory": {
+          "spice": 0.35,
+          "richness": 0.66,
+          "freshness": 0.43,
+          "crunch": 0.82,
+          "aromatic": 0.7,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.66,
+        "features": {
+          "family": null,
+          "textures": [
+            "crisp"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "gyoza",
+        "name": "Vegetable Gyoza",
+        "description": "Pan-seared dumplings with a bright dipping sauce.",
+        "price_minor": 1300,
+        "category": "Small plates",
+        "labels": [
+          "Crispy",
+          "Savory"
+        ],
+        "ingredients": [
+          "Vegetables",
+          "Wheat wrapper"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": true,
+        "allergens": [
+          "soy",
+          "wheat"
+        ],
+        "motif": "dumplings",
+        "sensory": {
+          "spice": 0.24,
+          "richness": 0.59,
+          "freshness": 0.54,
+          "crunch": 0.85,
+          "aromatic": 0.71,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.57,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "salmon-don",
+        "name": "Salmon Rice Bowl",
+        "description": "Grilled salmon, seasoned rice and fresh cucumber.",
+        "price_minor": 2500,
+        "category": "Rice bowls",
+        "labels": [
+          "Savory",
+          "Balanced"
+        ],
+        "ingredients": [
+          "Salmon",
+          "Rice",
+          "Cucumber"
+        ],
+        "vegetarian": false,
+        "protein": "seafood",
+        "vegan": false,
+        "allergens": [
+          "fish",
+          "soy",
+          "wheat"
+        ],
+        "motif": "plate",
+        "sensory": {
+          "spice": 0.19,
+          "richness": 0.64,
+          "freshness": 0.67,
+          "crunch": 0.29,
+          "aromatic": 0.74,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.68,
+        "features": {
+          "family": "grill",
+          "textures": [],
+          "cooking_methods": [
+            "grilled"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spice-garden",
+    "name": "Spice Garden",
+    "cuisine": "Indian",
+    "area": "South Loop",
+    "subtitle": "Warm spices, familiar comfort and bold favorites.",
+    "price_label": "$$",
+    "accent": "#efdcca",
+    "latitude": 41.866,
+    "longitude": -87.625,
+    "menu": [
+      {
+        "id": "butter-chicken",
+        "name": "Butter Chicken",
+        "description": "Tender chicken simmered in a buttery tomato cream sauce.",
+        "price_minor": 2200,
+        "category": "Curries",
+        "labels": [
+          "Rich",
+          "Aromatic"
+        ],
+        "ingredients": [
+          "Chicken",
+          "Tomato",
+          "Cream",
+          "Spices"
+        ],
+        "vegetarian": false,
+        "protein": "chicken",
+        "vegan": false,
+        "allergens": [
+          "milk"
+        ],
+        "motif": "curry",
+        "sensory": {
+          "spice": 0.44,
+          "richness": 0.95,
+          "freshness": 0.19,
+          "crunch": 0.1,
+          "aromatic": 0.95,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.37,
+        "features": {
+          "family": "curry",
+          "textures": [
+            "tender"
+          ],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "paneer-tikka",
+        "name": "Paneer Tikka",
+        "description": "Charred paneer with warm spices, peppers and mint chutney.",
+        "price_minor": 1900,
+        "category": "Small plates",
+        "labels": [
+          "Smoky",
+          "Spiced"
+        ],
+        "ingredients": [
+          "Paneer",
+          "Peppers",
+          "Spices"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "milk"
+        ],
+        "motif": "skewers",
+        "sensory": {
+          "spice": 0.6,
+          "richness": 0.75,
+          "freshness": 0.46,
+          "crunch": 0.54,
+          "aromatic": 0.95,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.61,
+        "features": {
+          "family": "grill",
+          "textures": [],
+          "cooking_methods": [
+            "grilled"
+          ]
+        }
+      },
+      {
+        "id": "chana-masala",
+        "name": "Chana Masala",
+        "description": "Chickpeas simmered in a tangy, aromatic tomato masala.",
+        "price_minor": 1800,
+        "category": "Curries",
+        "labels": [
+          "Tangy",
+          "Spiced"
+        ],
+        "ingredients": [
+          "Chickpeas",
+          "Tomato",
+          "Spices"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": true,
+        "allergens": [],
+        "motif": "curry",
+        "sensory": {
+          "spice": 0.53,
+          "richness": 0.7,
+          "freshness": 0.51,
+          "crunch": 0.21,
+          "aromatic": 0.91,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.52,
+        "features": {
+          "family": "curry",
+          "textures": [],
+          "cooking_methods": []
+        }
+      },
+      {
+        "id": "biryani",
+        "name": "Vegetable Biryani",
+        "description": "Basmati rice layered with saffron, herbs and warming spices.",
+        "price_minor": 2100,
+        "category": "Rice",
+        "labels": [
+          "Aromatic",
+          "Comforting"
+        ],
+        "ingredients": [
+          "Rice",
+          "Vegetables",
+          "Spices"
+        ],
+        "vegetarian": true,
+        "protein": "none",
+        "vegan": false,
+        "allergens": [
+          "milk"
+        ],
+        "motif": "rice",
+        "sensory": {
+          "spice": 0.4,
+          "richness": 0.72,
+          "freshness": 0.37,
+          "crunch": 0.35,
+          "aromatic": 0.97,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.59,
+        "features": {
+          "family": null,
+          "textures": [],
+          "cooking_methods": []
+        }
+      }
+    ]
+  }
+]

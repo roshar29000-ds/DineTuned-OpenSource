@@ -1,0 +1,73 @@
+/* Discovery shares the restaurant search composition; provider content stays distinct. */
+.places-modes { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.places-modes button { text-align: left; padding: 14px 22px; border: 1px solid #cdd6c2; border-radius: 12px; color: #38553b; background: #f9faf3; font-size: 13px; min-height: 58px; }
+.places-modes button span { display: block; font-size: 10px; opacity: .85; margin-top: 4px; }
+.places-modes button[aria-pressed=true] { background: #203f33; border-color: #203f33; color: #fffdf4; }
+.places-area { margin-top: 22px; display: grid; grid-template-columns: 160px minmax(0, 1fr); align-items: center; gap: 8px 18px; }
+.places-search .places-area { margin: 0 0 24px; }
+.places-area label { font-size: 12px; font-weight: 650; }
+.places-area label span { font-weight: 400; color: #646f5c; margin-left: 6px; }
+.places-area input { width: 100%; min-width: 0; border: 1px solid #cdd6c2; border-radius: 8px; background: #fbfcf6; color: #203f33; padding: 13px 15px; font-size: 14px; }
+.places-area p { grid-column: 2; font-size: 11px; margin: 0; line-height: 1.7; }
+.places-submit { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; min-height: 48px; }
+.places-search .rs-suggestions.is-inline { position: static; margin-top: 14px; box-shadow: 0 10px 28px #203f3310; }
+.places-search .rs-suggestion-heading > span:first-child { overflow-wrap: anywhere; min-width: 0; }
+.places-search .rs-suggestion-heading strong { color: #203f33; font-weight: 700; }
+.rs-edited-note { padding: 11px 18px; background: #f5f0e4; color: #674f32; font-size: 11px; line-height: 1.6; }
+.places-privacy { margin: 15px 0 0; font-size: 10px; color: #59664f; line-height: 1.8; }
+.places-privacy a { text-decoration: underline; text-underline-offset: 3px; }
+.places-progress { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 46px 15px; font-size: 14px; }
+.places-intro { max-width: 570px; text-align: center; margin: 58px auto; }
+.places-intro > span { font-size: 11px; letter-spacing: .2em; color: #82633d; }
+.places-intro h2 { font-size: clamp(32px, 4vw, 46px); margin: 18px 0; }
+.places-intro p { font-size: 14px; line-height: 1.85; }
+.places-handoff { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); margin-top: 30px; border: 1px solid #d4dccb; border-radius: 18px; overflow: hidden; animation: rs-enter .25s ease-out; }
+.places-identity { padding: 42px 34px; background: #edf0e5; min-width: 0; }
+.places-identity h2 { font-size: clamp(32px, 3.7vw, 44px); line-height: 1.15; margin: 22px 0; overflow-wrap: anywhere; }
+.places-address { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 1.7; }
+.places-address svg { flex-shrink: 0; margin-top: 4px; }
+.places-category { display: block; font-size: 12px; text-transform: capitalize; margin: 18px 0 22px; color: #57674e; }
+.places-business-status { border-left: 2px solid #966741; padding-left: 12px; font-size: 13px; }
+.places-next { background: #fffdf7; padding: 42px 34px; }
+.places-next h3 { font: 36px/1.15 Georgia, serif; letter-spacing: -.03em; margin: 20px 0; }
+.places-next > p { font-size: 14px; line-height: 1.9; }
+.places-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 22px; }
+.places-actions .text-button { text-align: left; line-height: 1.7; }
+.places-source { border-top: 1px solid #e1e5d7; margin-top: 28px; padding-top: 18px; font-size: 11px; line-height: 1.8; overflow-wrap: anywhere; }
+.places-source summary { cursor: pointer; min-height: 32px; font-size: 12px; }
+.places-source li { margin-bottom: 8px; }
+.places-source ul { padding-left: 18px; }
+.places-attribution { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 10px 5px; background: #fffdf7; border-radius: 5px; }
+.places-attribution img { display: block; height: 18px; width: auto; }
+.places-attribution span { font: 12px/1.5 Arial, sans-serif; color: #1f1f1f; }
+.places-attribution a { text-decoration: underline; }
+.rs-suggestion-heading .places-attribution { margin: -7px -6px -3px 0; align-self: center; flex-shrink: 0; }
+.places-setup { padding: 34px; }
+.places-setup h2 { font-size: 32px; margin: 20px 0 12px; }
+.places-setup p { max-width: 660px; font-size: 14px; line-height: 1.8; }
+.places-policy { max-width: 760px; margin: auto; line-height: 1.85; }
+.places-policy h1 { font-size: 44px; margin-bottom: 24px; }
+.places-policy h2 { margin-top: 28px; font-size: 25px; }
+.places-policy a { text-decoration: underline; }
+@media (max-width: 680px) {
+  .places-modes { gap: 6px; }
+  .places-modes button { flex: 1; padding: 12px 13px; font-size: 12px; }
+  .places-area { display: block; margin-top: 20px; }
+  .places-search .places-area { margin: 0 0 22px; }
+  .places-area label { display: block; margin-bottom: 9px; }
+  .places-area p { margin-top: 9px; }
+  .places-area input { font-size: 16px; }
+  .places-search .rs-search-input input { font-size: 16px; }
+  .places-handoff { grid-template-columns: minmax(0, 1fr); }
+  .places-identity, .places-next { padding: 30px 22px; }
+  .places-identity h2 { font-size: 35px; }
+  .places-next h3 { font-size: 33px; }
+  .places-intro { margin: 38px auto; }
+  .places-search .rs-suggestion { padding: 15px 12px; gap: 9px; }
+  .places-search .rs-suggestion-copy { overflow-wrap: anywhere; }
+  .places-search .rs-suggestion-copy small { font-size: 12px; }
+  .places-search .rs-dropdown-foot { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .places-handoff, .places-search .rs-suggestions, .places-progress .rs-input-spinner, .places-search .rs-input-spinner { animation: none; }
+}

@@ -1,0 +1,74 @@
+/* An editorial postscript: open compositions, bronze rules, no extra product grid. */
+.worth-the-stretch { margin-top: 64px; padding: 32px 0 0; border-top: 2px solid #a27c53; color: #294e3b; }
+.stretch-kicker { display: flex; align-items: center; gap: 7px; font-size: 9px; line-height: 1.8; letter-spacing: .13em; font-weight: 700; color: #7d593b; }
+.stretch-intro { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+.stretch-intro h2 { font-size: clamp(36px, 4.5vw, 56px); line-height: 1.12; letter-spacing: -.045em; margin: 14px 0; }
+.stretch-intro h2 em { color: #88613f; }
+.stretch-intro p { font-size: 14px; line-height: 1.8; color: #516651; margin: 0; }
+.stretch-target { border-left: 1px solid #d7c8af; padding: 10px 0 10px 28px; flex-shrink: 0; }
+.stretch-target > span { display: block; font-size: 11px; }
+.stretch-target strong { display: block; font: 37px Georgia, serif; margin: 7px 0; color: #805a37; }
+.stretch-target small { display: block; font-size: 10px; color: #646b58; }
+.stretch-context { max-width: 680px; font-size: 12px; line-height: 1.85; margin: 22px 0 30px; color: #5d6d59; }
+.stretch-selection { border-top: 1px solid #d9d4c4; }
+.stretch-dish { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.5fr); gap: 38px; padding: 36px 0; border-bottom: 1px solid #d9d4c4; animation: stretch-arrive .25s ease-out; }
+.stretch-portrait { margin: 0; position: relative; align-self: start; padding: 24px 4px; }
+.stretch-plate { aspect-ratio: 1; border-radius: 50%; overflow: hidden; outline: 1px solid #d6c6a8; outline-offset: 9px; margin: 12px; background: #f2ecdf; transition: transform .2s ease; }
+.stretch-plate .dish-art, .stretch-plate .dish-art svg { width: 100%; height: 100%; }
+.stretch-number { position: absolute; top: 13px; left: 5px; width: 42px; height: 42px; display: grid; place-items: center; background: #f9f8f3; border: 1px solid #b69b77; border-radius: 50%; font: italic 20px Georgia, serif; color: #825e3b; }
+.stretch-portrait figcaption { text-align: center; font-size: 10px; color: #647059; line-height: 1.7; margin: 25px 5px 0; }
+.stretch-story { min-width: 0; }
+.stretch-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+.stretch-heading h3 { font: clamp(29px, 3vw, 39px)/1.15 Georgia, serif; letter-spacing: -.025em; margin: 10px 0 0; overflow-wrap: anywhere; }
+.stretch-story > .taste-bridge { margin-inline: 0; padding-inline: 0; }
+.stretch-price { flex-shrink: 0; text-align: right; }
+.stretch-price strong { font: 32px Georgia, serif; color: #825c39; }
+.stretch-price > span { display: block; font-size: 10px; color: #65705b; margin-top: 5px; }
+.stretch-overage { display: inline-flex; align-items: center; gap: 7px; color: #77502c; background: #f4ead6; border: 1px solid #dfcba9; border-radius: 5px; padding: 7px 10px; margin: 16px 0 0; font-size: 11px; line-height: 1.7; }
+.stretch-overage svg, .stretch-caveat svg { flex-shrink: 0; }
+.stretch-description { font-size: 13px; line-height: 1.9; margin: 18px 0; }
+.stretch-reason { border-left: 2px solid #a88861; padding-left: 18px; margin: 22px 0; }
+.stretch-reason > p { font: 20px/1.6 Georgia, serif; color: #35523e; margin: 8px 0 12px; }
+.stretch-fit { display: block; font-size: 11px; line-height: 1.85; color: #51674d; }
+.stretch-caveat { display: flex; gap: 9px; align-items: flex-start; font-size: 12px; line-height: 1.85; color: #785d3b; margin: 17px 0; }
+.stretch-caveat svg { margin-top: 3px; }
+.stretch-limit { font-size: 11px; line-height: 1.8; color: #626e5c; margin: 15px 0; }
+.stretch-evidence { border-top: 1px solid #d8daca; }
+.stretch-evidence > summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 3px; min-height: 52px; list-style: none; cursor: pointer; font-size: 12px; color: #36553c; }
+.stretch-evidence > summary::-webkit-details-marker { display: none; }
+.stretch-evidence summary small { display: block; font-size: 10px; font-weight: 400; color: #68715c; margin-top: 5px; }
+.stretch-evidence summary > svg { flex-shrink: 0; transition: transform .15s ease; }
+.stretch-evidence[open] summary > svg { transform: rotate(45deg); }
+.stretch-evidence summary:focus-visible { outline: 2px solid #366346; outline-offset: 3px; border-radius: 4px; }
+.stretch-evidence > div { padding: 0 3px 12px; font-size: 12px; line-height: 1.85; overflow-wrap: anywhere; }
+.stretch-evidence h4 { font-size: 13px; margin: 16px 0 10px; }
+.stretch-evidence ul { padding-left: 18px; }
+.stretch-evidence li { margin-bottom: 12px; }
+.stretch-evidence li p { font-size: 12px; margin: 5px 0; }
+.stretch-footnote { font-size: 11px; line-height: 1.9; margin: 18px 0 0; max-width: 720px; color: #636d59; }
+@media (hover: hover) { .stretch-dish:hover .stretch-plate { transform: rotate(-2deg); } }
+@keyframes stretch-arrive { from { opacity: .7; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .worth-the-stretch { margin-top: 42px; padding-top: 26px; }
+  .stretch-intro { display: block; }
+  .stretch-target { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 15px; border-left: 0; border-block: 1px solid #ddd3c0; padding: 13px 0; margin-top: 23px; }
+  .stretch-target strong { font-size: 28px; margin: 0; }
+  .stretch-target small { flex-basis: 100%; }
+  .stretch-dish { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 21px 0 26px; }
+  .stretch-portrait { width: min(100%, 260px); justify-self: center; padding-top: 10px; padding-bottom: 5px; }
+  .stretch-number { top: 0; }
+  .stretch-heading { gap: 12px; }
+  .stretch-heading h3 { font-size: 32px; }
+  .stretch-price strong { font-size: 28px; }
+  .stretch-reason { padding-left: 14px; }
+  .stretch-reason > p { font-size: 19px; }
+}
+@media (max-width: 360px) {
+  .stretch-heading { flex-wrap: wrap; }
+  .stretch-price { display: flex; align-items: baseline; gap: 7px; text-align: left; }
+  .stretch-heading h3 { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .worth-the-stretch *, .worth-the-stretch *::before { animation: none !important; transition: none !important; }
+  .stretch-dish:hover .stretch-plate { transform: none; }
+}

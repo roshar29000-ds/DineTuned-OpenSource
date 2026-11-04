@@ -1,0 +1,538 @@
+{
+  "schema_version": 2,
+  "id": "c2a31759-5851-4fe4-8d9b-532447eaf795",
+  "created_at": "2026-10-27T01:36:21.164665Z",
+  "mode": "demo",
+  "engine": "deterministic-v3.4a",
+  "restaurant": {
+    "id": "sora-kitchen",
+    "name": "Sora Kitchen",
+    "cuisine": "Japanese",
+    "area": "River North",
+    "city": "Chicago",
+    "subtitle": "Thoughtful bowls, umami and delicate textures.",
+    "price_label": "$$",
+    "accent": "#dbe3d9",
+    "is_demo": true,
+    "distance_km": null,
+    "item_count": 4
+  },
+  "menu_version": "demo-c04a25f17d3f",
+  "constraints": {
+    "max_price_minor": 3000,
+    "currency": "USD",
+    "dietary_restrictions": [],
+    "allergies": {
+      "allergens": [],
+      "other": ""
+    },
+    "mood": "open",
+    "appetite": "any"
+  },
+  "recommendations": [
+    {
+      "category": "Best match",
+      "dish": {
+        "id": "miso-ramen",
+        "category_id": "noodles",
+        "name": "Spicy Miso Ramen",
+        "description": "Deep pork and miso broth, springy noodles, corn and chili oil.",
+        "price": {
+          "amount_minor": 2200,
+          "currency": "USD",
+          "status": "listed",
+          "basis": "per_dish_before_tax_tip"
+        },
+        "ingredients": [
+          "Pork broth",
+          "Miso",
+          "Noodles",
+          "Corn",
+          "Chili oil"
+        ],
+        "labels": [
+          "Rich",
+          "Umami"
+        ],
+        "dietary": [
+          {
+            "restriction": "vegetarian",
+            "status": "conflict",
+            "source": "curated_demo"
+          },
+          {
+            "restriction": "vegan",
+            "status": "conflict",
+            "source": "curated_demo"
+          },
+          {
+            "restriction": "pescatarian",
+            "status": "conflict",
+            "source": "curated_demo"
+          },
+          {
+            "restriction": "no_beef",
+            "status": "supported",
+            "source": "curated_demo"
+          },
+          {
+            "restriction": "no_pork",
+            "status": "conflict",
+            "source": "curated_demo"
+          },
+          {
+            "restriction": "dairy_free",
+            "status": "unknown",
+            "source": "curated_demo"
+          },
+          {
+            "restriction": "gluten_free",
+            "status": "conflict",
+            "source": "curated_demo"
+          }
+        ],
+        "allergens": {
+          "contains": [
+            "soy",
+            "wheat",
+            "sesame"
+          ],
+          "may_contain": [],
+          "information_status": "partial",
+          "cross_contact": "unknown",
+          "note": "Incomplete sample ingredient information. Confirm ingredients and cross-contact with restaurant staff."
+        },
+        "media": {
+          "kind": "placeholder",
+          "motif": "noodles",
+          "label": "Menu illustration · not a dish photograph",
+          "accent": "#dbe3d9"
+        },
+        "sensory": {
+          "spice": 0.73,
+          "richness": 0.92,
+          "freshness": 0.19,
+          "crunch": 0.18,
+          "aromatic": 0.83,
+          "sweetness": null,
+          "umami": null
+        },
+        "novelty": 0.62,
+        "portion": "hearty",
+        "available": true,
+        "features": {
+          "protein": "pork",
+          "family": "ramen",
+          "textures": [
+            "chewy"
+          ],
+          "cooking_methods": [],
+          "source": "curated_demo"
+        }
+      },
+      "why": "The sample profile shows pronounced aromatics and softer textures, close to your saved taste settings.",
+      "bridge": {
+        "connection": "Its pronounced aromatics and softer textures align with your taste settings.",
+        "contrast": "See the listed differences and unknowns for this demo comparison.",
+        "evidence": [
+          "aromatic: curated menu attribute 0.83, taste setting 0.85.",
+          "crunch: curated menu attribute 0.18, taste setting 0.2."
+        ],
+        "uncertainty": "Based on curated sample attributes and your stated preferences, not a validated taste prediction."
+      },
+      "compatibility": {
+        "label": "Strong alignment",
+        "description": "Close on aromatic intensity, crunch, richness.",
+        "score": 983,
+        "score_kind": "uncalibrated_demo_points",
+        "evidence": [
+          {
+            "kind": "sensory",
+            "preference": "Your taste setting favors pronounced aromatics.",
+            "observation": "The curated menu attributes describe pronounced aromatics.",
+            "source": "curated_demo"
+          },
+          {
+            "kind": "sensory",
+            "preference": "Your taste setting favors softer textures.",
+            "observation": "The curated menu attributes describe softer textures.",
+            "source": "curated_demo"
+          },
+          {
+            "kind": "sensory",
+            "preference": "Your taste setting favors richness.",
+            "observation": "The curated menu attributes describe richness.",
+            "source": "curated_demo"
+          },
+          {
+            "kind": "sensory",
+            "preference": "Your taste setting favors moderate heat.",
+            "observation": "The curated menu attributes describe bold heat.",
+            "source": "curated_demo"
+          }
+        ],
+        "uncertainties": [
+          "Curated demo attributes and rule-based comparisons, not a calibrated prediction or an allergy-safety claim.",
+          "Not enough shared evidence for freshness, sweetness, savoriness."
+        ],
+        "differences": []
+      },
+      "budget": {
+        "target_minor": 3000,
+        "overage_minor": 0,
+        "status": "within_target"
+      },
+      "taste_bridge": {
+        "schema_version": 1,
+        "provider": "structured_demo_v1",
+        "status": "grounded",
+        "restaurant_id": "sora-kitchen",
+        "menu_version": "demo-c04a25f17d3f",
+        "dish_id": "miso-ramen",
+        "anchor": {
+          "id": "memory-1",
+          "kind": "liked_dish",
+          "label": "Pho Gà at Saigon Table",
+          "evidence_ids": [
+            "fact-12",
+            "fact-13",
+            "fact-14",
+            "fact-15",
+            "fact-16",
+            "fact-17",
+            "fact-18"
+          ]
+        },
+        "shared": [
+          {
+            "anchor_fact_id": "fact-18",
+            "target_fact_id": "fact-5",
+            "relation": "shared",
+            "attribute": "family",
+            "text": "Both menus record noodle-and-broth dishes."
+          },
+          {
+            "anchor_fact_id": "fact-16",
+            "target_fact_id": "fact-3",
+            "relation": "shared",
+            "attribute": "crunch",
+            "text": "Both demo dish profiles indicate little crunch."
+          },
+          {
+            "anchor_fact_id": "fact-17",
+            "target_fact_id": "fact-4",
+            "relation": "shared",
+            "attribute": "aromatic",
+            "text": "Both demo dish profiles indicate pronounced aromatics."
+          }
+        ],
+        "differences": [
+          {
+            "anchor_fact_id": "fact-13",
+            "target_fact_id": "fact-0",
+            "relation": "higher",
+            "attribute": "spice",
+            "text": "Spicy Miso Ramen's demo profile has more heat than Pho Gà at Saigon Table."
+          },
+          {
+            "anchor_fact_id": "fact-14",
+            "target_fact_id": "fact-1",
+            "relation": "higher",
+            "attribute": "richness",
+            "text": "Spicy Miso Ramen's demo profile has more richness than Pho Gà at Saigon Table."
+          },
+          {
+            "anchor_fact_id": "fact-15",
+            "target_fact_id": "fact-2",
+            "relation": "lower",
+            "attribute": "freshness",
+            "text": "Spicy Miso Ramen's demo profile has less freshness than Pho Gà at Saigon Table."
+          }
+        ],
+        "explanation": "You reported liking Pho Gà at Saigon Table. Both menus record noodle-and-broth dishes. Both demo dish profiles indicate little crunch. These documented connections may appeal to you. Spicy Miso Ramen's demo profile has more heat than Pho Gà at Saigon Table.",
+        "evidence": [
+          {
+            "id": "fact-0",
+            "subject": "target",
+            "attribute": "spice",
+            "value": 0.73,
+            "label": "spice",
+            "source": "menu_fixture",
+            "reference": "menu.items.miso-ramen.sensory.spice",
+            "basis": "curated_demo",
+            "restaurant_id": "sora-kitchen",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "miso-ramen",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-1",
+            "subject": "target",
+            "attribute": "richness",
+            "value": 0.92,
+            "label": "richness",
+            "source": "menu_fixture",
+            "reference": "menu.items.miso-ramen.sensory.richness",
+            "basis": "curated_demo",
+            "restaurant_id": "sora-kitchen",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "miso-ramen",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-2",
+            "subject": "target",
+            "attribute": "freshness",
+            "value": 0.19,
+            "label": "freshness",
+            "source": "menu_fixture",
+            "reference": "menu.items.miso-ramen.sensory.freshness",
+            "basis": "curated_demo",
+            "restaurant_id": "sora-kitchen",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "miso-ramen",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-3",
+            "subject": "target",
+            "attribute": "crunch",
+            "value": 0.18,
+            "label": "crunch",
+            "source": "menu_fixture",
+            "reference": "menu.items.miso-ramen.sensory.crunch",
+            "basis": "curated_demo",
+            "restaurant_id": "sora-kitchen",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "miso-ramen",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-4",
+            "subject": "target",
+            "attribute": "aromatic",
+            "value": 0.83,
+            "label": "aromatic",
+            "source": "menu_fixture",
+            "reference": "menu.items.miso-ramen.sensory.aromatic",
+            "basis": "curated_demo",
+            "restaurant_id": "sora-kitchen",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "miso-ramen",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-5",
+            "subject": "target",
+            "attribute": "family",
+            "value": "ramen",
+            "label": "noodle-and-broth dishes",
+            "source": "menu_fixture",
+            "reference": "menu.items.miso-ramen.features.family",
+            "basis": "curated_demo",
+            "restaurant_id": "sora-kitchen",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "miso-ramen",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-12",
+            "subject": "familiar_dish",
+            "attribute": "liked",
+            "value": "liked",
+            "label": "Pho Gà",
+            "source": "reported_feedback",
+            "reference": "feedback.liked",
+            "basis": "reported",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": "test-pho-memory"
+          },
+          {
+            "id": "fact-13",
+            "subject": "familiar_dish",
+            "attribute": "spice",
+            "value": 0.2,
+            "label": "spice",
+            "source": "menu_fixture",
+            "reference": "menu.items.pho.sensory.spice",
+            "basis": "curated_demo",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-14",
+            "subject": "familiar_dish",
+            "attribute": "richness",
+            "value": 0.63,
+            "label": "richness",
+            "source": "menu_fixture",
+            "reference": "menu.items.pho.sensory.richness",
+            "basis": "curated_demo",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-15",
+            "subject": "familiar_dish",
+            "attribute": "freshness",
+            "value": 0.54,
+            "label": "freshness",
+            "source": "menu_fixture",
+            "reference": "menu.items.pho.sensory.freshness",
+            "basis": "curated_demo",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-16",
+            "subject": "familiar_dish",
+            "attribute": "crunch",
+            "value": 0.16,
+            "label": "crunch",
+            "source": "menu_fixture",
+            "reference": "menu.items.pho.sensory.crunch",
+            "basis": "curated_demo",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-17",
+            "subject": "familiar_dish",
+            "attribute": "aromatic",
+            "value": 0.88,
+            "label": "aromatic",
+            "source": "menu_fixture",
+            "reference": "menu.items.pho.sensory.aromatic",
+            "basis": "curated_demo",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": null
+          },
+          {
+            "id": "fact-18",
+            "subject": "familiar_dish",
+            "attribute": "family",
+            "value": "ramen",
+            "label": "noodle-and-broth dishes",
+            "source": "menu_fixture",
+            "reference": "menu.items.pho.features.family",
+            "basis": "curated_demo",
+            "restaurant_id": "saigon-table",
+            "menu_version": "demo-c04a25f17d3f",
+            "dish_id": "pho",
+            "feedback_id": null
+          }
+        ],
+        "uncertainties": [
+          "Fictional menu evidence and provisional demo reasoning; not a calibrated prediction or an allergy-safety claim.",
+          "A shared quality does not establish an identical overall flavor.",
+          "A positive rating does not tell us which qualities you liked; feedback is a user report, not verified culinary evidence.",
+          "Uncompared dimensions: sweetness, umami."
+        ],
+        "unavailable_reason": null
+      }
+    }
+  ],
+  "evaluation": {
+    "mode": "demo",
+    "restaurant_id": "sora-kitchen",
+    "menu_version": "demo-c04a25f17d3f",
+    "constraints": {
+      "max_price_minor": 3000,
+      "currency": "USD",
+      "dietary_restrictions": [],
+      "allergies": {
+        "allergens": [],
+        "other": ""
+      },
+      "mood": "open",
+      "appetite": "any"
+    },
+    "total_count": 4,
+    "eligible_count": 4,
+    "items": [
+      {
+        "item_id": "miso-ramen",
+        "eligible": true,
+        "reasons": []
+      },
+      {
+        "item_id": "tofu-don",
+        "eligible": true,
+        "reasons": []
+      },
+      {
+        "item_id": "salmon-don",
+        "eligible": true,
+        "reasons": []
+      },
+      {
+        "item_id": "gyoza",
+        "eligible": true,
+        "reasons": []
+      }
+    ],
+    "recommendation_candidate_count": 4
+  },
+  "message": "2 considered choices from the complete menu. Each is within your per-dish target.",
+  "profile": {
+    "schema_version": 2,
+    "complete": false,
+    "favorites": "",
+    "axes": {
+      "spice": 0.6,
+      "richness": 0.9,
+      "freshness": null,
+      "crunch": 0.2,
+      "aromatic": 0.85,
+      "sweetness": null,
+      "umami": null
+    },
+    "exploration": 0.5,
+    "dietary_restrictions": [],
+    "allergies": {
+      "allergens": [],
+      "other": ""
+    },
+    "updated_at": null,
+    "source": "guided_demo"
+  },
+  "taste_evidence": {
+    "favorite_dishes": [],
+    "textures": [],
+    "cooking_methods": [],
+    "liked_ingredients": [],
+    "disliked_ingredients": [],
+    "inferred_axes": []
+  },
+  "options": {
+    "protein_preference": "any",
+    "include_over_budget": true
+  },
+  "bridge_feedback": [
+    {
+      "id": "test-pho-memory",
+      "restaurant_id": "saigon-table",
+      "dish_id": "pho",
+      "menu_version": "demo-c04a25f17d3f",
+      "liked": true,
+      "date": "2026-10-20T12:00:00Z"
+    }
+  ],
+  "hard_eligible_count": 4,
+  "qualified_count": 2,
+  "within_budget_qualified_count": 2,
+  "above_budget_qualified_count": 0,
+  "empty_reason": null
+}

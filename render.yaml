@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: dinetuned-api
+    runtime: python
+    plan: starter
+    rootDir: api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v2/health
+    disk:
+      name: dinetuned-private-state
+      mountPath: /opt/render/project/src/.local
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: GOOGLE_PLACES_ENABLED
+        value: "false"
+      - key: GOOGLE_PLACES_LIVE_APPROVED
+        value: "false"
+      - key: DINETUNED_META_PRODUCTION_ENABLED
+        value: "false"
+      - key: DINETUNED_MUSE_IMAGE_ENABLED
+        value: "false"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false

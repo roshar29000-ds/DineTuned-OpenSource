@@ -1,0 +1,26 @@
+import './globals.css';
+import './v2.css';
+import './taste-v3.css';
+import './search-menu-v3.css';
+import './places.css';
+import './menu-sources.css';
+import './real-menu.css';
+import './real-picks-page.css';
+import './smart-menu-v3.css';
+import './picks-v3.css';
+import './taste-bridge.css';
+import './complete-table.css';
+import './worth-the-stretch.css';
+import './make-it-more-me.css';
+import './cloud-memory.css';
+import './signature-experience.css';
+import './muse-cinema.css';
+import './culinary-orbit.css';
+import './picks-reference.css';
+import './guided-demo.css';
+import './how-it-works/meta-workflow.css';
+import type {Metadata,Viewport} from 'next';
+import {AppFrame} from '../components/AppFrame';
+export const metadata:Metadata={title:{default:'DineTuned — Fine-tuned to your taste',template:'%s | DineTuned'},description:'A personal AI dining companion that helps you find food you will love. Interactive concept preview.'};
+export const viewport:Viewport={width:'device-width',initialScale:1,themeColor:'#f9f8f3'};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><AppFrame>{children}</AppFrame></body></html>}

@@ -1,0 +1,3 @@
+# Migration project configuration. Hosted Auth settings are configured in the
+# Supabase dashboard; this file does not enable cloud features or contain keys.
+project_id = "dinetuned"

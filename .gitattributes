@@ -1,0 +1,2 @@
+# Preserve PDF fixture bytes; their cross-reference records are not source text.
+api/tests/fixtures/menu_extraction/*.pdf binary

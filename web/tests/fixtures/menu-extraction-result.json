@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "request_id": "33333333-3333-4333-8333-333333333333",
+  "restaurant_id": "verified_branch",
+  "status": "extracted",
+  "provider": "local_html_pdf",
+  "vision_status": "not_needed",
+  "menu": {
+    "schema_version": 1,
+    "mode": "extracted",
+    "version": "menu_21e8b7f8c1761809fae54523",
+    "restaurant_id": "verified_branch",
+    "restaurant": {
+      "provider": "google_places",
+      "place_id": "verified_branch",
+      "display_name": "Lantern Noodle",
+      "formatted_address": "456 NW Ash Ave, Portland, OR 97209",
+      "location": null,
+      "business_status": "OPERATIONAL",
+      "types": [
+        "restaurant"
+      ],
+      "source": {
+        "provider": "google_places",
+        "api": "places_new",
+        "retrieved_at": "2026-10-30T00:00:00Z",
+        "place_id": "verified_branch"
+      },
+      "attributions": []
+    },
+    "categories": [
+      {
+        "id": "cat_8d6392ab5a81da2f171ef966",
+        "name": "Noodles",
+        "evidence_ids": [
+          "ev_49a4aee9a3bf825d70ce7211"
+        ],
+        "items": [
+          {
+            "id": "dish_2fd03f919d9b8d8a27e5bea5",
+            "category_id": "cat_8d6392ab5a81da2f171ef966",
+            "name": "Sesame noodles",
+            "description": "Wheat noodles, sesame sauce and cucumber.",
+            "price": {
+              "kind": "fixed",
+              "basis": "as_printed",
+              "raw": "USD 16",
+              "options": [
+                {
+                  "label": null,
+                  "raw": "USD 16",
+                  "amount_minor": 1600,
+                  "currency": "USD",
+                  "evidence_id": "ev_262577932f463e6446934903"
+                }
+              ],
+              "budget_usable": true,
+              "limitations": []
+            },
+            "evidence_ids": [
+              "ev_262577932f463e6446934903",
+              "ev_49a4aee9a3bf825d70ce7211",
+              "ev_635ca54abe7a810d7080a481"
+            ],
+            "availability": "unverified",
+            "ingredients": [],
+            "dietary": [],
+            "allergens": {
+              "contains": [],
+              "may_contain": [],
+              "information_status": "unknown",
+              "cross_contact": "unknown",
+              "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+            },
+            "confidence": "supported",
+            "limitations": []
+          },
+          {
+            "id": "dish_d22385368bcecde725f9f908",
+            "category_id": "cat_8d6392ab5a81da2f171ef966",
+            "name": "Broth noodles",
+            "description": "Rice noodles and vegetable broth.",
+            "price": {
+              "kind": "fixed",
+              "basis": "as_printed",
+              "raw": "18.25",
+              "options": [
+                {
+                  "label": null,
+                  "raw": "18.25",
+                  "amount_minor": 1825,
+                  "currency": "USD",
+                  "evidence_id": "ev_cd82017a1575f2b108b4c917"
+                }
+              ],
+              "budget_usable": true,
+              "limitations": []
+            },
+            "evidence_ids": [
+              "ev_cd82017a1575f2b108b4c917",
+              "ev_49a4aee9a3bf825d70ce7211",
+              "ev_635ca54abe7a810d7080a481"
+            ],
+            "availability": "unverified",
+            "ingredients": [],
+            "dietary": [],
+            "allergens": {
+              "contains": [],
+              "may_contain": [],
+              "information_status": "unknown",
+              "cross_contact": "unknown",
+              "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+            },
+            "confidence": "supported",
+            "limitations": []
+          }
+        ]
+      },
+      {
+        "id": "cat_bd65101d4211afc63b1d86c6",
+        "name": "Extras",
+        "evidence_ids": [
+          "ev_e453ca4005f7e1715cb6a36f"
+        ],
+        "items": [
+          {
+            "id": "dish_f513a51b748d5d925de98efa",
+            "category_id": "cat_bd65101d4211afc63b1d86c6",
+            "name": "Steamed greens",
+            "description": "Greens and ginger.",
+            "price": {
+              "kind": "fixed",
+              "basis": "as_printed",
+              "raw": "USD 7",
+              "options": [
+                {
+                  "label": null,
+                  "raw": "USD 7",
+                  "amount_minor": 700,
+                  "currency": "USD",
+                  "evidence_id": "ev_da5080fed9b9e2e568dfa134"
+                }
+              ],
+              "budget_usable": true,
+              "limitations": []
+            },
+            "evidence_ids": [
+              "ev_da5080fed9b9e2e568dfa134",
+              "ev_e453ca4005f7e1715cb6a36f",
+              "ev_635ca54abe7a810d7080a481"
+            ],
+            "availability": "unverified",
+            "ingredients": [],
+            "dietary": [],
+            "allergens": {
+              "contains": [],
+              "may_contain": [],
+              "information_status": "unknown",
+              "cross_contact": "unknown",
+              "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+            },
+            "confidence": "supported",
+            "limitations": []
+          },
+          {
+            "id": "dish_3088d6eedcbd1ce62d322a3c",
+            "category_id": "cat_bd65101d4211afc63b1d86c6",
+            "name": "Tea egg",
+            "description": "Egg steeped in tea.",
+            "price": {
+              "kind": "fixed",
+              "basis": "as_printed",
+              "raw": "USD 4",
+              "options": [
+                {
+                  "label": null,
+                  "raw": "USD 4",
+                  "amount_minor": 400,
+                  "currency": "USD",
+                  "evidence_id": "ev_bdab47f2ad9e60a64e08b5b6"
+                }
+              ],
+              "budget_usable": true,
+              "limitations": []
+            },
+            "evidence_ids": [
+              "ev_bdab47f2ad9e60a64e08b5b6",
+              "ev_e453ca4005f7e1715cb6a36f",
+              "ev_635ca54abe7a810d7080a481"
+            ],
+            "availability": "unverified",
+            "ingredients": [],
+            "dietary": [],
+            "allergens": {
+              "contains": [],
+              "may_contain": [],
+              "information_status": "unknown",
+              "cross_contact": "unknown",
+              "note": "Menu text does not establish a complete ingredient list or cross-contact controls. Confirm with restaurant staff."
+            },
+            "confidence": "supported",
+            "limitations": []
+          }
+        ]
+      }
+    ],
+    "total_items": 4,
+    "sources": [
+      {
+        "id": "src_d5db6aac14d31ead8a651984",
+        "candidate": {
+          "id": "candidate_d5db6aac14d3",
+          "source_url": "https://menus.example.org/dinner",
+          "discovered_from": "https://menus.example.org/dinner",
+          "title": "Dinner menu",
+          "format": "html",
+          "menu_type": "dine_in",
+          "branch_relevance": "exact",
+          "provenance": "corroborated_website",
+          "confidence": "high",
+          "freshness": "undated",
+          "date_label": null,
+          "access": "checked",
+          "verified_at": "2026-10-30T00:00:00Z",
+          "discovered_at": "2026-10-30T00:00:00Z",
+          "evidence": [
+            {
+              "kind": "branch",
+              "source_url": "https://menus.example.org/dinner",
+              "detail": "Name and address corroborated during source discovery."
+            }
+          ],
+          "limitations": [],
+          "suitable_for_extraction": true,
+          "extraction_status": "not_extracted"
+        },
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "retrieved_at": "2026-10-30T00:00:00Z",
+        "status": "parsed",
+        "page_count": 1,
+        "parsed_pages": [],
+        "recognized_items": 4,
+        "extracted_items": 4,
+        "unresolved_sections": [],
+        "coverage": "accounted_source_records"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "ev_262577932f463e6446934903",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(1)",
+        "page": null,
+        "quote": "Sesame noodles Wheat noodles, sesame sauce and cucumber. USD 16",
+        "method": "html"
+      },
+      {
+        "id": "ev_49a4aee9a3bf825d70ce7211",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > section:nth-of-type(1) > h2:nth-of-type(1)",
+        "page": null,
+        "quote": "Noodles",
+        "method": "html"
+      },
+      {
+        "id": "ev_635ca54abe7a810d7080a481",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > small:nth-of-type(1)",
+        "page": null,
+        "quote": "Prices in USD",
+        "method": "html"
+      },
+      {
+        "id": "ev_cd82017a1575f2b108b4c917",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > section:nth-of-type(1) > div:nth-of-type(2)",
+        "page": null,
+        "quote": "Broth noodles Rice noodles and vegetable broth. 18.25",
+        "method": "html"
+      },
+      {
+        "id": "ev_da5080fed9b9e2e568dfa134",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(1)",
+        "page": null,
+        "quote": "Steamed greens Greens and ginger. USD 7",
+        "method": "html"
+      },
+      {
+        "id": "ev_e453ca4005f7e1715cb6a36f",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > section:nth-of-type(2) > h2:nth-of-type(1)",
+        "page": null,
+        "quote": "Extras",
+        "method": "html"
+      },
+      {
+        "id": "ev_bdab47f2ad9e60a64e08b5b6",
+        "source_id": "src_d5db6aac14d31ead8a651984",
+        "source_url": "https://menus.example.org/dinner",
+        "source_hash": "ee3024750ac7e2d1108bcc7e1f4255733fa09332fbb42cf362595b548dea5771",
+        "locator": "html:nth-of-type(1) > body:nth-of-type(1) > section:nth-of-type(2) > div:nth-of-type(2)",
+        "page": null,
+        "quote": "Tea egg Egg steeped in tea. USD 4",
+        "method": "html"
+      }
+    ],
+    "completeness": {
+      "scope": "supplied_source_set",
+      "status": "accounted_source_records",
+      "restaurant_menu_complete": false,
+      "requested_sources": 1,
+      "parsed_sources": 1,
+      "recognized_items": 4,
+      "extracted_items": 4,
+      "reasons": [
+        "Coverage refers only to recognized records in the supplied source set. The restaurant’s entire menu and current availability are not established.",
+        "Identical duplicate records are counted once in the menu, with every source reference retained."
+      ]
+    },
+    "issues": [],
+    "extracted_at": "2026-10-30T00:00:00Z",
+    "parser_version": "html-pdf-1.0",
+    "recommendations_ready": false
+  },
+  "requests_made": 2
+}

@@ -1,0 +1,38 @@
+.source-discovery { margin: 36px 0; padding: 30px; border: 1px solid #d8dfcd; background: #fffdf7; border-radius: 16px; }
+.source-discovery h2 { font-size: clamp(29px, 3.5vw, 40px); margin: 18px 0; }
+.source-discovery header p, .source-scope { max-width: 750px; font-size: 14px; line-height: 1.8; }
+.source-scope { color: #64715b; font-size: 12px; }
+.source-discovery form { margin-top: 24px; }
+.source-discovery label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
+.source-input-row { display: flex; gap: 12px; }
+.source-input-row input { flex: 1; min-width: 0; padding: 14px; background: #fcfdf7; border: 1px solid #cbd6c0; border-radius: 8px; color: #203f33; font-size: 15px; }
+.source-input-row button { flex-shrink: 0; }
+.source-discovery form > p { font-size: 11px; line-height: 1.7; margin-top: 10px; }
+.source-progress { display: flex; align-items: center; gap: 10px; padding: 22px 0; font-size: 13px; }
+.source-notice { padding: 15px 18px; border-left: 2px solid #966741; background: #f4efdf; font-size: 12px; line-height: 1.8; }
+.source-results { margin-top: 28px; }
+.source-result-heading h3 { font: 29px Georgia, serif; margin: 0; }
+.source-result-heading p { font-size: 12px; margin-bottom: 22px; }
+.source-candidate { border-top: 1px solid #dce2d2; padding: 24px 0; overflow-wrap: anywhere; }
+.source-candidate.preferred { border-left: 3px solid #52744f; padding-left: 19px; }
+.source-candidate-top { display: flex; gap: 15px; justify-content: space-between; color: #6d613f; font-size: 10px; }
+.source-candidate h4 { font: 25px/1.3 Georgia, serif; margin: 14px 0 8px; }
+.source-candidate h4 a { display: inline-flex; gap: 10px; align-items: center; }
+.source-url { font-size: 11px; color: #637458; line-height: 1.7; margin: 0; }
+.source-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+.source-tags span { font-size: 10px; line-height: 1.6; background: #edf1e5; color: #4b6242; padding: 5px 8px; border-radius: 5px; }
+.source-check-time { font-size: 11px; line-height: 1.7; }
+.source-discovery details { font-size: 12px; line-height: 1.8; }
+.source-discovery summary { cursor: pointer; min-height: 40px; padding: 10px 0; }
+.source-candidate details a { text-decoration: underline; }
+.source-check-details, .source-file-options { border-top: 1px solid #dce2d2; margin-top: 16px; padding-top: 8px; }
+.source-discovery li { margin: 6px 0; }
+@media (max-width: 680px) {
+  .source-discovery { padding: 24px 19px; }
+  .source-input-row { flex-direction: column; }
+  .source-input-row input { font-size: 16px; width: 100%; }
+  .source-candidate-top { flex-wrap: wrap; gap: 7px; }
+  .source-candidate.preferred { padding-left: 12px; }
+  .source-discovery ul { padding-left: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .source-progress .rs-input-spinner { animation: none; } }

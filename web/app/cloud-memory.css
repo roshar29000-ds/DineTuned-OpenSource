@@ -1,0 +1,31 @@
+.cloud-memory-status{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin:2rem 0;padding:1.6rem 1.8rem;border:1px solid #d9dfd3;border-radius:1.2rem;background:#f3f4eb;color:#203d32}
+.cloud-memory-status h2{font-family:var(--font-serif,Georgia,serif);font-size:clamp(1.35rem,3vw,1.8rem);margin:.6rem 0}
+.cloud-memory-status p{max-width:62ch;line-height:1.65;margin:.5rem 0;color:#456051}
+.cloud-memory-status .cloud-memory-detail{font-size:.82rem;color:#536456}
+.cloud-memory-actions{display:flex;flex-shrink:0;flex-direction:column;gap:.6rem}
+.cloud-memory-actions button{white-space:normal;min-height:44px}
+.cloud-memory-actions button:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:680px){.cloud-memory-status{align-items:stretch;flex-direction:column;gap:1rem;padding:1.25rem}.cloud-memory-actions{width:100%}}
+
+/* Small, consistent controls for a private dining diary. */
+.dining-actions,.dining-tags,.dining-toolbar,.dining-record-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.dish-experience { margin-top:22px; border-top:1px solid var(--line, #deded2); padding-top:18px; }
+.dining-actions button,.dining-tags button,.dining-toolbar button,.dining-record-actions button,.dining-editor button,.memory-confirm button,.dining-import button { min-height:44px; padding:9px 14px; border:1px solid #b8c4b7; border-radius:12px; color:#254d3d; background:#faf9f2; font:inherit; cursor:pointer; }
+.dining-actions button[aria-pressed=true],.dining-tags button[aria-pressed=true] { background:#244e3b; color:#fff; border-color:#244e3b; }
+.dining-actions button:disabled:not([aria-pressed=true]),.dining-editor button:disabled,.memory-confirm button:disabled { opacity:.55; cursor:default; }
+.dining-caption,.dining-storage,.dining-provenance { color:#526255; font-size:.81rem; line-height:1.6; }
+.dining-save-message,.dining-notice { background:#eef1e7; border-radius:12px; padding:12px 16px; line-height:1.6; color:#254d3d; }
+.dining-confirm-tried { display:flex!important; gap:10px; align-items:center; min-height:44px; }
+.dining-confirm-tried input { width:20px; height:20px; accent-color:#244e3b; }
+.dish-experience select,.dining-toolbar select,.dining-editor select,.dining-editor textarea { display:block; max-width:100%; width:100%; padding:10px 12px; min-height:44px; border:1px solid #b7c2b4; border-radius:10px; background:#fffef9; color:#253e32; font:inherit; }
+.dining-tags { margin:14px 0; }.dining-tags button { font-size:.8rem; }
+.dining-toolbar { justify-content:space-between; margin:22px 0; }.dining-toolbar label { min-width:190px; }
+.dining-record { align-items:flex-start; }.dining-record .memory-item-main { min-width:0; overflow-wrap:anywhere; }
+.dining-record-actions { margin-top:12px; }.dining-record-actions button { font-size:.8rem; }
+.dining-provenance { margin:10px 0; }.dining-provenance summary,.dining-import summary { cursor:pointer; padding:10px 0; min-height:44px; }
+.dining-editor,.memory-confirm { background:#f2f0e5; padding:18px; border-radius:12px; margin:12px 0; }
+.dining-editor label { display:block; margin-bottom:12px; }.dining-editor textarea { min-height:90px; resize:vertical; }
+.dining-editor button,.memory-confirm button,.dining-import button { margin:4px 8px 4px 0; }
+.dining-import { margin-bottom:20px; padding:10px 18px; border:1px solid #dadbcb; border-radius:14px; }
+.cloud-memory-actions { flex-wrap:wrap; }.cloud-memory-status>div { min-width:0; }
+@media(max-width:540px) { .dining-actions button { flex:1 1 40%; }.dining-toolbar { align-items:stretch; }.dining-toolbar label { width:100%; }.dining-record .memory-stamp { display:none; }.dining-editor,.memory-confirm { padding:12px; } }

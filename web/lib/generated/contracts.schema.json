@@ -1,0 +1,6873 @@
+{
+  "$defs": {
+    "Allergen": {
+      "enum": [
+        "milk",
+        "egg",
+        "fish",
+        "shellfish",
+        "tree_nut",
+        "peanut",
+        "wheat",
+        "soy",
+        "sesame"
+      ],
+      "title": "Allergen",
+      "type": "string"
+    },
+    "AllergyProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "allergens": {
+          "items": {
+            "$ref": "#/$defs/Allergen"
+          },
+          "maxItems": 9,
+          "title": "Allergens",
+          "type": "array"
+        },
+        "other": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Other",
+          "type": "string"
+        }
+      },
+      "title": "AllergyProfile",
+      "type": "object",
+      "required": [
+        "allergens",
+        "other"
+      ]
+    },
+    "TasteAxes": {
+      "additionalProperties": false,
+      "properties": {
+        "spice": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Spice"
+        },
+        "richness": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Richness"
+        },
+        "freshness": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Freshness"
+        },
+        "crunch": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crunch"
+        },
+        "aromatic": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Aromatic"
+        },
+        "sweetness": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sweetness"
+        },
+        "umami": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Umami"
+        }
+      },
+      "title": "TasteAxes",
+      "type": "object",
+      "required": [
+        "spice",
+        "richness",
+        "freshness",
+        "crunch",
+        "aromatic",
+        "sweetness",
+        "umami"
+      ]
+    },
+    "DietaryRestriction": {
+      "enum": [
+        "vegetarian",
+        "vegan",
+        "pescatarian",
+        "no_beef",
+        "no_pork",
+        "dairy_free",
+        "gluten_free"
+      ],
+      "title": "DietaryRestriction",
+      "type": "string"
+    },
+    "TasteProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "complete": {
+          "default": false,
+          "title": "Complete",
+          "type": "boolean"
+        },
+        "favorites": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Favorites",
+          "type": "string"
+        },
+        "axes": {
+          "$ref": "#/$defs/TasteAxes"
+        },
+        "exploration": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Exploration",
+          "type": "number"
+        },
+        "dietary_restrictions": {
+          "items": {
+            "$ref": "#/$defs/DietaryRestriction"
+          },
+          "maxItems": 7,
+          "title": "Dietary Restrictions",
+          "type": "array"
+        },
+        "allergies": {
+          "$ref": "#/$defs/AllergyProfile"
+        },
+        "updated_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updated At"
+        },
+        "source": {
+          "default": "guided_demo",
+          "enum": [
+            "guided_demo",
+            "user_edited",
+            "migrated"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "title": "TasteProfile",
+      "type": "object",
+      "required": [
+        "schema_version",
+        "complete",
+        "favorites",
+        "axes",
+        "exploration",
+        "dietary_restrictions",
+        "allergies",
+        "updated_at",
+        "source"
+      ]
+    },
+    "TasteAnswers": {
+      "additionalProperties": false,
+      "properties": {
+        "favorites": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Favorites",
+          "type": "string"
+        },
+        "style": {
+          "enum": [
+            "comfort",
+            "fresh",
+            "balanced"
+          ],
+          "title": "Style",
+          "type": "string"
+        },
+        "heat": {
+          "enum": [
+            "mild",
+            "medium",
+            "hot"
+          ],
+          "title": "Heat",
+          "type": "string"
+        },
+        "texture": {
+          "enum": [
+            "crunchy",
+            "soft",
+            "both"
+          ],
+          "title": "Texture",
+          "type": "string"
+        },
+        "exploration": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Exploration",
+          "type": "number"
+        },
+        "dietary_restrictions": {
+          "items": {
+            "$ref": "#/$defs/DietaryRestriction"
+          },
+          "maxItems": 7,
+          "title": "Dietary Restrictions",
+          "type": "array"
+        },
+        "allergies": {
+          "$ref": "#/$defs/AllergyProfile"
+        }
+      },
+      "required": [
+        "favorites",
+        "style",
+        "heat",
+        "texture",
+        "exploration",
+        "dietary_restrictions",
+        "allergies"
+      ],
+      "title": "TasteAnswers",
+      "type": "object"
+    },
+    "DiningConstraints": {
+      "additionalProperties": false,
+      "properties": {
+        "max_price_minor": {
+          "default": 3000,
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Max Price Minor",
+          "type": "integer"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "dietary_restrictions": {
+          "items": {
+            "$ref": "#/$defs/DietaryRestriction"
+          },
+          "maxItems": 7,
+          "title": "Dietary Restrictions",
+          "type": "array"
+        },
+        "allergies": {
+          "$ref": "#/$defs/AllergyProfile"
+        },
+        "mood": {
+          "default": "open",
+          "enum": [
+            "open",
+            "cozy",
+            "fresh",
+            "bold"
+          ],
+          "title": "Mood",
+          "type": "string"
+        },
+        "appetite": {
+          "default": "any",
+          "enum": [
+            "any",
+            "light",
+            "hearty"
+          ],
+          "title": "Appetite",
+          "type": "string"
+        }
+      },
+      "title": "DiningConstraints",
+      "type": "object",
+      "required": [
+        "max_price_minor",
+        "currency",
+        "dietary_restrictions",
+        "allergies",
+        "mood",
+        "appetite"
+      ]
+    },
+    "Price": {
+      "additionalProperties": false,
+      "properties": {
+        "amount_minor": {
+          "anyOf": [
+            {
+              "maximum": 100000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount Minor"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "status": {
+          "default": "listed",
+          "enum": [
+            "listed",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "basis": {
+          "const": "per_dish_before_tax_tip",
+          "default": "per_dish_before_tax_tip",
+          "title": "Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount_minor",
+        "currency",
+        "status",
+        "basis"
+      ],
+      "title": "Price",
+      "type": "object"
+    },
+    "MediaAsset": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "placeholder",
+          "default": "placeholder",
+          "title": "Kind",
+          "type": "string"
+        },
+        "motif": {
+          "enum": [
+            "noodles",
+            "bowl",
+            "rolls",
+            "toast",
+            "tacos",
+            "corn",
+            "rice",
+            "pasta",
+            "salad",
+            "plate",
+            "dumplings",
+            "curry",
+            "skewers"
+          ],
+          "title": "Motif",
+          "type": "string"
+        },
+        "label": {
+          "default": "Menu illustration · not a dish photograph",
+          "title": "Label",
+          "type": "string"
+        },
+        "accent": {
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "title": "Accent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "motif",
+        "label",
+        "accent"
+      ],
+      "title": "MediaAsset",
+      "type": "object"
+    },
+    "DietaryEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "restriction": {
+          "$ref": "#/$defs/DietaryRestriction"
+        },
+        "status": {
+          "enum": [
+            "supported",
+            "conflict",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "const": "curated_demo",
+          "default": "curated_demo",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "restriction",
+        "status",
+        "source"
+      ],
+      "title": "DietaryEvidence",
+      "type": "object"
+    },
+    "AllergenEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "contains": {
+          "items": {
+            "$ref": "#/$defs/Allergen"
+          },
+          "title": "Contains",
+          "type": "array"
+        },
+        "may_contain": {
+          "items": {
+            "$ref": "#/$defs/Allergen"
+          },
+          "title": "May Contain",
+          "type": "array"
+        },
+        "information_status": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "partial",
+            "documented"
+          ],
+          "title": "Information Status",
+          "type": "string"
+        },
+        "cross_contact": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "reported_risk",
+            "documented_controls"
+          ],
+          "title": "Cross Contact",
+          "type": "string"
+        },
+        "note": {
+          "default": "Incomplete sample ingredient information. Confirm ingredients and cross-contact with restaurant staff.",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "title": "AllergenEvidence",
+      "type": "object",
+      "required": [
+        "contains",
+        "may_contain",
+        "information_status",
+        "cross_contact",
+        "note"
+      ]
+    },
+    "DishFeatures": {
+      "additionalProperties": false,
+      "properties": {
+        "protein": {
+          "anyOf": [
+            {
+              "enum": [
+                "chicken",
+                "beef",
+                "pork",
+                "seafood",
+                "plant_forward"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Protein"
+        },
+        "family": {
+          "anyOf": [
+            {
+              "enum": [
+                "tacos",
+                "ramen",
+                "curry",
+                "pasta",
+                "salad",
+                "grill"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Family"
+        },
+        "textures": {
+          "items": {
+            "enum": [
+              "crisp",
+              "silky",
+              "chewy",
+              "tender"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Textures",
+          "type": "array"
+        },
+        "cooking_methods": {
+          "items": {
+            "enum": [
+              "grilled",
+              "roasted",
+              "fried",
+              "braised",
+              "steamed",
+              "raw"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Cooking Methods",
+          "type": "array"
+        },
+        "source": {
+          "const": "curated_demo",
+          "default": "curated_demo",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "title": "DishFeatures",
+      "type": "object",
+      "required": [
+        "protein",
+        "family",
+        "textures",
+        "cooking_methods",
+        "source"
+      ]
+    },
+    "MenuItem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "category_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Category Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        },
+        "ingredients": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Ingredients",
+          "type": "array"
+        },
+        "labels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Labels",
+          "type": "array"
+        },
+        "dietary": {
+          "items": {
+            "$ref": "#/$defs/DietaryEvidence"
+          },
+          "title": "Dietary",
+          "type": "array"
+        },
+        "allergens": {
+          "$ref": "#/$defs/AllergenEvidence"
+        },
+        "media": {
+          "$ref": "#/$defs/MediaAsset"
+        },
+        "sensory": {
+          "$ref": "#/$defs/TasteAxes"
+        },
+        "novelty": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Novelty",
+          "type": "number"
+        },
+        "portion": {
+          "enum": [
+            "light",
+            "hearty"
+          ],
+          "title": "Portion",
+          "type": "string"
+        },
+        "available": {
+          "default": true,
+          "title": "Available",
+          "type": "boolean"
+        },
+        "features": {
+          "$ref": "#/$defs/DishFeatures"
+        }
+      },
+      "required": [
+        "id",
+        "category_id",
+        "name",
+        "description",
+        "price",
+        "ingredients",
+        "labels",
+        "dietary",
+        "allergens",
+        "media",
+        "sensory",
+        "novelty",
+        "portion",
+        "available",
+        "features"
+      ],
+      "title": "MenuItem",
+      "type": "object"
+    },
+    "MenuCategory": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/MenuItem"
+          },
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "items"
+      ],
+      "title": "MenuCategory",
+      "type": "object"
+    },
+    "RestaurantSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "cuisine": {
+          "title": "Cuisine",
+          "type": "string"
+        },
+        "area": {
+          "title": "Area",
+          "type": "string"
+        },
+        "city": {
+          "default": "Chicago",
+          "title": "City",
+          "type": "string"
+        },
+        "subtitle": {
+          "title": "Subtitle",
+          "type": "string"
+        },
+        "price_label": {
+          "title": "Price Label",
+          "type": "string"
+        },
+        "accent": {
+          "title": "Accent",
+          "type": "string"
+        },
+        "is_demo": {
+          "const": true,
+          "default": true,
+          "title": "Is Demo",
+          "type": "boolean"
+        },
+        "distance_km": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Distance Km"
+        },
+        "item_count": {
+          "title": "Item Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "cuisine",
+        "area",
+        "city",
+        "subtitle",
+        "price_label",
+        "accent",
+        "is_demo",
+        "distance_km",
+        "item_count"
+      ],
+      "title": "RestaurantSummary",
+      "type": "object"
+    },
+    "RestaurantSearch": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "mode": {
+          "const": "demo",
+          "default": "demo",
+          "title": "Mode",
+          "type": "string"
+        },
+        "restaurants": {
+          "items": {
+            "$ref": "#/$defs/RestaurantSummary"
+          },
+          "title": "Restaurants",
+          "type": "array"
+        },
+        "location_applied": {
+          "default": false,
+          "title": "Location Applied",
+          "type": "boolean"
+        },
+        "note": {
+          "default": "Fictional venues and example locations. No live restaurant lookup.",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mode",
+        "restaurants",
+        "location_applied",
+        "note"
+      ],
+      "title": "RestaurantSearch",
+      "type": "object"
+    },
+    "MenuSource": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "demo_fixture",
+          "default": "demo_fixture",
+          "title": "Kind",
+          "type": "string"
+        },
+        "label": {
+          "default": "Complete curated demo menu",
+          "title": "Label",
+          "type": "string"
+        },
+        "completeness": {
+          "default": "complete_fixture",
+          "enum": [
+            "complete_fixture",
+            "partial"
+          ],
+          "title": "Completeness",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Retrieved At"
+        },
+        "note": {
+          "default": "Every item in this sample menu is included. Live menu parsing is not connected.",
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "title": "MenuSource",
+      "type": "object",
+      "required": [
+        "kind",
+        "label",
+        "completeness",
+        "retrieved_at",
+        "note"
+      ]
+    },
+    "RestaurantMenu": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "mode": {
+          "const": "demo",
+          "default": "demo",
+          "title": "Mode",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Version",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/RestaurantSummary"
+        },
+        "source": {
+          "$ref": "#/$defs/MenuSource"
+        },
+        "categories": {
+          "items": {
+            "$ref": "#/$defs/MenuCategory"
+          },
+          "title": "Categories",
+          "type": "array"
+        },
+        "total_items": {
+          "title": "Total Items",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mode",
+        "version",
+        "restaurant",
+        "source",
+        "categories",
+        "total_items"
+      ],
+      "title": "RestaurantMenu",
+      "type": "object"
+    },
+    "MenuEvaluationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "constraints": {
+          "$ref": "#/$defs/DiningConstraints"
+        }
+      },
+      "required": [
+        "restaurant_id",
+        "menu_version",
+        "constraints"
+      ],
+      "title": "MenuEvaluationRequest",
+      "type": "object"
+    },
+    "Exclusion": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "budget",
+            "price_unknown",
+            "unavailable",
+            "diet_conflict",
+            "diet_unknown",
+            "allergen_conflict",
+            "allergen_unknown"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "Exclusion",
+      "type": "object"
+    },
+    "ItemEligibility": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "eligible": {
+          "title": "Eligible",
+          "type": "boolean"
+        },
+        "reasons": {
+          "items": {
+            "$ref": "#/$defs/Exclusion"
+          },
+          "title": "Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "item_id",
+        "eligible",
+        "reasons"
+      ],
+      "title": "ItemEligibility",
+      "type": "object"
+    },
+    "MenuEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "const": "demo",
+          "default": "demo",
+          "title": "Mode",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "constraints": {
+          "$ref": "#/$defs/DiningConstraints"
+        },
+        "total_count": {
+          "title": "Total Count",
+          "type": "integer"
+        },
+        "eligible_count": {
+          "title": "Eligible Count",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ItemEligibility"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "recommendation_candidate_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Recommendation Candidate Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "mode",
+        "restaurant_id",
+        "menu_version",
+        "constraints",
+        "total_count",
+        "eligible_count",
+        "items",
+        "recommendation_candidate_count"
+      ],
+      "title": "MenuEvaluation",
+      "type": "object"
+    },
+    "RecommendationTasteEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "favorite_dishes": {
+          "items": {
+            "enum": [
+              "tacos",
+              "ramen",
+              "curry",
+              "pasta",
+              "salad",
+              "grill"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Favorite Dishes",
+          "type": "array"
+        },
+        "textures": {
+          "items": {
+            "enum": [
+              "crisp",
+              "silky",
+              "chewy",
+              "tender"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Textures",
+          "type": "array"
+        },
+        "cooking_methods": {
+          "items": {
+            "enum": [
+              "grilled",
+              "roasted",
+              "fried",
+              "braised",
+              "steamed",
+              "raw"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Cooking Methods",
+          "type": "array"
+        },
+        "liked_ingredients": {
+          "items": {
+            "enum": [
+              "citrus",
+              "herbs",
+              "mushrooms",
+              "garlic",
+              "cheese",
+              "sweet",
+              "chili",
+              "fermented"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Liked Ingredients",
+          "type": "array"
+        },
+        "disliked_ingredients": {
+          "items": {
+            "enum": [
+              "citrus",
+              "herbs",
+              "mushrooms",
+              "garlic",
+              "cheese",
+              "sweet",
+              "chili",
+              "fermented"
+            ],
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Disliked Ingredients",
+          "type": "array"
+        },
+        "inferred_axes": {
+          "items": {
+            "enum": [
+              "spice",
+              "richness",
+              "freshness",
+              "crunch",
+              "aromatic",
+              "sweetness",
+              "umami"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "title": "Inferred Axes",
+          "type": "array"
+        }
+      },
+      "title": "RecommendationTasteEvidence",
+      "type": "object",
+      "required": [
+        "favorite_dishes",
+        "textures",
+        "cooking_methods",
+        "liked_ingredients",
+        "disliked_ingredients",
+        "inferred_axes"
+      ]
+    },
+    "RecommendationOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "protein_preference": {
+          "default": "any",
+          "enum": [
+            "any",
+            "chicken",
+            "beef",
+            "pork",
+            "seafood",
+            "plant_forward"
+          ],
+          "title": "Protein Preference",
+          "type": "string"
+        },
+        "include_over_budget": {
+          "default": true,
+          "title": "Include Over Budget",
+          "type": "boolean"
+        }
+      },
+      "title": "RecommendationOptions",
+      "type": "object",
+      "required": [
+        "protein_preference",
+        "include_over_budget"
+      ]
+    },
+    "RefinementRequest": {
+      "additionalProperties": false,
+      "description": "Temporary meal intent, never a mutation of persistent Taste DNA.",
+      "properties": {
+        "preferences": {
+          "items": {
+            "enum": [
+              "less_creamy",
+              "lighter",
+              "spicier",
+              "adventurous"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Preferences",
+          "type": "array"
+        },
+        "avoid_dish_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Avoid Dish Ids",
+          "type": "array"
+        }
+      },
+      "title": "RefinementRequest",
+      "type": "object",
+      "required": [
+        "preferences",
+        "avoid_dish_ids"
+      ]
+    },
+    "RefinementResult": {
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "$ref": "#/$defs/RefinementRequest"
+        },
+        "provider": {
+          "title": "Provider",
+          "type": "string"
+        },
+        "mode": {
+          "default": "demo",
+          "enum": [
+            "demo",
+            "model"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "inactive",
+            "applied",
+            "unchanged",
+            "no_alternatives"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request",
+        "provider",
+        "mode",
+        "status",
+        "message",
+        "limitations"
+      ],
+      "title": "RefinementResult",
+      "type": "object"
+    },
+    "BridgeFeedback": {
+      "additionalProperties": false,
+      "description": "Reported feedback, not culinary facts; free-text notes are deliberately omitted.",
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Menu Version"
+        },
+        "liked": {
+          "title": "Liked",
+          "type": "boolean"
+        },
+        "date": {
+          "format": "date-time",
+          "title": "Date",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "restaurant_id",
+        "dish_id",
+        "menu_version",
+        "liked",
+        "date"
+      ],
+      "title": "BridgeFeedback",
+      "type": "object"
+    },
+    "RecommendationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "constraints": {
+          "$ref": "#/$defs/DiningConstraints"
+        },
+        "profile": {
+          "$ref": "#/$defs/TasteProfile"
+        },
+        "taste_evidence": {
+          "$ref": "#/$defs/RecommendationTasteEvidence"
+        },
+        "options": {
+          "$ref": "#/$defs/RecommendationOptions"
+        },
+        "bridge_feedback": {
+          "items": {
+            "$ref": "#/$defs/BridgeFeedback"
+          },
+          "maxItems": 20,
+          "title": "Bridge Feedback",
+          "type": "array"
+        },
+        "refinements": {
+          "$ref": "#/$defs/RefinementRequest",
+          "x-response-optional": true
+        }
+      },
+      "required": [
+        "restaurant_id",
+        "menu_version",
+        "constraints",
+        "profile",
+        "taste_evidence",
+        "options",
+        "bridge_feedback"
+      ],
+      "title": "RecommendationRequest",
+      "type": "object"
+    },
+    "TasteBridge": {
+      "additionalProperties": false,
+      "properties": {
+        "connection": {
+          "title": "Connection",
+          "type": "string"
+        },
+        "contrast": {
+          "title": "Contrast",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "uncertainty": {
+          "default": "Based on curated sample attributes and your stated preferences, not a validated taste prediction.",
+          "title": "Uncertainty",
+          "type": "string"
+        }
+      },
+      "required": [
+        "connection",
+        "contrast",
+        "evidence",
+        "uncertainty"
+      ],
+      "title": "TasteBridge",
+      "type": "object"
+    },
+    "BridgeFact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "subject": {
+          "enum": [
+            "user",
+            "target",
+            "familiar_dish"
+          ],
+          "title": "Subject",
+          "type": "string"
+        },
+        "attribute": {
+          "enum": [
+            "family",
+            "texture",
+            "cooking",
+            "ingredient",
+            "liked",
+            "spice",
+            "richness",
+            "freshness",
+            "crunch",
+            "aromatic",
+            "sweetness",
+            "umami"
+          ],
+          "title": "Attribute",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Value"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "taste_dna",
+            "taste_detective",
+            "menu_fixture",
+            "reported_feedback"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "reference": {
+          "title": "Reference",
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "stated",
+            "inferred",
+            "curated_demo",
+            "reported"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Restaurant Id"
+        },
+        "menu_version": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Menu Version"
+        },
+        "dish_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dish Id"
+        },
+        "feedback_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Feedback Id"
+        }
+      },
+      "required": [
+        "id",
+        "subject",
+        "attribute",
+        "value",
+        "label",
+        "source",
+        "reference",
+        "basis",
+        "restaurant_id",
+        "menu_version",
+        "dish_id",
+        "feedback_id"
+      ],
+      "title": "BridgeFact",
+      "type": "object"
+    },
+    "BridgeAnchor": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "saved_preferences",
+            "liked_dish"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 80,
+          "title": "Evidence Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "evidence_ids"
+      ],
+      "title": "BridgeAnchor",
+      "type": "object"
+    },
+    "BridgeLink": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Anchor Fact Id",
+          "type": "string"
+        },
+        "target_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Target Fact Id",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "shared",
+            "higher",
+            "lower",
+            "different"
+          ],
+          "title": "Relation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "anchor_fact_id",
+        "target_fact_id",
+        "relation"
+      ],
+      "title": "BridgeLink",
+      "type": "object"
+    },
+    "BridgeProposal": {
+      "additionalProperties": false,
+      "description": "Reasoner output: references and relations only. Unchecked prose is not publishable.",
+      "properties": {
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "anchor_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Anchor Id",
+          "type": "string"
+        },
+        "shared": {
+          "items": {
+            "$ref": "#/$defs/BridgeLink"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Shared",
+          "type": "array"
+        },
+        "differences": {
+          "items": {
+            "$ref": "#/$defs/BridgeLink"
+          },
+          "maxItems": 4,
+          "title": "Differences",
+          "type": "array"
+        }
+      },
+      "required": [
+        "restaurant_id",
+        "menu_version",
+        "dish_id",
+        "anchor_id",
+        "shared",
+        "differences"
+      ],
+      "title": "BridgeProposal",
+      "type": "object"
+    },
+    "BridgeComparison": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Anchor Fact Id",
+          "type": "string"
+        },
+        "target_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Target Fact Id",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "shared",
+            "higher",
+            "lower",
+            "different"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "attribute": {
+          "enum": [
+            "family",
+            "texture",
+            "cooking",
+            "ingredient",
+            "liked",
+            "spice",
+            "richness",
+            "freshness",
+            "crunch",
+            "aromatic",
+            "sweetness",
+            "umami"
+          ],
+          "title": "Attribute",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "anchor_fact_id",
+        "target_fact_id",
+        "relation",
+        "attribute",
+        "text"
+      ],
+      "title": "BridgeComparison",
+      "type": "object"
+    },
+    "StructuredTasteBridge": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "provider": {
+          "default": "structured_demo_v1",
+          "title": "Provider",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "grounded",
+            "limited",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "anchor": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BridgeAnchor"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "shared": {
+          "items": {
+            "$ref": "#/$defs/BridgeComparison"
+          },
+          "maxItems": 6,
+          "title": "Shared",
+          "type": "array"
+        },
+        "differences": {
+          "items": {
+            "$ref": "#/$defs/BridgeComparison"
+          },
+          "maxItems": 4,
+          "title": "Differences",
+          "type": "array"
+        },
+        "explanation": {
+          "default": "",
+          "title": "Explanation",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/BridgeFact"
+          },
+          "maxItems": 30,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "uncertainties": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainties",
+          "type": "array"
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "insufficient_evidence",
+                "contradictory_evidence",
+                "ineligible",
+                "invalid_proposal",
+                "provider_unavailable"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unavailable Reason"
+        }
+      },
+      "required": [
+        "schema_version",
+        "provider",
+        "status",
+        "restaurant_id",
+        "menu_version",
+        "dish_id",
+        "anchor",
+        "shared",
+        "differences",
+        "explanation",
+        "evidence",
+        "uncertainties",
+        "unavailable_reason"
+      ],
+      "title": "StructuredTasteBridge",
+      "type": "object"
+    },
+    "RecommendationEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "sensory",
+            "favorite",
+            "texture",
+            "cooking",
+            "ingredient",
+            "session"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "preference": {
+          "title": "Preference",
+          "type": "string"
+        },
+        "observation": {
+          "title": "Observation",
+          "type": "string"
+        },
+        "source": {
+          "const": "curated_demo",
+          "default": "curated_demo",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "preference",
+        "observation",
+        "source"
+      ],
+      "title": "RecommendationEvidence",
+      "type": "object"
+    },
+    "TasteCompatibility": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "enum": [
+            "Strong alignment",
+            "Thoughtful match"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "score": {
+          "title": "Score",
+          "type": "integer"
+        },
+        "score_kind": {
+          "const": "uncalibrated_demo_points",
+          "default": "uncalibrated_demo_points",
+          "title": "Score Kind",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/RecommendationEvidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "uncertainties": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainties",
+          "type": "array"
+        },
+        "differences": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Differences",
+          "type": "array"
+        }
+      },
+      "required": [
+        "label",
+        "description",
+        "score",
+        "score_kind",
+        "evidence",
+        "uncertainties",
+        "differences"
+      ],
+      "title": "TasteCompatibility",
+      "type": "object"
+    },
+    "BudgetPosition": {
+      "additionalProperties": false,
+      "properties": {
+        "target_minor": {
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Target Minor",
+          "type": "integer"
+        },
+        "overage_minor": {
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Overage Minor",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "within_target",
+            "above_target"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "target_minor",
+        "overage_minor",
+        "status"
+      ],
+      "title": "BudgetPosition",
+      "type": "object"
+    },
+    "PersonalizedDish": {
+      "additionalProperties": false,
+      "description": "Validated dish presentation shared by primary picks and additional discoveries.",
+      "properties": {
+        "dish": {
+          "$ref": "#/$defs/MenuItem"
+        },
+        "why": {
+          "title": "Why",
+          "type": "string"
+        },
+        "bridge": {
+          "$ref": "#/$defs/TasteBridge"
+        },
+        "compatibility": {
+          "$ref": "#/$defs/TasteCompatibility"
+        },
+        "budget": {
+          "$ref": "#/$defs/BudgetPosition"
+        },
+        "taste_bridge": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StructuredTasteBridge"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "dish",
+        "why",
+        "bridge",
+        "compatibility",
+        "budget",
+        "taste_bridge"
+      ],
+      "title": "PersonalizedDish",
+      "type": "object"
+    },
+    "Recommendation": {
+      "additionalProperties": false,
+      "properties": {
+        "dish": {
+          "$ref": "#/$defs/MenuItem"
+        },
+        "why": {
+          "title": "Why",
+          "type": "string"
+        },
+        "bridge": {
+          "$ref": "#/$defs/TasteBridge"
+        },
+        "compatibility": {
+          "$ref": "#/$defs/TasteCompatibility"
+        },
+        "budget": {
+          "$ref": "#/$defs/BudgetPosition"
+        },
+        "taste_bridge": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StructuredTasteBridge"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "category": {
+          "enum": [
+            "Best match",
+            "Comfort pick",
+            "Discovery pick"
+          ],
+          "title": "Category",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dish",
+        "why",
+        "bridge",
+        "compatibility",
+        "budget",
+        "taste_bridge",
+        "category"
+      ],
+      "title": "Recommendation",
+      "type": "object"
+    },
+    "WorthTheStretchResult": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "provider": {
+          "title": "Provider",
+          "type": "string"
+        },
+        "mode": {
+          "default": "demo",
+          "enum": [
+            "demo",
+            "model"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "picks": {
+          "items": {
+            "$ref": "#/$defs/PersonalizedDish"
+          },
+          "maxItems": 2,
+          "title": "Picks",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "restaurant_id",
+        "menu_version",
+        "provider",
+        "mode",
+        "picks"
+      ],
+      "title": "WorthTheStretchResult",
+      "type": "object"
+    },
+    "PairingFact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "item_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Item Id"
+        },
+        "attribute": {
+          "enum": [
+            "category",
+            "portion",
+            "ingredient",
+            "texture",
+            "cooking",
+            "protein",
+            "spice",
+            "richness",
+            "freshness",
+            "crunch",
+            "aromatic",
+            "sweetness",
+            "umami"
+          ],
+          "title": "Attribute",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          ],
+          "title": "Value"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "menu_fixture",
+            "taste_dna",
+            "taste_detective",
+            "session"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "reference": {
+          "title": "Reference",
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "curated_demo",
+            "stated",
+            "inferred"
+          ],
+          "title": "Basis",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "item_id",
+        "attribute",
+        "value",
+        "label",
+        "source",
+        "reference",
+        "basis"
+      ],
+      "title": "PairingFact",
+      "type": "object"
+    },
+    "PairingLink": {
+      "additionalProperties": false,
+      "properties": {
+        "left_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Left Fact Id",
+          "type": "string"
+        },
+        "right_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Right Fact Id",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "shared",
+            "higher",
+            "lower",
+            "different"
+          ],
+          "title": "Relation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left_fact_id",
+        "right_fact_id",
+        "relation"
+      ],
+      "title": "PairingLink",
+      "type": "object"
+    },
+    "PairingQuote": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "amount_minor": {
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Amount Minor",
+          "type": "integer"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "amount_minor",
+        "currency"
+      ],
+      "title": "PairingQuote",
+      "type": "object"
+    },
+    "MealPairingProposal": {
+      "additionalProperties": false,
+      "description": "Untrusted provider output. Prices, membership and claims are checked independently.",
+      "properties": {
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "main_dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Main Dish Id",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/PairingQuote"
+          },
+          "maxItems": 4,
+          "minItems": 2,
+          "title": "Items",
+          "type": "array"
+        },
+        "subtotal_minor": {
+          "maximum": 400000,
+          "minimum": 0,
+          "title": "Subtotal Minor",
+          "type": "integer"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/PairingLink"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Claims",
+          "type": "array"
+        }
+      },
+      "required": [
+        "restaurant_id",
+        "menu_version",
+        "main_dish_id",
+        "items",
+        "subtotal_minor",
+        "claims"
+      ],
+      "title": "MealPairingProposal",
+      "type": "object"
+    },
+    "PairingExplanation": {
+      "additionalProperties": false,
+      "properties": {
+        "left_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Left Fact Id",
+          "type": "string"
+        },
+        "right_fact_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Right Fact Id",
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "shared",
+            "higher",
+            "lower",
+            "different"
+          ],
+          "title": "Relation",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "left_fact_id",
+        "right_fact_id",
+        "relation",
+        "text"
+      ],
+      "title": "PairingExplanation",
+      "type": "object"
+    },
+    "MealComponent": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "category_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Category Id",
+          "type": "string"
+        },
+        "category_name": {
+          "title": "Category Name",
+          "type": "string"
+        },
+        "price_minor": {
+          "maximum": 100000,
+          "minimum": 0,
+          "title": "Price Minor",
+          "type": "integer"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "budget": {
+          "$ref": "#/$defs/BudgetPosition"
+        }
+      },
+      "required": [
+        "item_id",
+        "name",
+        "category_id",
+        "category_name",
+        "price_minor",
+        "currency",
+        "budget"
+      ],
+      "title": "MealComponent",
+      "type": "object"
+    },
+    "MealCombination": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "main": {
+          "$ref": "#/$defs/MealComponent"
+        },
+        "additions": {
+          "items": {
+            "$ref": "#/$defs/MealComponent"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Additions",
+          "type": "array"
+        },
+        "subtotal_minor": {
+          "maximum": 400000,
+          "minimum": 0,
+          "title": "Subtotal Minor",
+          "type": "integer"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "price_basis": {
+          "const": "menu_subtotal_before_tax_tip_fees",
+          "default": "menu_subtotal_before_tax_tip_fees",
+          "title": "Price Basis",
+          "type": "string"
+        },
+        "budget_scope": {
+          "const": "per_dish_not_meal_cap",
+          "default": "per_dish_not_meal_cap",
+          "title": "Budget Scope",
+          "type": "string"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "type": "string"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/PairingExplanation"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Claims",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/PairingFact"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "uncertainties": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainties",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "restaurant_id",
+        "menu_version",
+        "main",
+        "additions",
+        "subtotal_minor",
+        "currency",
+        "price_basis",
+        "budget_scope",
+        "rationale",
+        "claims",
+        "evidence",
+        "uncertainties"
+      ],
+      "title": "MealCombination",
+      "type": "object"
+    },
+    "MealCombinationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "provider": {
+          "title": "Provider",
+          "type": "string"
+        },
+        "mode": {
+          "default": "demo",
+          "enum": [
+            "demo",
+            "model"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "limited",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "combinations": {
+          "items": {
+            "$ref": "#/$defs/MealCombination"
+          },
+          "maxItems": 3,
+          "title": "Combinations",
+          "type": "array"
+        },
+        "unavailable_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "no_primary_picks",
+                "insufficient_menu_evidence",
+                "provider_unavailable",
+                "invalid_proposal",
+                "invalid_context"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unavailable Reason"
+        },
+        "uncertainties": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainties",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "restaurant_id",
+        "menu_version",
+        "provider",
+        "mode",
+        "status",
+        "combinations",
+        "unavailable_reason",
+        "uncertainties"
+      ],
+      "title": "MealCombinationResult",
+      "type": "object"
+    },
+    "RecommendationSession": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "mode": {
+          "const": "demo",
+          "default": "demo",
+          "title": "Mode",
+          "type": "string"
+        },
+        "engine": {
+          "const": "deterministic-v3.4a",
+          "default": "deterministic-v3.4a",
+          "title": "Engine",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/RestaurantSummary"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "constraints": {
+          "$ref": "#/$defs/DiningConstraints"
+        },
+        "recommendations": {
+          "items": {
+            "$ref": "#/$defs/Recommendation"
+          },
+          "maxItems": 3,
+          "title": "Recommendations",
+          "type": "array"
+        },
+        "evaluation": {
+          "$ref": "#/$defs/MenuEvaluation"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/TasteProfile"
+        },
+        "taste_evidence": {
+          "$ref": "#/$defs/RecommendationTasteEvidence"
+        },
+        "options": {
+          "$ref": "#/$defs/RecommendationOptions"
+        },
+        "bridge_feedback": {
+          "items": {
+            "$ref": "#/$defs/BridgeFeedback"
+          },
+          "maxItems": 20,
+          "title": "Bridge Feedback",
+          "type": "array"
+        },
+        "hard_eligible_count": {
+          "minimum": 0,
+          "title": "Hard Eligible Count",
+          "type": "integer"
+        },
+        "qualified_count": {
+          "minimum": 0,
+          "title": "Qualified Count",
+          "type": "integer"
+        },
+        "within_budget_qualified_count": {
+          "minimum": 0,
+          "title": "Within Budget Qualified Count",
+          "type": "integer"
+        },
+        "above_budget_qualified_count": {
+          "minimum": 0,
+          "title": "Above Budget Qualified Count",
+          "type": "integer"
+        },
+        "empty_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "hard_exclusions",
+                "insufficient_evidence",
+                "no_strong_matches",
+                "over_budget_hidden",
+                "no_alternatives"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Empty Reason"
+        },
+        "meal_combinations": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MealCombinationResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "x-response-optional": true
+        },
+        "worth_the_stretch": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WorthTheStretchResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "x-response-optional": true
+        },
+        "refinement_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RefinementResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "x-response-optional": true
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "created_at",
+        "mode",
+        "engine",
+        "restaurant",
+        "menu_version",
+        "constraints",
+        "recommendations",
+        "evaluation",
+        "message",
+        "profile",
+        "taste_evidence",
+        "options",
+        "bridge_feedback",
+        "hard_eligible_count",
+        "qualified_count",
+        "within_budget_qualified_count",
+        "above_budget_qualified_count",
+        "empty_reason"
+      ],
+      "title": "RecommendationSession",
+      "type": "object"
+    },
+    "MealFeedback": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Restaurant Id"
+        },
+        "restaurant_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Restaurant Name",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "dish_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Dish Name",
+          "type": "string"
+        },
+        "liked": {
+          "title": "Liked",
+          "type": "boolean"
+        },
+        "note": {
+          "default": "",
+          "maxLength": 1000,
+          "title": "Note",
+          "type": "string"
+        },
+        "date": {
+          "format": "date-time",
+          "title": "Date",
+          "type": "string"
+        },
+        "menu_version": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Menu Version"
+        }
+      },
+      "required": [
+        "id",
+        "restaurant_id",
+        "restaurant_name",
+        "dish_id",
+        "dish_name",
+        "liked",
+        "note",
+        "date",
+        "menu_version"
+      ],
+      "title": "MealFeedback",
+      "type": "object"
+    },
+    "Capabilities": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 2,
+          "default": 2,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "status": {
+          "const": "ok",
+          "default": "ok",
+          "title": "Status",
+          "type": "string"
+        },
+        "demo_mode": {
+          "const": true,
+          "default": true,
+          "title": "Demo Mode",
+          "type": "boolean"
+        },
+        "restaurant_data": {
+          "const": "fictional_fixtures",
+          "default": "fictional_fixtures",
+          "title": "Restaurant Data",
+          "type": "string"
+        },
+        "recommendation_engine": {
+          "const": "deterministic-v3.4a",
+          "default": "deterministic-v3.4a",
+          "title": "Recommendation Engine",
+          "type": "string"
+        },
+        "live_meta_inference": {
+          "const": false,
+          "default": false,
+          "title": "Live Meta Inference",
+          "type": "boolean"
+        },
+        "live_menu_parsing": {
+          "const": false,
+          "default": false,
+          "title": "Live Menu Parsing",
+          "type": "boolean"
+        }
+      },
+      "title": "Capabilities",
+      "type": "object",
+      "required": [
+        "schema_version",
+        "status",
+        "demo_mode",
+        "restaurant_data",
+        "recommendation_engine",
+        "live_meta_inference",
+        "live_menu_parsing"
+      ]
+    },
+    "DetectiveChoicesSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "anchors": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Anchors",
+          "type": "array"
+        },
+        "reasons": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Reasons",
+          "type": "array"
+        },
+        "contrast": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 1,
+          "title": "Contrast",
+          "type": "array"
+        },
+        "heat": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 1,
+          "title": "Heat",
+          "type": "array"
+        },
+        "texture": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Texture",
+          "type": "array"
+        },
+        "aromatics": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 1,
+          "title": "Aromatics",
+          "type": "array"
+        },
+        "ingredients": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Ingredients",
+          "type": "array"
+        },
+        "avoids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Avoids",
+          "type": "array"
+        },
+        "cooking": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Cooking",
+          "type": "array"
+        },
+        "curiosity": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 1,
+          "title": "Curiosity",
+          "type": "array"
+        }
+      },
+      "required": [
+        "anchors",
+        "reasons",
+        "contrast",
+        "heat",
+        "texture",
+        "aromatics",
+        "ingredients",
+        "avoids",
+        "cooking",
+        "curiosity"
+      ],
+      "title": "DetectiveChoicesSnapshot",
+      "type": "object"
+    },
+    "DetectiveAnswersSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "choices": {
+          "$ref": "#/$defs/DetectiveChoicesSnapshot"
+        },
+        "dietary_restrictions": {
+          "items": {
+            "$ref": "#/$defs/DietaryRestriction"
+          },
+          "maxItems": 7,
+          "title": "Dietary Restrictions",
+          "type": "array"
+        },
+        "allergies": {
+          "$ref": "#/$defs/AllergyProfile"
+        }
+      },
+      "required": [
+        "choices",
+        "dietary_restrictions",
+        "allergies"
+      ],
+      "title": "DetectiveAnswersSnapshot",
+      "type": "object"
+    },
+    "DetectiveSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": 3,
+          "title": "Version",
+          "type": "integer"
+        },
+        "engine": {
+          "const": "deterministic-v3.1",
+          "title": "Engine",
+          "type": "string"
+        },
+        "answers": {
+          "$ref": "#/$defs/DetectiveAnswersSnapshot"
+        },
+        "savedAt": {
+          "format": "date-time",
+          "title": "Savedat",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "engine",
+        "answers",
+        "savedAt"
+      ],
+      "title": "DetectiveSnapshot",
+      "type": "object"
+    },
+    "TasteDocument": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "$ref": "#/$defs/TasteProfile"
+        },
+        "evidence": {
+          "$ref": "#/$defs/RecommendationTasteEvidence"
+        },
+        "detective": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DetectiveSnapshot"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "edited_axes": {
+          "items": {
+            "enum": [
+              "spice",
+              "richness",
+              "freshness",
+              "crunch",
+              "aromatic",
+              "sweetness",
+              "umami"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "title": "Edited Axes",
+          "type": "array"
+        },
+        "exploration_edited": {
+          "title": "Exploration Edited",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "profile",
+        "evidence",
+        "detective",
+        "edited_axes",
+        "exploration_edited"
+      ],
+      "title": "TasteDocument",
+      "type": "object"
+    },
+    "TasteBackupWrite": {
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "$ref": "#/$defs/TasteDocument"
+        },
+        "expected_revision": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Revision"
+        }
+      },
+      "required": [
+        "document",
+        "expected_revision"
+      ],
+      "title": "TasteBackupWrite",
+      "type": "object"
+    },
+    "MemoryIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "is_anonymous": {
+          "title": "Is Anonymous",
+          "type": "boolean"
+        },
+        "storage": {
+          "const": "supabase",
+          "default": "supabase",
+          "title": "Storage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id",
+        "is_anonymous",
+        "storage"
+      ],
+      "title": "MemoryIdentity",
+      "type": "object"
+    },
+    "PrivateRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "source": {
+          "const": "user_reported",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "created_at",
+        "updated_at",
+        "source"
+      ],
+      "title": "PrivateRecord",
+      "type": "object"
+    },
+    "TasteBackupRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "source": {
+          "const": "user_reported",
+          "title": "Source",
+          "type": "string"
+        },
+        "document": {
+          "$ref": "#/$defs/TasteDocument"
+        },
+        "revision": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "user_id",
+        "created_at",
+        "updated_at",
+        "source",
+        "document",
+        "revision"
+      ],
+      "title": "TasteBackupRecord",
+      "type": "object"
+    },
+    "TasteBackupResult": {
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TasteBackupRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile"
+      ],
+      "title": "TasteBackupResult",
+      "type": "object"
+    },
+    "DiningEventWrite": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "event_type": {
+          "enum": [
+            "saved",
+            "selected",
+            "ordered",
+            "tasted"
+          ],
+          "title": "Event Type",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "recommendation_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Recommendation Id"
+        },
+        "restaurant_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Restaurant Name"
+        },
+        "dish_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dish Name"
+        }
+      },
+      "required": [
+        "id",
+        "event_type",
+        "restaurant_id",
+        "menu_version",
+        "dish_id",
+        "occurred_at",
+        "recommendation_id",
+        "restaurant_name",
+        "dish_name"
+      ],
+      "title": "DiningEventWrite",
+      "type": "object"
+    },
+    "DiningEventRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "event_type": {
+          "enum": [
+            "saved",
+            "selected",
+            "ordered",
+            "tasted"
+          ],
+          "title": "Event Type",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "occurred_at": {
+          "format": "date-time",
+          "title": "Occurred At",
+          "type": "string"
+        },
+        "recommendation_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Recommendation Id"
+        },
+        "restaurant_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Restaurant Name"
+        },
+        "dish_name": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dish Name"
+        },
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "source": {
+          "const": "user_reported",
+          "title": "Source",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "event_type",
+        "restaurant_id",
+        "menu_version",
+        "dish_id",
+        "occurred_at",
+        "recommendation_id",
+        "restaurant_name",
+        "dish_name",
+        "user_id",
+        "created_at",
+        "updated_at",
+        "source",
+        "revision"
+      ],
+      "title": "DiningEventRecord",
+      "type": "object"
+    },
+    "DishFeedbackWrite": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "event_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Event Id"
+        },
+        "feedback": {
+          "$ref": "#/$defs/MealFeedback"
+        },
+        "rating": {
+          "anyOf": [
+            {
+              "maximum": 5,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rating"
+        },
+        "tags": {
+          "items": {
+            "enum": [
+              "too_spicy",
+              "not_spicy_enough",
+              "too_rich",
+              "too_heavy",
+              "great_texture",
+              "disliked_texture",
+              "would_order_again"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "title": "Tags",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "event_id",
+        "feedback",
+        "rating",
+        "tags"
+      ],
+      "title": "DishFeedbackWrite",
+      "type": "object"
+    },
+    "DishFeedbackRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "event_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Event Id"
+        },
+        "feedback": {
+          "$ref": "#/$defs/MealFeedback"
+        },
+        "rating": {
+          "anyOf": [
+            {
+              "maximum": 5,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rating"
+        },
+        "tags": {
+          "items": {
+            "enum": [
+              "too_spicy",
+              "not_spicy_enough",
+              "too_rich",
+              "too_heavy",
+              "great_texture",
+              "disliked_texture",
+              "would_order_again"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "title": "Tags",
+          "type": "array"
+        },
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "source": {
+          "const": "user_reported",
+          "title": "Source",
+          "type": "string"
+        },
+        "revision": {
+          "default": 1,
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "event_id",
+        "feedback",
+        "rating",
+        "tags",
+        "user_id",
+        "created_at",
+        "updated_at",
+        "source",
+        "revision"
+      ],
+      "title": "DishFeedbackRecord",
+      "type": "object"
+    },
+    "HistoryDish": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "category_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Category Id",
+          "type": "string"
+        },
+        "price": {
+          "$ref": "#/$defs/Price"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "category_id",
+        "price"
+      ],
+      "title": "HistoryDish",
+      "type": "object"
+    },
+    "RecommendationHistoryWrite": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "session_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Session Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dishes": {
+          "items": {
+            "$ref": "#/$defs/HistoryDish"
+          },
+          "maxItems": 5,
+          "title": "Dishes",
+          "type": "array"
+        },
+        "reported_provider": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Reported Provider",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "session_id",
+        "restaurant_id",
+        "menu_version",
+        "dishes",
+        "reported_provider"
+      ],
+      "title": "RecommendationHistoryWrite",
+      "type": "object"
+    },
+    "RecommendationHistoryRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "session_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Session Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dishes": {
+          "items": {
+            "$ref": "#/$defs/HistoryDish"
+          },
+          "maxItems": 5,
+          "title": "Dishes",
+          "type": "array"
+        },
+        "reported_provider": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Reported Provider",
+          "type": "string"
+        },
+        "user_id": {
+          "format": "uuid",
+          "title": "User Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "Updated At",
+          "type": "string"
+        },
+        "source": {
+          "const": "user_reported",
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "session_id",
+        "restaurant_id",
+        "menu_version",
+        "dishes",
+        "reported_provider",
+        "user_id",
+        "created_at",
+        "updated_at",
+        "source"
+      ],
+      "title": "RecommendationHistoryRecord",
+      "type": "object"
+    },
+    "DiningEventList": {
+      "additionalProperties": false,
+      "properties": {
+        "records": {
+          "items": {
+            "$ref": "#/$defs/DiningEventRecord"
+          },
+          "maxItems": 50,
+          "title": "Records",
+          "type": "array"
+        }
+      },
+      "required": [
+        "records"
+      ],
+      "title": "DiningEventList",
+      "type": "object"
+    },
+    "DishFeedbackList": {
+      "additionalProperties": false,
+      "properties": {
+        "records": {
+          "items": {
+            "$ref": "#/$defs/DishFeedbackRecord"
+          },
+          "maxItems": 50,
+          "title": "Records",
+          "type": "array"
+        }
+      },
+      "required": [
+        "records"
+      ],
+      "title": "DishFeedbackList",
+      "type": "object"
+    },
+    "RecommendationHistoryList": {
+      "additionalProperties": false,
+      "properties": {
+        "records": {
+          "items": {
+            "$ref": "#/$defs/RecommendationHistoryRecord"
+          },
+          "maxItems": 50,
+          "title": "Records",
+          "type": "array"
+        }
+      },
+      "required": [
+        "records"
+      ],
+      "title": "RecommendationHistoryList",
+      "type": "object"
+    },
+    "DiningEventCorrection": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "event_type": {
+          "enum": [
+            "saved",
+            "selected",
+            "ordered",
+            "tasted"
+          ],
+          "title": "Event Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "event_type"
+      ],
+      "title": "DiningEventCorrection",
+      "type": "object"
+    },
+    "FeedbackCorrection": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "maximum": 2147483647,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "liked": {
+          "title": "Liked",
+          "type": "boolean"
+        },
+        "note": {
+          "maxLength": 1000,
+          "title": "Note",
+          "type": "string"
+        },
+        "rating": {
+          "anyOf": [
+            {
+              "maximum": 5,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rating"
+        },
+        "tags": {
+          "items": {
+            "enum": [
+              "too_spicy",
+              "not_spicy_enough",
+              "too_rich",
+              "too_heavy",
+              "great_texture",
+              "disliked_texture",
+              "would_order_again"
+            ],
+            "type": "string"
+          },
+          "maxItems": 7,
+          "title": "Tags",
+          "type": "array"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "liked",
+        "note",
+        "rating",
+        "tags"
+      ],
+      "title": "FeedbackCorrection",
+      "type": "object"
+    },
+    "RecordDeletion": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "format": "uuid",
+          "title": "Id",
+          "type": "string"
+        },
+        "deleted": {
+          "const": true,
+          "default": true,
+          "title": "Deleted",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "deleted"
+      ],
+      "title": "RecordDeletion",
+      "type": "object"
+    },
+    "HistoricalTasteEvidence": {
+      "additionalProperties": false,
+      "description": "Original reported observations, never an inferred preference or training claim.",
+      "properties": {
+        "feedback": {
+          "$ref": "#/$defs/DishFeedbackRecord"
+        },
+        "event": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DiningEventRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "recommendation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RecommendationHistoryRecord"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "consumption_confirmed": {
+          "title": "Consumption Confirmed",
+          "type": "boolean"
+        },
+        "uncertainty": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainty",
+          "type": "array"
+        }
+      },
+      "required": [
+        "feedback",
+        "event",
+        "recommendation",
+        "consumption_confirmed",
+        "uncertainty"
+      ],
+      "title": "HistoricalTasteEvidence",
+      "type": "object"
+    },
+    "HistoricalTasteEvidenceList": {
+      "additionalProperties": false,
+      "properties": {
+        "records": {
+          "items": {
+            "$ref": "#/$defs/HistoricalTasteEvidence"
+          },
+          "maxItems": 50,
+          "title": "Records",
+          "type": "array"
+        },
+        "interpretation": {
+          "const": "uninterpreted_user_reports",
+          "default": "uninterpreted_user_reports",
+          "title": "Interpretation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "records",
+        "interpretation"
+      ],
+      "title": "HistoricalTasteEvidenceList",
+      "type": "object"
+    },
+    "DiscoveryLocation": {
+      "additionalProperties": false,
+      "properties": {
+        "latitude": {
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Latitude",
+          "type": "number"
+        },
+        "longitude": {
+          "maximum": 180,
+          "minimum": -180,
+          "title": "Longitude",
+          "type": "number"
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude"
+      ],
+      "title": "DiscoveryLocation",
+      "type": "object"
+    },
+    "DiscoveryConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "google_enabled": {
+          "title": "Google Enabled",
+          "type": "boolean"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "minimum_query_length": {
+          "const": 3,
+          "default": 3,
+          "title": "Minimum Query Length",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "google_enabled",
+        "message",
+        "minimum_query_length"
+      ],
+      "title": "DiscoveryConfig",
+      "type": "object"
+    },
+    "DiscoverySession": {
+      "additionalProperties": false,
+      "properties": {
+        "session_token": {
+          "format": "uuid",
+          "title": "Session Token",
+          "type": "string"
+        },
+        "expires_at": {
+          "format": "date-time",
+          "title": "Expires At",
+          "type": "string"
+        },
+        "request_limit": {
+          "title": "Request Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "session_token",
+        "expires_at",
+        "request_limit"
+      ],
+      "title": "DiscoverySession",
+      "type": "object"
+    },
+    "DiscoverySearch": {
+      "additionalProperties": false,
+      "properties": {
+        "session_token": {
+          "format": "uuid",
+          "title": "Session Token",
+          "type": "string"
+        },
+        "query": {
+          "maxLength": 80,
+          "minLength": 3,
+          "title": "Query",
+          "type": "string"
+        },
+        "area": {
+          "default": "",
+          "maxLength": 100,
+          "title": "Area",
+          "type": "string"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DiscoveryLocation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "session_token",
+        "query",
+        "area",
+        "location"
+      ],
+      "title": "DiscoverySearch",
+      "type": "object"
+    },
+    "DiscoverySelection": {
+      "additionalProperties": false,
+      "properties": {
+        "session_token": {
+          "format": "uuid",
+          "title": "Session Token",
+          "type": "string"
+        },
+        "place_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Place Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "session_token",
+        "place_id"
+      ],
+      "title": "DiscoverySelection",
+      "type": "object"
+    },
+    "RestaurantPrediction": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "google_places",
+            "demo"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "place_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Place Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "address": {
+          "anyOf": [
+            {
+              "maxLength": 600,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Address"
+        },
+        "types": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Types",
+          "type": "array"
+        },
+        "distance_meters": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Distance Meters"
+        }
+      },
+      "required": [
+        "provider",
+        "place_id",
+        "name",
+        "address",
+        "types",
+        "distance_meters"
+      ],
+      "title": "RestaurantPrediction",
+      "type": "object"
+    },
+    "DiscoveryResults": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "google_places",
+            "demo"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "session_token": {
+          "format": "uuid",
+          "title": "Session Token",
+          "type": "string"
+        },
+        "predictions": {
+          "items": {
+            "$ref": "#/$defs/RestaurantPrediction"
+          },
+          "maxItems": 10,
+          "title": "Predictions",
+          "type": "array"
+        },
+        "location_mode": {
+          "enum": [
+            "nearby",
+            "area",
+            "global"
+          ],
+          "title": "Location Mode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider",
+        "session_token",
+        "predictions",
+        "location_mode"
+      ],
+      "title": "DiscoveryResults",
+      "type": "object"
+    },
+    "PlaceAttribution": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Provider",
+          "type": "string"
+        },
+        "uri": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Uri"
+        }
+      },
+      "required": [
+        "provider",
+        "uri"
+      ],
+      "title": "PlaceAttribution",
+      "type": "object"
+    },
+    "RestaurantSource": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "google_places",
+            "demo"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "api": {
+          "enum": [
+            "places_new",
+            "fictional_catalog"
+          ],
+          "title": "Api",
+          "type": "string"
+        },
+        "retrieved_at": {
+          "format": "date-time",
+          "title": "Retrieved At",
+          "type": "string"
+        },
+        "place_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Place Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider",
+        "api",
+        "retrieved_at",
+        "place_id"
+      ],
+      "title": "RestaurantSource",
+      "type": "object"
+    },
+    "DiscoveredRestaurant": {
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "google_places",
+            "demo"
+          ],
+          "title": "Provider",
+          "type": "string"
+        },
+        "place_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Place Id",
+          "type": "string"
+        },
+        "display_name": {
+          "maxLength": 600,
+          "minLength": 1,
+          "title": "Display Name",
+          "type": "string"
+        },
+        "formatted_address": {
+          "anyOf": [
+            {
+              "maxLength": 600,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Formatted Address"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DiscoveryLocation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "business_status": {
+          "default": "UNKNOWN",
+          "enum": [
+            "OPERATIONAL",
+            "CLOSED_TEMPORARILY",
+            "CLOSED_PERMANENTLY",
+            "UNKNOWN"
+          ],
+          "title": "Business Status",
+          "type": "string"
+        },
+        "types": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 50,
+          "title": "Types",
+          "type": "array"
+        },
+        "source": {
+          "$ref": "#/$defs/RestaurantSource"
+        },
+        "attributions": {
+          "items": {
+            "$ref": "#/$defs/PlaceAttribution"
+          },
+          "maxItems": 30,
+          "title": "Attributions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "provider",
+        "place_id",
+        "display_name",
+        "formatted_address",
+        "location",
+        "business_status",
+        "types",
+        "source",
+        "attributions"
+      ],
+      "title": "DiscoveredRestaurant",
+      "type": "object"
+    },
+    "MenuDiscoveryHandoff": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/DiscoveredRestaurant"
+        },
+        "menu_status": {
+          "const": "not_retrieved",
+          "default": "not_retrieved",
+          "title": "Menu Status",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "source_discovery_token": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Discovery Token",
+          "x-response-optional": true
+        }
+      },
+      "required": [
+        "schema_version",
+        "restaurant",
+        "menu_status",
+        "limitations"
+      ],
+      "title": "MenuDiscoveryHandoff",
+      "type": "object"
+    },
+    "MenuSourceRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/DiscoveredRestaurant"
+        },
+        "selection_token": {
+          "maxLength": 2048,
+          "minLength": 20,
+          "title": "Selection Token",
+          "type": "string"
+        },
+        "website_url": {
+          "maxLength": 2048,
+          "minLength": 8,
+          "title": "Website Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "restaurant",
+        "selection_token",
+        "website_url"
+      ],
+      "title": "MenuSourceRequest",
+      "type": "object"
+    },
+    "MenuSourceEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "identity",
+            "branch",
+            "link",
+            "format",
+            "menu_type",
+            "date",
+            "access"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_url": {
+          "maxLength": 2048,
+          "minLength": 8,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 500,
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "source_url",
+        "detail"
+      ],
+      "title": "MenuSourceEvidence",
+      "type": "object"
+    },
+    "MenuSourceCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "source_url": {
+          "maxLength": 2048,
+          "minLength": 8,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "discovered_from": {
+          "maxLength": 2048,
+          "minLength": 8,
+          "title": "Discovered From",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 180,
+          "title": "Title",
+          "type": "string"
+        },
+        "format": {
+          "enum": [
+            "html",
+            "pdf",
+            "image",
+            "unknown"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "menu_type": {
+          "enum": [
+            "dine_in",
+            "delivery",
+            "takeaway",
+            "catering",
+            "unknown"
+          ],
+          "title": "Menu Type",
+          "type": "string"
+        },
+        "branch_relevance": {
+          "enum": [
+            "exact",
+            "site_wide",
+            "unknown",
+            "other_branch"
+          ],
+          "title": "Branch Relevance",
+          "type": "string"
+        },
+        "provenance": {
+          "enum": [
+            "corroborated_website",
+            "linked_by_corroborated_website",
+            "unverified_website",
+            "user_upload"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "freshness": {
+          "enum": [
+            "undated",
+            "dated",
+            "outdated"
+          ],
+          "title": "Freshness",
+          "type": "string"
+        },
+        "date_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Label"
+        },
+        "access": {
+          "enum": [
+            "checked",
+            "not_checked",
+            "blocked",
+            "unavailable"
+          ],
+          "title": "Access",
+          "type": "string"
+        },
+        "verified_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Verified At"
+        },
+        "discovered_at": {
+          "format": "date-time",
+          "title": "Discovered At",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/MenuSourceEvidence"
+          },
+          "maxItems": 12,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Limitations",
+          "type": "array"
+        },
+        "suitable_for_extraction": {
+          "default": false,
+          "title": "Suitable For Extraction",
+          "type": "boolean"
+        },
+        "extraction_status": {
+          "const": "not_extracted",
+          "default": "not_extracted",
+          "title": "Extraction Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_url",
+        "discovered_from",
+        "title",
+        "format",
+        "menu_type",
+        "branch_relevance",
+        "provenance",
+        "confidence",
+        "freshness",
+        "date_label",
+        "access",
+        "verified_at",
+        "discovered_at",
+        "evidence",
+        "limitations",
+        "suitable_for_extraction",
+        "extraction_status"
+      ],
+      "title": "MenuSourceCandidate",
+      "type": "object"
+    },
+    "MenuSourceResult": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "identity_source": {
+          "const": "google_places",
+          "default": "google_places",
+          "title": "Identity Source",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "sources_found",
+            "needs_review",
+            "no_trustworthy_source",
+            "access_limited"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "provider": {
+          "const": "bounded_public_web",
+          "default": "bounded_public_web",
+          "title": "Provider",
+          "type": "string"
+        },
+        "seed_origin": {
+          "const": "user_supplied_website",
+          "default": "user_supplied_website",
+          "title": "Seed Origin",
+          "type": "string"
+        },
+        "checked_at": {
+          "format": "date-time",
+          "title": "Checked At",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/MenuSourceCandidate"
+          },
+          "maxItems": 12,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "recommended_candidate_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recommended Candidate Id"
+        },
+        "requests_made": {
+          "maximum": 12,
+          "minimum": 0,
+          "title": "Requests Made",
+          "type": "integer"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Limitations",
+          "type": "array"
+        },
+        "menu_status": {
+          "const": "sources_only",
+          "default": "sources_only",
+          "title": "Menu Status",
+          "type": "string"
+        },
+        "extraction_token": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Extraction Token",
+          "x-response-optional": true
+        }
+      },
+      "required": [
+        "schema_version",
+        "request_id",
+        "restaurant_id",
+        "identity_source",
+        "status",
+        "provider",
+        "seed_origin",
+        "checked_at",
+        "candidates",
+        "recommended_candidate_id",
+        "requests_made",
+        "limitations",
+        "menu_status"
+      ],
+      "title": "MenuSourceResult",
+      "type": "object"
+    },
+    "MenuExtractionRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/DiscoveredRestaurant"
+        },
+        "selection_token": {
+          "maxLength": 2048,
+          "minLength": 20,
+          "title": "Selection Token",
+          "type": "string"
+        },
+        "sources": {
+          "$ref": "#/$defs/MenuSourceResult"
+        },
+        "candidate_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Candidate Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "restaurant",
+        "selection_token",
+        "sources",
+        "candidate_ids"
+      ],
+      "title": "MenuExtractionRequest",
+      "type": "object"
+    },
+    "MenuUploadRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/DiscoveredRestaurant"
+        },
+        "selection_token": {
+          "maxLength": 2048,
+          "minLength": 20,
+          "title": "Selection Token",
+          "type": "string"
+        },
+        "filename": {
+          "maxLength": 180,
+          "minLength": 1,
+          "title": "Filename",
+          "type": "string"
+        },
+        "content_base64": {
+          "maxLength": 4000000,
+          "minLength": 4,
+          "title": "Content Base64",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "restaurant",
+        "selection_token",
+        "filename",
+        "content_base64"
+      ],
+      "title": "MenuUploadRequest",
+      "type": "object"
+    },
+    "ExtractionEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_url": {
+          "maxLength": 2048,
+          "minLength": 8,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "source_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Hash",
+          "type": "string"
+        },
+        "locator": {
+          "maxLength": 500,
+          "title": "Locator",
+          "type": "string"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "maximum": 24,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "quote": {
+          "maxLength": 8000,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "json_ld",
+            "html",
+            "pdf_text"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_id",
+        "source_url",
+        "source_hash",
+        "locator",
+        "page",
+        "quote",
+        "method"
+      ],
+      "title": "ExtractionEvidence",
+      "type": "object"
+    },
+    "ExtractedPriceOption": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "raw": {
+          "title": "Raw",
+          "type": "string"
+        },
+        "amount_minor": {
+          "anyOf": [
+            {
+              "maximum": 1000000000,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount Minor"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Z]{3}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Currency"
+        },
+        "evidence_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Evidence Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "raw",
+        "amount_minor",
+        "currency",
+        "evidence_id"
+      ],
+      "title": "ExtractedPriceOption",
+      "type": "object"
+    },
+    "ExtractedPrice": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "fixed",
+            "variants",
+            "range",
+            "unknown",
+            "ambiguous"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "basis": {
+          "const": "as_printed",
+          "default": "as_printed",
+          "title": "Basis",
+          "type": "string"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Raw"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/ExtractedPriceOption"
+          },
+          "maxItems": 20,
+          "title": "Options",
+          "type": "array"
+        },
+        "budget_usable": {
+          "default": false,
+          "title": "Budget Usable",
+          "type": "boolean"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "basis",
+        "raw",
+        "options",
+        "budget_usable",
+        "limitations"
+      ],
+      "title": "ExtractedPrice",
+      "type": "object"
+    },
+    "ExtractedMenuItem": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "category_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Category Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 3000,
+          "title": "Description",
+          "type": "string"
+        },
+        "price": {
+          "$ref": "#/$defs/ExtractedPrice"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "availability": {
+          "default": "unverified",
+          "enum": [
+            "unverified",
+            "listed_unavailable"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "ingredients": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Ingredients",
+          "type": "array"
+        },
+        "dietary": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Dietary",
+          "type": "array"
+        },
+        "allergens": {
+          "$ref": "#/$defs/AllergenEvidence"
+        },
+        "confidence": {
+          "enum": [
+            "structured",
+            "supported",
+            "needs_review"
+          ],
+          "title": "Confidence",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "category_id",
+        "name",
+        "description",
+        "price",
+        "evidence_ids",
+        "availability",
+        "ingredients",
+        "dietary",
+        "allergens",
+        "confidence",
+        "limitations"
+      ],
+      "title": "ExtractedMenuItem",
+      "type": "object"
+    },
+    "ExtractedMenuCategory": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ExtractedMenuItem"
+          },
+          "title": "Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "evidence_ids",
+        "items"
+      ],
+      "title": "ExtractedMenuCategory",
+      "type": "object"
+    },
+    "ExtractionIssue": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "notice",
+            "review",
+            "blocked"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Id"
+        },
+        "item_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "title": "Item Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "severity",
+        "message",
+        "source_id",
+        "item_ids"
+      ],
+      "title": "ExtractionIssue",
+      "type": "object"
+    },
+    "ExtractedSource": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "candidate": {
+          "$ref": "#/$defs/MenuSourceCandidate"
+        },
+        "source_url": {
+          "maxLength": 2048,
+          "minLength": 8,
+          "title": "Source Url",
+          "type": "string"
+        },
+        "source_hash": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Hash"
+        },
+        "retrieved_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Retrieved At"
+        },
+        "status": {
+          "enum": [
+            "parsed",
+            "partial",
+            "needs_vision",
+            "blocked",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "page_count": {
+          "default": 0,
+          "title": "Page Count",
+          "type": "integer"
+        },
+        "parsed_pages": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Parsed Pages",
+          "type": "array"
+        },
+        "recognized_items": {
+          "default": 0,
+          "title": "Recognized Items",
+          "type": "integer"
+        },
+        "extracted_items": {
+          "default": 0,
+          "title": "Extracted Items",
+          "type": "integer"
+        },
+        "unresolved_sections": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unresolved Sections",
+          "type": "array"
+        },
+        "coverage": {
+          "default": "unknown",
+          "enum": [
+            "accounted_source_records",
+            "partial",
+            "unknown"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "candidate",
+        "source_url",
+        "source_hash",
+        "retrieved_at",
+        "status",
+        "page_count",
+        "parsed_pages",
+        "recognized_items",
+        "extracted_items",
+        "unresolved_sections",
+        "coverage"
+      ],
+      "title": "ExtractedSource",
+      "type": "object"
+    },
+    "MenuCompleteness": {
+      "additionalProperties": false,
+      "properties": {
+        "scope": {
+          "const": "supplied_source_set",
+          "default": "supplied_source_set",
+          "title": "Scope",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "accounted_source_records",
+            "partial",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "restaurant_menu_complete": {
+          "const": false,
+          "default": false,
+          "title": "Restaurant Menu Complete",
+          "type": "boolean"
+        },
+        "requested_sources": {
+          "title": "Requested Sources",
+          "type": "integer"
+        },
+        "parsed_sources": {
+          "title": "Parsed Sources",
+          "type": "integer"
+        },
+        "recognized_items": {
+          "title": "Recognized Items",
+          "type": "integer"
+        },
+        "extracted_items": {
+          "title": "Extracted Items",
+          "type": "integer"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "scope",
+        "status",
+        "restaurant_menu_complete",
+        "requested_sources",
+        "parsed_sources",
+        "recognized_items",
+        "extracted_items",
+        "reasons"
+      ],
+      "title": "MenuCompleteness",
+      "type": "object"
+    },
+    "ExtractedRestaurantMenu": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "mode": {
+          "const": "extracted",
+          "default": "extracted",
+          "title": "Mode",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Version",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "restaurant": {
+          "$ref": "#/$defs/DiscoveredRestaurant"
+        },
+        "categories": {
+          "items": {
+            "$ref": "#/$defs/ExtractedMenuCategory"
+          },
+          "title": "Categories",
+          "type": "array"
+        },
+        "total_items": {
+          "title": "Total Items",
+          "type": "integer"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/ExtractedSource"
+          },
+          "title": "Sources",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ExtractionEvidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "completeness": {
+          "$ref": "#/$defs/MenuCompleteness"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/ExtractionIssue"
+          },
+          "title": "Issues",
+          "type": "array"
+        },
+        "extracted_at": {
+          "format": "date-time",
+          "title": "Extracted At",
+          "type": "string"
+        },
+        "parser_version": {
+          "title": "Parser Version",
+          "type": "string"
+        },
+        "recommendations_ready": {
+          "const": false,
+          "default": false,
+          "title": "Recommendations Ready",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_version",
+        "mode",
+        "version",
+        "restaurant_id",
+        "restaurant",
+        "categories",
+        "total_items",
+        "sources",
+        "evidence",
+        "completeness",
+        "issues",
+        "extracted_at",
+        "parser_version",
+        "recommendations_ready"
+      ],
+      "title": "ExtractedRestaurantMenu",
+      "type": "object"
+    },
+    "MenuExtractionResult": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "extracted",
+            "needs_review",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "provider": {
+          "const": "local_html_pdf",
+          "default": "local_html_pdf",
+          "title": "Provider",
+          "type": "string"
+        },
+        "vision_status": {
+          "default": "not_needed",
+          "enum": [
+            "not_needed",
+            "unavailable",
+            "mocked"
+          ],
+          "title": "Vision Status",
+          "type": "string"
+        },
+        "recommendation_token": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recommendation Token",
+          "x-response-optional": true
+        },
+        "menu": {
+          "$ref": "#/$defs/ExtractedRestaurantMenu"
+        },
+        "requests_made": {
+          "maximum": 20,
+          "minimum": 0,
+          "title": "Requests Made",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schema_version",
+        "request_id",
+        "restaurant_id",
+        "status",
+        "provider",
+        "vision_status",
+        "menu",
+        "requests_made"
+      ],
+      "title": "MenuExtractionResult",
+      "type": "object"
+    },
+    "VisionItemProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 3000,
+          "title": "Description",
+          "type": "string"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category"
+        },
+        "price_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Price Text"
+        },
+        "page": {
+          "maximum": 24,
+          "minimum": 1,
+          "title": "Page",
+          "type": "integer"
+        },
+        "transcription": {
+          "maxLength": 8000,
+          "minLength": 1,
+          "title": "Transcription",
+          "type": "string"
+        },
+        "uncertainty": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Uncertainty",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "category",
+        "price_text",
+        "page",
+        "transcription",
+        "uncertainty"
+      ],
+      "title": "VisionItemProposal",
+      "type": "object"
+    },
+    "VisionProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "source_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Source Hash",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "mocked",
+            "unavailable"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/VisionItemProposal"
+          },
+          "maxItems": 600,
+          "title": "Items",
+          "type": "array"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "source_hash",
+        "mode",
+        "items",
+        "limitations"
+      ],
+      "title": "VisionProposal",
+      "type": "object"
+    },
+    "RealPicksRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "extraction": {
+          "$ref": "#/$defs/MenuExtractionResult"
+        },
+        "profile": {
+          "$ref": "#/$defs/TasteProfile"
+        },
+        "taste_evidence": {
+          "$ref": "#/$defs/RecommendationTasteEvidence"
+        },
+        "constraints": {
+          "$ref": "#/$defs/DiningConstraints"
+        },
+        "options": {
+          "$ref": "#/$defs/RecommendationOptions"
+        },
+        "refinements": {
+          "$ref": "#/$defs/RefinementRequest"
+        }
+      },
+      "required": [
+        "request_id",
+        "extraction",
+        "profile",
+        "taste_evidence",
+        "constraints",
+        "options",
+        "refinements"
+      ],
+      "title": "RealPicksRequest",
+      "type": "object"
+    },
+    "RealPreference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "taste_dna",
+            "taste_detective",
+            "taste_memory"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "stated",
+            "inferred"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            "like",
+            "dislike"
+          ],
+          "title": "Polarity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "source",
+        "basis",
+        "polarity"
+      ],
+      "title": "RealPreference",
+      "type": "object"
+    },
+    "RealMemoryObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 1200,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "feedback",
+            "saved",
+            "selected",
+            "ordered",
+            "tasted"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            "like",
+            "dislike",
+            "neutral"
+          ],
+          "title": "Polarity",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "dish_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Dish Id",
+          "type": "string"
+        },
+        "consumption_confirmed": {
+          "title": "Consumption Confirmed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "kind",
+        "polarity",
+        "restaurant_id",
+        "menu_version",
+        "dish_id",
+        "consumption_confirmed"
+      ],
+      "title": "RealMemoryObservation",
+      "type": "object"
+    },
+    "MenuConnectionProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "preference_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Preference Id",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "name",
+            "description"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 500,
+          "minLength": 3,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "preference_id",
+        "field",
+        "quote"
+      ],
+      "title": "MenuConnectionProposal",
+      "type": "object"
+    },
+    "RealCandidateProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "fit": {
+          "enum": [
+            "exceptional",
+            "strong",
+            "tentative"
+          ],
+          "title": "Fit",
+          "type": "string"
+        },
+        "connections": {
+          "items": {
+            "$ref": "#/$defs/MenuConnectionProposal"
+          },
+          "maxItems": 3,
+          "minItems": 1,
+          "title": "Connections",
+          "type": "array"
+        },
+        "uncertainty": {
+          "items": {
+            "enum": [
+              "limited_taste",
+              "missing_description",
+              "possible_dislike",
+              "uncertain_portion"
+            ],
+            "type": "string"
+          },
+          "maxItems": 4,
+          "title": "Uncertainty",
+          "type": "array"
+        }
+      },
+      "required": [
+        "item_id",
+        "fit",
+        "connections",
+        "uncertainty"
+      ],
+      "title": "RealCandidateProposal",
+      "type": "object"
+    },
+    "RealPairingProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "main_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Main Id",
+          "type": "string"
+        },
+        "addition_ids": {
+          "items": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "title": "Addition Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "main_id",
+        "addition_ids"
+      ],
+      "title": "RealPairingProposal",
+      "type": "object"
+    },
+    "RealCulinaryProposal": {
+      "additionalProperties": false,
+      "properties": {
+        "restaurant_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/RealCandidateProposal"
+          },
+          "maxItems": 6,
+          "title": "Candidates",
+          "type": "array"
+        },
+        "pairings": {
+          "items": {
+            "$ref": "#/$defs/RealPairingProposal"
+          },
+          "maxItems": 3,
+          "title": "Pairings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "restaurant_id",
+        "menu_version",
+        "candidates",
+        "pairings"
+      ],
+      "title": "RealCulinaryProposal",
+      "type": "object"
+    },
+    "RealProviderOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "meta",
+            "mock"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "proposal": {
+          "$ref": "#/$defs/RealCulinaryProposal"
+        }
+      },
+      "required": [
+        "mode",
+        "model",
+        "proposal"
+      ],
+      "title": "RealProviderOutput",
+      "type": "object"
+    },
+    "RealPickConnection": {
+      "additionalProperties": false,
+      "properties": {
+        "preference": {
+          "$ref": "#/$defs/RealPreference"
+        },
+        "menu_quote": {
+          "title": "Menu Quote",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "name",
+            "description"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ExtractionEvidence"
+        }
+      },
+      "required": [
+        "preference",
+        "menu_quote",
+        "field",
+        "evidence"
+      ],
+      "title": "RealPickConnection",
+      "type": "object"
+    },
+    "RealPersonalizedPick": {
+      "additionalProperties": false,
+      "properties": {
+        "dish": {
+          "$ref": "#/$defs/ExtractedMenuItem"
+        },
+        "category_name": {
+          "title": "Category Name",
+          "type": "string"
+        },
+        "fit": {
+          "enum": [
+            "exceptional",
+            "strong"
+          ],
+          "title": "Fit",
+          "type": "string"
+        },
+        "explanation": {
+          "title": "Explanation",
+          "type": "string"
+        },
+        "connections": {
+          "items": {
+            "$ref": "#/$defs/RealPickConnection"
+          },
+          "title": "Connections",
+          "type": "array"
+        },
+        "price_minor": {
+          "minimum": 0,
+          "title": "Price Minor",
+          "type": "integer"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "budget": {
+          "$ref": "#/$defs/BudgetPosition"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "dish",
+        "category_name",
+        "fit",
+        "explanation",
+        "connections",
+        "price_minor",
+        "currency",
+        "budget",
+        "limitations"
+      ],
+      "title": "RealPersonalizedPick",
+      "type": "object"
+    },
+    "RealTasteBridge": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "anchor": {
+          "$ref": "#/$defs/RealPreference"
+        },
+        "menu_quote": {
+          "title": "Menu Quote",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ExtractionEvidence"
+        },
+        "connection": {
+          "title": "Connection",
+          "type": "string"
+        },
+        "uncertainty": {
+          "title": "Uncertainty",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "anchor",
+        "menu_quote",
+        "evidence",
+        "connection",
+        "uncertainty"
+      ],
+      "title": "RealTasteBridge",
+      "type": "object"
+    },
+    "RealMealItem": {
+      "additionalProperties": false,
+      "properties": {
+        "dish": {
+          "$ref": "#/$defs/ExtractedMenuItem"
+        },
+        "category_name": {
+          "title": "Category Name",
+          "type": "string"
+        },
+        "price_minor": {
+          "minimum": 0,
+          "title": "Price Minor",
+          "type": "integer"
+        },
+        "evidence": {
+          "$ref": "#/$defs/ExtractionEvidence"
+        }
+      },
+      "required": [
+        "dish",
+        "category_name",
+        "price_minor",
+        "evidence"
+      ],
+      "title": "RealMealItem",
+      "type": "object"
+    },
+    "RealMealCombination": {
+      "additionalProperties": false,
+      "properties": {
+        "main_item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Main Item Id",
+          "type": "string"
+        },
+        "additions": {
+          "items": {
+            "$ref": "#/$defs/RealMealItem"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "title": "Additions",
+          "type": "array"
+        },
+        "subtotal_minor": {
+          "minimum": 0,
+          "title": "Subtotal Minor",
+          "type": "integer"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "main_item_id",
+        "additions",
+        "subtotal_minor",
+        "rationale",
+        "limitations"
+      ],
+      "title": "RealMealCombination",
+      "type": "object"
+    },
+    "RealPickExclusion": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Item Id",
+          "type": "string"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "item_id",
+        "reasons"
+      ],
+      "title": "RealPickExclusion",
+      "type": "object"
+    },
+    "RealPicksResult": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "format": "uuid",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "restaurant_id": {
+          "maxLength": 255,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Restaurant Id",
+          "type": "string"
+        },
+        "menu_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Menu Version",
+          "type": "string"
+        },
+        "context_digest": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Context Digest",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "no_matches",
+            "no_eligible_items",
+            "insufficient_taste",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "meta",
+            "mock",
+            "not_run"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Model"
+        },
+        "recommendations": {
+          "items": {
+            "$ref": "#/$defs/RealPersonalizedPick"
+          },
+          "maxItems": 3,
+          "title": "Recommendations",
+          "type": "array"
+        },
+        "taste_bridges": {
+          "items": {
+            "$ref": "#/$defs/RealTasteBridge"
+          },
+          "maxItems": 5,
+          "title": "Taste Bridges",
+          "type": "array",
+          "x-response-optional": true
+        },
+        "meal_combinations": {
+          "items": {
+            "$ref": "#/$defs/RealMealCombination"
+          },
+          "maxItems": 3,
+          "title": "Meal Combinations",
+          "type": "array",
+          "x-response-optional": true
+        },
+        "worth_the_stretch": {
+          "items": {
+            "$ref": "#/$defs/RealPersonalizedPick"
+          },
+          "maxItems": 2,
+          "title": "Worth The Stretch",
+          "type": "array",
+          "x-response-optional": true
+        },
+        "exclusions": {
+          "items": {
+            "$ref": "#/$defs/RealPickExclusion"
+          },
+          "title": "Exclusions",
+          "type": "array"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Limitations",
+          "type": "array"
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error Code"
+        }
+      },
+      "required": [
+        "request_id",
+        "restaurant_id",
+        "menu_version",
+        "context_digest",
+        "status",
+        "mode",
+        "model",
+        "recommendations",
+        "exclusions",
+        "message",
+        "limitations",
+        "error_code"
+      ],
+      "title": "RealPicksResult",
+      "type": "object"
+    },
+    "RealPicksCapability": {
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "title": "Available",
+          "type": "boolean"
+        },
+        "mode": {
+          "enum": [
+            "disabled",
+            "mock",
+            "meta"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "available",
+        "mode",
+        "message"
+      ],
+      "title": "RealPicksCapability",
+      "type": "object"
+    }
+  }
+}
