@@ -1,6 +1,23 @@
 # DineTuned
 
-**Fine-tuned to your taste.** A personal restaurant-menu concierge built with Next.js and FastAPI for the 2026 Meta AI Developer Hackathon.
+**DineTuned — Your Personal AI Dining Concierge**
+
+A personalized culinary discovery experience that learns your tastes and helps you decide what to order.
+
+🌐 **Live Website:** https://www.dinetuned.com
+
+🍽️ **Try the Guided Demo:** https://www.dinetuned.com/demo
+
+**Powered by Meta Muse.** In approved live sessions, Muse Spark 1.3 reasons over Taste DNA and a source-linked restaurant menu to suggest personalized dishes. Muse Image 1.0 creates clearly labeled illustrative food imagery for validated Picks.
+
+The fully functional guided demo uses fictional menus and deterministic recommendations; it does not make live Meta requests. Live Meta inference is disabled on the public deployment. DineTuned is built with Next.js and FastAPI for the 2026 Meta AI Developer Hackathon.
+
+## How to Experience DineTuned
+
+1. Complete **Taste Detective** to explore your food preferences, then review your **Taste DNA**.
+2. Browse a fictional demo restaurant or, when live search is enabled, select a real restaurant. Explore its full categorized menu.
+3. Choose **Find My Personal Picks** to enter Muse's Test Kitchen and see personalized dish suggestions, TasteBridge connections, and meal ideas.
+4. Save, try, and rate dishes, then revisit your choices in **Taste Memory**. Demo interactions stay separate from real guest data.
 
 ## What Meta's models power
 
