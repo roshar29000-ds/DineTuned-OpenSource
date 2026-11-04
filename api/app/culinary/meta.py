@@ -10,7 +10,7 @@ import httpx
 from openai import OpenAI, APIError, APITimeoutError, AuthenticationError, RateLimitError
 from pydantic import ValidationError
 
-from ..usage_budget import MODEL, MAX_OUTPUT_TOKENS, CostEstimate, TokenUsage, UsageBudget, estimate_request
+from ..usage_budget import MODEL, WONDER_MODEL, MAX_OUTPUT_TOKENS, CostEstimate, TokenUsage, UsageBudget, estimate_request
 from ..validation_spend import ValidationSpend
 from .context import CulinaryContext
 from .contracts import CulinaryProposal, ProviderOutput
@@ -59,15 +59,16 @@ class MetaConfig:
     def from_environment(cls):
         return cls(model=os.getenv("META_MODEL", MODEL), base_url=os.getenv("META_MODEL_BASE_URL", BASE_URL))
 
-    def validate(self):
+    def validate(self, *, allow_wonder: bool = False):
         # Configuration is explicit, but new hosts/models require an intentional
         # security/pricing review. Never forward credentials to arbitrary origins.
-        if self.model != MODEL or self.base_url.rstrip("/") != BASE_URL:
-            raise CulinaryError("unsupported_config", "Only the verified Standard Muse Spark model and official Meta endpoint are enabled.")
+        if (self.model != MODEL and not (allow_wonder and self.model == WONDER_MODEL)) or self.base_url.rstrip("/") != BASE_URL:
+            raise CulinaryError("unsupported_config", "Only an explicitly enabled Standard Meta model and the official endpoint are supported.")
         if type(self.max_output_tokens) is not int or not 1 <= self.max_output_tokens <= MAX_OUTPUT_TOKENS:
             raise CulinaryError("unbounded_output", "Invalid output-token limit.")
-        if self.reasoning_effort != "minimal":
-            raise CulinaryError("unsupported_reasoning", "This guarded smoke test requires explicit minimal reasoning effort.")
+        if (self.reasoning_effort != "minimal" and not
+                (allow_wonder and self.model == WONDER_MODEL and self.reasoning_effort in {"low", "medium"})):
+            raise CulinaryError("unsupported_reasoning", "The requested reasoning effort is outside this guarded model policy.")
         if not 0 < self.timeout_seconds <= 60:
             raise CulinaryError("invalid_timeout", "The provider timeout must be at most 60 seconds.")
 
@@ -98,8 +99,9 @@ class RequestTrace:
     budget: dict | None = None
 
 
-def request_body(context: ReasoningContext, config: MetaConfig, *, system: str = SYSTEM, proposal_type: type[BaseModel] = CulinaryProposal) -> dict:
-    config.validate()
+def request_body(context: ReasoningContext, config: MetaConfig, *, system: str = SYSTEM, proposal_type: type[BaseModel] = CulinaryProposal,
+                 allow_wonder: bool = False) -> dict:
+    config.validate(allow_wonder=allow_wonder)
     return {"model": config.model,
         "messages": [{"role": "system", "content": system},
             {"role": "user", "content": json.dumps(context.wire(), ensure_ascii=False, separators=(",", ":"))}],
@@ -123,7 +125,8 @@ def reported_usage(response) -> TokenUsage | None:
 
 class MetaCulinaryProvider:
     def __init__(self, config: MetaConfig | None = None, *, consent: LiveConsent = LiveConsent(),
-                 budget: UsageBudget | None = None, mock_transport: httpx.MockTransport | None = None, milestone: str = "4D.1"):
+                 budget: UsageBudget | None = None, mock_transport: httpx.MockTransport | None = None, milestone: str = "4D.1",
+                 allow_wonder: bool = False):
         if mock_transport is not None and not isinstance(mock_transport, httpx.MockTransport):
             raise CulinaryError("invalid_mock", "Offline use requires an explicit in-memory mock transport.")
         self.config = config or MetaConfig()
@@ -131,6 +134,7 @@ class MetaCulinaryProvider:
         self.milestone = milestone
         self.budget = budget or UsageBudget()
         self.mock_transport = mock_transport
+        self.allow_wonder = allow_wonder
         self.trace: RequestTrace | None = None
 
     def _client(self, key: str) -> OpenAI:
@@ -154,7 +158,7 @@ class MetaCulinaryProvider:
         offline = self.mock_transport is not None
         if not offline:
             self.consent.require()
-        body = request_body(context, self.config, system=system, proposal_type=proposal_type)
+        body = request_body(context, self.config, system=system, proposal_type=proposal_type, allow_wonder=self.allow_wonder)
         estimate = estimate_request(body)
         if not context.has_candidates:
             raise CulinaryError("no_candidates", "No eligible, evidence-supported menu items are available; no model request is needed.")

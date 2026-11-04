@@ -8,7 +8,15 @@ from ..usage_budget import MODEL
 
 
 def smoke_context():
-    menu = get_menu("casa-sol")
+    # The guarded developer smoke path is intentionally capped at eight items.
+    # The consumer demo has twenty; keep this synthetic context on its original
+    # four dishes without changing the public menu or model request bound.
+    menu = get_menu("casa-sol").model_copy(deep=True)
+    original = {'birria', 'mushroom-taco', 'elote', 'chicken-tinga'}
+    for category in menu.categories:
+        category.items = [item for item in category.items if item.id in original]
+    menu.categories = [category for category in menu.categories if category.items]
+    menu.total_items = 4
     request = RecommendationRequest(restaurant_id=menu.restaurant.id, menu_version=menu.version,
         constraints=DiningConstraints(max_price_minor=2000),
         profile=TasteProfile(complete=True, favorites="Grilled chicken; smoky, charred food. I dislike creamy sauces and cheese.",

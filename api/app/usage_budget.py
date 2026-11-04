@@ -20,11 +20,17 @@ from .schemas import Contract
 from .culinary.errors import CulinaryError
 
 MODEL = "muse-spark-1.3"
+WONDER_MODEL = "muse-wonder-1.0"
+SAM_MODEL = "sam-3.1"
 PRICING_SOURCE = "https://dev.meta.ai/docs/pricing-rate-limits"
 PRICE_VERIFIED = date(2026, 10, 28)
+OPTIONAL_PRICE_VERIFIED = date(2026, 11, 4)
 PRICE_EXPIRES = date(2026, 11, 5)
 INPUT_PER_MILLION = Decimal("1.25")
 OUTPUT_PER_MILLION = Decimal("4.25")
+WONDER_INPUT_PER_MILLION = Decimal("4.00")
+WONDER_OUTPUT_PER_MILLION = Decimal("20.00")
+SAM_IMAGE_USD = Decimal("0.0025")
 CUMULATIVE_LIMIT = Decimal("10")
 # Future milestones must register a policy here, without replacing the ledger.
 # Existing ledger entries still count; this does not authorize automatic calls.
@@ -42,12 +48,17 @@ def timestamp() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def token_cost(input_tokens: int, output_tokens: int) -> Decimal:
-    return (Decimal(input_tokens) * INPUT_PER_MILLION + Decimal(output_tokens) * OUTPUT_PER_MILLION) / 1_000_000
+def token_cost(input_tokens: int, output_tokens: int, *, model: str = MODEL) -> Decimal:
+    rates = {MODEL: (INPUT_PER_MILLION, OUTPUT_PER_MILLION),
+             WONDER_MODEL: (WONDER_INPUT_PER_MILLION, WONDER_OUTPUT_PER_MILLION)}
+    if model not in rates:
+        raise CulinaryError("unpriced_request", "This Meta model has no approved text price.")
+    input_rate, output_rate = rates[model]
+    return (Decimal(input_tokens) * input_rate + Decimal(output_tokens) * output_rate) / 1_000_000
 
 
 class CostEstimate(Contract):
-    model: Literal["muse-spark-1.3"]
+    model: Literal["muse-spark-1.3", "muse-wonder-1.0"]
     input_tokens_upper: StrictInt = Field(ge=1)
     max_output_tokens: StrictInt = Field(ge=1, le=MAX_OUTPUT_TOKENS)
     request_bytes: StrictInt = Field(ge=1, le=MAX_REQUEST_BYTES)
@@ -111,9 +122,28 @@ class ImageEntry(Contract):
     pricing_uncertain: bool = False
 
 
+class SamCostEstimate(Contract):
+    model: Literal['sam-3.1'] = 'sam-3.1'
+    image_count: Literal[1] = 1
+    upper_usd: Decimal = SAM_IMAGE_USD
+    pricing_verified: str = OPTIONAL_PRICE_VERIFIED.isoformat()
+
+
+class SamEntry(Contract):
+    id: str
+    milestone: str
+    created_at: str
+    updated_at: str
+    estimate: SamCostEstimate
+    status: Literal['pending', 'success', 'provider_error']
+    accounted_usd: Decimal = Field(ge=0)
+    pricing_uncertain: bool = False
+    upper_bound_exceeded: bool = False
+
+
 class Ledger(Contract):
     version: Literal[1]
-    entries: list[Entry | ImageEntry]
+    entries: list[Entry | ImageEntry | SamEntry]
 
     @model_validator(mode="after")
     def intact(self):
@@ -121,6 +151,11 @@ class Ledger(Contract):
             raise ValueError("Duplicate ledger records")
         for e in self.entries:
             estimate = e.estimate
+            if isinstance(e, SamEntry):
+                if (estimate.upper_usd != SAM_IMAGE_USD or estimate.image_count != 1
+                        or e.accounted_usd < estimate.upper_usd):
+                    raise ValueError('Invalid SAM cost record')
+                continue
             if isinstance(e, ImageEntry):
                 if (estimate.usd_per_image != Decimal('0.01') or estimate.upper_usd != estimate.usd_per_image
                         or e.accounted_usd < estimate.upper_usd):
@@ -141,10 +176,12 @@ class Ledger(Contract):
 
 def estimate_request(body: dict, *, today: date | None = None) -> CostEstimate:
     today = today or datetime.now(timezone.utc).date()
-    if not PRICE_VERIFIED <= today <= PRICE_EXPIRES:
+    model = body.get("model")
+    verified = PRICE_VERIFIED if model == MODEL else OPTIONAL_PRICE_VERIFIED
+    if not verified <= today <= PRICE_EXPIRES:
         raise CulinaryError("pricing_expired", "Re-verify official Standard pricing before live use; existing ledger must be retained.")
     allowed = {"model", "messages", "response_format", "max_completion_tokens", "reasoning_effort", "n", "stream", "store"}
-    if (set(body) != allowed or body.get("model") != MODEL or body.get("n") != 1
+    if (set(body) != allowed or model not in (MODEL, WONDER_MODEL) or body.get("n") != 1
             or body.get("stream") is not False or body.get("store") is not False):
         raise CulinaryError("unpriced_request", "Only text-only Standard Muse Spark without tools has a verified cost estimate.")
     messages = body.get("messages")
@@ -161,9 +198,11 @@ def estimate_request(body: dict, *, today: date | None = None) -> CostEstimate:
     # framing allowance, at twice the UTF-8 bytes plus 2048. Not an exact Meta
     # tokenizer; no unseen tools/media may use this estimator. See docs.
     upper = 2 * size + 2048
-    return CostEstimate(model=MODEL, input_tokens_upper=upper, max_output_tokens=limit,
-        request_bytes=size, upper_usd=token_cost(upper, limit), input_per_million=INPUT_PER_MILLION,
-        output_per_million=OUTPUT_PER_MILLION, pricing_verified=PRICE_VERIFIED.isoformat(), pricing_source=PRICING_SOURCE)
+    input_rate, output_rate = ((INPUT_PER_MILLION, OUTPUT_PER_MILLION) if model == MODEL
+        else (WONDER_INPUT_PER_MILLION, WONDER_OUTPUT_PER_MILLION))
+    return CostEstimate(model=model, input_tokens_upper=upper, max_output_tokens=limit,
+        request_bytes=size, upper_usd=token_cost(upper, limit, model=model), input_per_million=input_rate,
+        output_per_million=output_rate, pricing_verified=verified.isoformat(), pricing_source=PRICING_SOURCE)
 
 
 class UsageBudget:
@@ -243,11 +282,14 @@ class UsageBudget:
             raise CulinaryError("unknown_milestone", "No spending policy is registered for this milestone.")
         if self.limits[milestone][1] == 0:
             raise CulinaryError("live_disabled", "No live attempts are authorized for this milestone. No ledger reservation was made.")
-        if (not PRICE_VERIFIED <= datetime.now(timezone.utc).date() <= PRICE_EXPIRES
-                or estimate.pricing_verified != PRICE_VERIFIED.isoformat()
-                or estimate.input_per_million != INPUT_PER_MILLION or estimate.output_per_million != OUTPUT_PER_MILLION
+        expected_date = PRICE_VERIFIED if estimate.model == MODEL else OPTIONAL_PRICE_VERIFIED
+        input_rate, output_rate = ((INPUT_PER_MILLION, OUTPUT_PER_MILLION) if estimate.model == MODEL
+            else (WONDER_INPUT_PER_MILLION, WONDER_OUTPUT_PER_MILLION))
+        if (not expected_date <= datetime.now(timezone.utc).date() <= PRICE_EXPIRES
+                or estimate.pricing_verified != expected_date.isoformat()
+                or estimate.input_per_million != input_rate or estimate.output_per_million != output_rate
                 or estimate.input_tokens_upper != 2 * estimate.request_bytes + 2048
-                or estimate.upper_usd != token_cost(estimate.input_tokens_upper, estimate.max_output_tokens)):
+                or estimate.upper_usd != token_cost(estimate.input_tokens_upper, estimate.max_output_tokens, model=estimate.model)):
             raise CulinaryError("invalid_estimate", "A current, verified cost estimate is required before reservation.")
         with self._locked() as ledger:
             limit, attempts = self.limits[milestone]
@@ -296,6 +338,38 @@ class UsageBudget:
             entry.updated_at = timestamp()
             # Conservative accounting retains the full image price even when
             # provider billing for a failed request is unknown.
+            self._write(ledger)
+
+    def reserve_sam_image(self, milestone: str) -> str:
+        if milestone not in self.limits or self.limits[milestone][1] == 0:
+            raise CulinaryError('live_disabled', 'No SAM spending policy is registered or authorized.')
+        if not OPTIONAL_PRICE_VERIFIED <= datetime.now(timezone.utc).date() <= PRICE_EXPIRES:
+            raise CulinaryError('invalid_estimate', 'SAM pricing requires a current review.')
+        estimate = SamCostEstimate()
+        with self._locked() as ledger:
+            local = [e for e in ledger.entries if e.milestone == milestone]
+            cap, attempts = self.limits[milestone]
+            if any(e.upper_bound_exceeded or e.pricing_uncertain for e in ledger.entries):
+                raise CulinaryError('estimate_breached', 'Review the Meta dashboard before further spending.')
+            if len(local) >= attempts:
+                raise CulinaryError('attempt_limit', 'The approved SAM attempt limit is exhausted.')
+            if (sum((e.accounted_usd for e in ledger.entries), Decimal(0)) + estimate.upper_usd > CUMULATIVE_LIMIT
+                    or sum((e.accounted_usd for e in local), Decimal(0)) + estimate.upper_usd > cap):
+                raise CulinaryError('budget_exceeded', 'The SAM reservation exceeds the approved local budget.')
+            entry = SamEntry(id=str(uuid4()), milestone=milestone, created_at=timestamp(), updated_at=timestamp(),
+                estimate=estimate, status='pending', accounted_usd=estimate.upper_usd)
+            ledger.entries.append(entry)
+            self._write(ledger)
+            return entry.id
+
+    def finish_sam_image(self, request_id: str, *, success: bool):
+        with self._locked() as ledger:
+            entry = next((e for e in ledger.entries if e.id == request_id), None)
+            if not isinstance(entry, SamEntry) or entry.status != 'pending':
+                raise CulinaryError('ledger_state', 'The SAM reservation cannot be reconciled.')
+            entry.status = 'success' if success else 'provider_error'
+            entry.updated_at = timestamp()
+            # A failed or interrupted provider call still consumes its reservation.
             self._write(ledger)
 
     def finish(self, request_id: str, status: Literal["success", "invalid_output", "provider_error"], usage: TokenUsage | None,

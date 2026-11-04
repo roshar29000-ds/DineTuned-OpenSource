@@ -20,6 +20,18 @@ from app.services.catalog import get_menu
 from app.usage_budget import MODEL, UsageBudget
 
 
+def original_demo_menu(restaurant):
+    """Keep the bounded developer smoke tests on the original fixture subset."""
+    catalog = json.loads((Path(__file__).resolve().parents[1] / 'app/data/catalog.json').read_text())
+    original_ids = {item['id'] for row in catalog if row['id'] == restaurant for item in row['menu']}
+    menu = get_menu(restaurant).model_copy(deep=True)
+    for category in menu.categories:
+        category.items = [item for item in category.items if item.id in original_ids]
+    menu.categories = [category for category in menu.categories if category.items]
+    menu.total_items = len(original_ids)
+    return menu
+
+
 def response(context):
     return {"id": "test-response", "object": "chat.completion", "created": 0, "model": MODEL,
         "choices": [{"index": 0, "finish_reason": "stop", "message": {"role": "assistant",
@@ -296,7 +308,7 @@ def test_revalidation_rejects_safety_or_menu_changes_independently(change):
 
 
 def test_combined_diets_and_allergy_unknowns_filter_before_sending():
-    menu = get_menu("saigon-table")
+    menu = original_demo_menu("saigon-table")
     req = RecommendationRequest(restaurant_id=menu.restaurant.id, menu_version=menu.version,
         constraints=DiningConstraints(dietary_restrictions=["vegetarian", "dairy_free"]),
         profile=TasteProfile(axes=TasteAxes(spice=.45, richness=.6, freshness=.6, crunch=.5, aromatic=.8)))
@@ -340,7 +352,7 @@ def test_unknown_taste_cannot_borrow_other_user_evidence_and_refinements_are_for
 
 def test_two_menus_keep_exact_prices_and_no_duplicates_across_primary_and_stretch():
     for restaurant in ("saigon-table", "casa-sol"):
-        menu = get_menu(restaurant)
+        menu = original_demo_menu(restaurant)
         request = RecommendationRequest(restaurant_id=menu.restaurant.id, menu_version=menu.version,
             constraints=DiningConstraints(max_price_minor=100),
             profile=TasteProfile(axes=TasteAxes(spice=.45, richness=.6, freshness=.6, crunch=.5, aromatic=.8)))
