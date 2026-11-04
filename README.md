@@ -2,7 +2,7 @@
 
 **A personal palate meets a real restaurant menu.** DineTuned builds a persistent, evidence-aware picture of what someone enjoys, then helps them decide **what to order** at a particular restaurant. Taste Detective elicits preferences; Taste DNA keeps known, inferred, and unknown signals distinct; menu provenance keeps recommendations attached to actual dishes. Muse's Test Kitchen turns that reasoning into an editorial dining experience.
 
-🎬 **[Watch the DineTuned Demo Video](https://drive.google.com/file/d/12TXOs7lg8Ld5bhZfZSoNBCv9wMJ0R_22/view?usp=sharing)**
+🎬 **[Watch the DineTuned Demo Video](https://drive.google.com/file/d/1buOEbuX-TYIbjsvw9RD9CRqwz9q8ukzn/view?usp=sharing)**
 
 🌐 **Live website:** https://www.dinetuned.com
 
