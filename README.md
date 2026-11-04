@@ -2,6 +2,8 @@
 
 **A personal palate meets a real restaurant menu.** DineTuned builds a persistent, evidence-aware picture of what someone enjoys, then helps them decide **what to order** at a particular restaurant. Taste Detective elicits preferences; Taste DNA keeps known, inferred, and unknown signals distinct; menu provenance keeps recommendations attached to actual dishes. Muse's Test Kitchen turns that reasoning into an editorial dining experience.
 
+🎬 **[Watch the DineTuned Demo Video](https://drive.google.com/file/d/12TXOs7lg8Ld5bhZfZSoNBCv9wMJ0R_22/view?usp=sharing)**
+
 🌐 **Live website:** https://www.dinetuned.com
 
 🍽️ **Guided demo:** https://www.dinetuned.com/demo
@@ -115,7 +117,7 @@ Muse Spark supplies the cross-cuisine judgment: interpreting a person's sensory 
 
 Run the optional mocked tests with `cd api && python -m pytest -q tests/test_optional_meta_models.py`. The operator CLI is [api/scripts/optional_meta.py](api/scripts/optional_meta.py); it rejects any live command without **both** `--live` and `--confirm-spend`. A live Wonder comparison additionally needs a current signed request/result for the *same authenticated guest*, a genuine saved Muse Spark result, `MODEL_API_KEY`, `DINETUNED_MUSE_WONDER_ENABLED=true`, and a separate owner-approved `DINETUNED_MUSE_WONDER_APPROVAL_ID`, `CAP_USD`, and `MAX_ATTEMPTS`. SAM needs an approved `DINETUNED_SAM_*` policy, a whitelisted original JPEG, and the same explicit CLI consent. Both use the shared locked Meta ledger and are off by default; obtaining credentials alone enables nothing. Check Meta's current account access and rates before any approved live test. [Example backend variables](api/.env.example) contain no secrets.
 
-## Try the complete offline demo
+## Guided demo setup
 
 Node.js 20.9+ and Python 3.11+ are required. No Google, Meta, Supabase, API key, or account is needed. The local FastAPI server supplies the fictional catalog, preference checks, and deterministic Picks.
 
